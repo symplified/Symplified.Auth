@@ -1,0 +1,3 @@
+[submodule "lib/Xamarin.Auth"]
+	path = lib/Xamarin.Auth
+	url = git@github.com:xamarin/Xamarin.Auth.git
