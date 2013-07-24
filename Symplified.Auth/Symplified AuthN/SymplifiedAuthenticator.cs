@@ -1,9 +1,15 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using System.Net;
+using System.Threading.Tasks;
 using Xamarin.Auth;
+using Xamarin.Utilities;
 
 #if PLATFORM_IOS
+using JSON = System.Json;
 using Symplified.Auth.iOS;
 using MonoTouch.Foundation;
 using PlatformCookie = MonoTouch.Foundation.NSHttpCookie;
@@ -21,8 +27,6 @@ namespace Symplified.Auth
 		{
 			;
 		}
-
-		protected virtual Cookie[] SymplifiedCookies { get; private set; }
 
 		protected override void OnPageEncountered (Uri url, System.Collections.Generic.IDictionary<string, string> query, System.Collections.Generic.IDictionary<string, string> fragment)
 		{
@@ -51,7 +55,34 @@ namespace Symplified.Auth
 			CookieCollection cookieCollection = CookieConverter.ConvertToCLRCookies (platformCookies);
 			CookieContainer cc = new CookieContainer (cookieCollection.Count);
 			cc.Add (cookieCollection);
-			OnSucceeded (new Account ("", cc));
+
+			RequestUserKeychainAsync (url).ContinueWith (task => {
+				if (task.IsFaulted) {
+					OnError (task.Exception);
+				} else {
+
+					var httpResponse = task.Result as HttpWebResponse;
+					JSON.JsonObject jsonObject = null;
+
+					using (var s = httpResponse.GetResponseStream ()) {
+						using (var r = new StreamReader (s, Encoding.UTF8)) {
+							jsonObject = (JSON.JsonObject)JSON.JsonObject.Parse (r.ReadToEnd ());
+						}
+					}
+
+					OnSucceeded (new Account (jsonObject["username"], cc));
+				}
+			}, TaskScheduler.FromCurrentSynchronizationContext ());
+		}
+
+		protected Task<WebResponse> RequestUserKeychainAsync (Uri keychainUrl)
+		{
+			var req = WebRequest.Create (keychainUrl);
+			req.Method = "POST";
+
+			return Task
+				.Factory
+					.FromAsync<WebResponse> (req.BeginGetResponse, req.EndGetResponse, null);
 		}
 	}
 }

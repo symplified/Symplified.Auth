@@ -6,7 +6,7 @@ namespace Symplified.Auth
 {
 	public class SymplifiedToken : IdentityToken
 	{
-		public static readonly string COOKIE_IDENTIFIER = "dcId";
+		public static readonly string COOKIE_IDENTIFIER = "singlepoint";
 
 		private Cookie _cookie;
 
