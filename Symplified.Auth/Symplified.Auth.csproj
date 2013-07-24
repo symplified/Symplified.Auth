@@ -35,6 +35,7 @@
     <Reference Include="System.Security" />
     <Reference Include="Mono.Security" />
     <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -46,6 +47,7 @@
     <Compile Include="IdentityProvider\IdentityToken.cs" />
     <Compile Include="IdentityProvider\SamlToken.cs" />
     <Compile Include="Symplified AuthN\SymplifiedToken.cs" />
+    <Compile Include="CookieConverter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
