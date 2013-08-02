@@ -1,42 +1,103 @@
 using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using System.Threading.Tasks;
+using System.Xml;
 using Xamarin.Auth;
+using dk.nita.saml20;
+using dk.nita.saml20.Schema.Core;
 
 namespace Symplified.Auth
 {
+	/// <summary>
+	/// SAML 2.0 authenticator.
+	/// </summary>
 	public class SAML20Authenticator : WebRedirectAuthenticator
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Symplified.Auth.SAML20Authenticator"/> class.
+		/// </summary>
+		/// <param name="initialUrl">Initial URL.</param>
+		/// <param name="redirectUrl">Redirect URL.</param>
 		public SAML20Authenticator (Uri initialUrl, Uri redirectUrl)
 			: base (initialUrl, redirectUrl)
 		{
 
 		}
 
+		/// <summary>
+		/// Method that returns the initial URL to be displayed in the web browser.
+		/// </summary>
+		/// <returns>A task that will return the initial URL.</returns>
 		public override Task<Uri> GetInitialUrlAsync ()
 		{
 			return base.GetInitialUrlAsync ();
 		}
 
-		public override void OnPageLoading (Uri url)
+		/// <summary>
+		/// Event handler called when a new page is being loaded in the web browser.
+		/// </summary>
+		/// <param name="url">The URL of the page.</param>
+		/// <param name="formParams">Form parameters.</param>
+		public override void OnPageLoading (Uri url, IDictionary<string,string> formParams)
 		{
-			base.OnPageLoading (url);
+			base.OnPageLoading (url, formParams);
 		}
 
-		protected override void OnPageEncountered (Uri url, IDictionary<string, string> query, IDictionary<string, string> fragment)
+		/// <summary>
+		/// Raised when a new page has been loaded.
+		/// </summary>
+		/// <param name="url">URL of the page.</param>
+		/// <param name="query">The parsed query of the URL.</param>
+		/// <param name="fragment">The parsed fragment of the URL.</param>
+		/// <param name="formParams">Form parameters.</param>
+		protected override void OnPageEncountered (Uri url, IDictionary<string, string> query, IDictionary<string, string> fragment, IDictionary<string, string> formParams)
 		{
-			base.OnPageEncountered (url, query, fragment);
-		}
-		protected override void OnRedirectPageLoaded (Uri url, System.Collections.Generic.IDictionary<string, string> query, System.Collections.Generic.IDictionary<string, string> fragment)
-		{
-			base.OnRedirectPageLoaded (url, query, fragment);
+			base.OnPageEncountered (url, query, fragment, formParams);
 		}
 
+		/// <summary>
+		/// Raised when the redirect page has been loaded.
+		/// </summary>
+		/// <param name="url">URL of the page.</param>
+		/// <param name="query">The parsed query of the URL.</param>
+		/// <param name="fragment">The parsed fragment of the URL.</param>
+		/// <param name="formParams">Form parameters.</param>
+		protected override void OnRedirectPageLoaded (Uri url, System.Collections.Generic.IDictionary<string, string> query, System.Collections.Generic.IDictionary<string, string> fragment, IDictionary<string, string> formParams)
+		{
+			string base64SamlAssertion = formParams.ContainsKey ("SAMLResponse") ? formParams ["SAMLResponse"] : string.Empty;
+			byte[] xmlSamlAssertionBytes = Convert.FromBase64String (base64SamlAssertion);
+			string xmlSamlAssertion = System.Text.UTF8Encoding.Default.GetString (xmlSamlAssertionBytes);
+
+			XmlDocument xDoc = new XmlDocument ();
+			xDoc.LoadXml (xmlSamlAssertion);
+
+			XmlElement assertionElement = (XmlElement)xDoc.SelectSingleNode ("//*[local-name()='Response']/*[local-name()='Assertion']");
+			if (assertionElement != null) {
+				Saml20Assertion samlAssertion = new Saml20Assertion (assertionElement, null, false);
+				Assertion a = samlAssertion.Assertion;
+
+				// TODO: Create SamlAccount class
+				SamlAccount sa = new SamlAccount (samlAssertion);
+				OnSucceeded (sa);
+			}
+			else {
+				OnError ("No SAML Assertion Found");
+			}
+		}
+
+		/// <summary>
+		/// Raises the browsing completed event.
+		/// </summary>
 		protected override void OnBrowsingCompleted ()
 		{
 			base.OnBrowsingCompleted ();
 		}
 
+		/// <summary>
+		/// Requests the assertion async.
+		/// </summary>
+		/// <returns>The assertion async.</returns>
 		protected virtual Task<Dictionary<string,string>> RequestAssertionAsync () {
 			return null;
 		}

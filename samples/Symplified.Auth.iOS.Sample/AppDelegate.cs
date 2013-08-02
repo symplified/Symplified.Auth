@@ -6,6 +6,8 @@ using MonoTouch.UIKit;
 using MonoTouch.Dialog;
 
 using Symplified.Auth;
+using Symplified.Auth.iOS;
+using dk.nita.saml20;
 
 namespace Symplified.Auth.iOS.Sample
 {
@@ -59,8 +61,8 @@ namespace Symplified.Auth.iOS.Sample
 		public void LoginToSymplifiedToken ()
 		{
 			SymplifiedAuthenticator authenticator = new SymplifiedAuthenticator (
-				new Uri ("https://home.symplified.net"),
-				new Uri ("https://home.symplified.net/portal/mobile/applications.html")
+				new Uri ("https://idp.symplified.net"),
+				new Uri ("https://idp.symplified.net/portal/mobile/applications.html")
 			);
 
 			authenticator.Completed += (s,e) =>
@@ -80,7 +82,31 @@ namespace Symplified.Auth.iOS.Sample
 
 		public void LoginToSymplifiedSaml ()
 		{
+			SAML20Authenticator authenticator = new SAML20Authenticator (
+//				new Uri ("https://sympidp-dev-ed.my.salesforce.com"),
+//				new Uri ("https://login.salesforce.com")
+				new Uri ("http://ec2-23-22-199-50.compute-1.amazonaws.com/Shibboleth.sso/Login"),
+				new Uri ("http://ec2-23-22-199-50.compute-1.amazonaws.com/Shibboleth.sso/SAML2/POST")
+			);
 
+			authenticator.Completed += (s, e) => {
+				loginViewController.DismissViewController (true, null);
+
+				if (!e.IsAuthenticated) {
+					samlLoginStatusStringElement.Caption = "Not authorized";
+				}
+				else {
+					SamlAccount account = (SamlAccount)e.Account;
+					Saml20Assertion assertion = account.Assertion;
+
+					samlLoginStatusStringElement.Caption = String.Format ("Username: {0}", assertion.Subject.Value);
+				}
+
+				loginViewController.ReloadData ();
+			};
+
+			UIViewController vc = authenticator.GetUI ();
+			loginViewController.PresentViewController (vc, true, null);
 		}
 	}
 }

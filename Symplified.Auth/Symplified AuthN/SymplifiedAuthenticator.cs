@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Net;
 using System.Threading.Tasks;
@@ -15,11 +16,15 @@ using MonoTouch.Foundation;
 using PlatformCookie = MonoTouch.Foundation.NSHttpCookie;
 #elif PLATFORM_ANDROID
 
+
 #endif
 
 
 namespace Symplified.Auth
 {
+	/// <summary>
+	/// Symplified authenticator.
+	/// </summary>
 	public class SymplifiedAuthenticator : WebRedirectAuthenticator
 	{
 		public SymplifiedAuthenticator (Uri initialUrl, Uri redirectUrl)
@@ -28,22 +33,44 @@ namespace Symplified.Auth
 			;
 		}
 
-		protected override void OnPageEncountered (Uri url, System.Collections.Generic.IDictionary<string, string> query, System.Collections.Generic.IDictionary<string, string> fragment)
+		/// <summary>
+		/// Raised when a new page has been loaded.
+		/// </summary>
+		/// <param name="url">URL of the page.</param>
+		/// <param name="query">The parsed query of the URL.</param>
+		/// <param name="fragment">The parsed fragment of the URL.</param>
+		protected override void OnPageEncountered (Uri url, System.Collections.Generic.IDictionary<string, string> query, System.Collections.Generic.IDictionary<string, string> fragment, System.Collections.Generic.IDictionary<string, string> formParams)
 		{
-			base.OnPageEncountered (url, query, fragment);
+			base.OnPageEncountered (url, query, fragment, formParams);
 		}
 
+		/// <summary>
+		/// Raises the page loaded event.
+		/// </summary>
+		/// <param name="url">URL.</param>
 		public override void OnPageLoaded (Uri url)
 		{
 			base.OnPageLoaded (url);
 		}
 
-		public override void OnPageLoading (Uri url)
+		/// <summary>
+		/// Event handler called when a new page is being loaded in the web browser.
+		/// </summary>
+		/// <param name="url">The URL of the page.</param>
+		/// <param name="formParams">Form parameters.</param>
+		public override void OnPageLoading (Uri url, IDictionary<string,string> formParams)
 		{
-			base.OnPageLoading (url);
+			base.OnPageLoading (url, formParams);
 		}
 
-		protected override void OnRedirectPageLoaded (Uri url, System.Collections.Generic.IDictionary<string, string> query, System.Collections.Generic.IDictionary<string, string> fragment)
+		/// <summary>
+		/// Raised when the redirect page has been loaded.
+		/// </summary>
+		/// <param name="url">URL of the page.</param>
+		/// <param name="query">The parsed query of the URL.</param>
+		/// <param name="fragment">The parsed fragment of the URL.</param>
+		/// <param name="formParams">Form parameters.</param>
+		protected override void OnRedirectPageLoaded (Uri url, System.Collections.Generic.IDictionary<string, string> query, System.Collections.Generic.IDictionary<string, string> fragment, System.Collections.Generic.IDictionary<string, string> formParams)
 		{
 			object[] platformCookies = null;
 
@@ -52,9 +79,24 @@ namespace Symplified.Auth
 #elif PLATFORM_ANDROID
 			platformCookies = null;
 #endif
+
+#if PLATFORM_IOS || PLATFORM_ANDROID
 			CookieCollection cookieCollection = CookieConverter.ConvertToCLRCookies (platformCookies);
 			CookieContainer cc = new CookieContainer (cookieCollection.Count);
 			cc.Add (cookieCollection);
+
+			var c = cc.GetCookies (new Uri ("https://idp.symplified.net"))
+						.Cast<Cookie> ()
+						.FirstOrDefault (x => x.Name == "singlepoint-auth-error");
+
+			if (!string.Equals (c, string.Empty)) {
+
+				/* TODO: Check the URI for:
+				 * singlepoint-portal-event=auth-failed&singlepoint-auth-error=NOT_AUTHENTICATED
+				 */
+
+				OnError (new AuthException ("NOT_AUTHENTICATED"));
+			}
 
 			RequestUserKeychainAsync (url).ContinueWith (task => {
 				if (task.IsFaulted) {
@@ -66,6 +108,7 @@ namespace Symplified.Auth
 
 					using (var s = httpResponse.GetResponseStream ()) {
 						using (var r = new StreamReader (s, Encoding.UTF8)) {
+							// FIXME: This needs error handling
 							jsonObject = (JSON.JsonObject)JSON.JsonObject.Parse (r.ReadToEnd ());
 						}
 					}
@@ -73,8 +116,14 @@ namespace Symplified.Auth
 					OnSucceeded (new Account (jsonObject["username"], cc));
 				}
 			}, TaskScheduler.FromCurrentSynchronizationContext ());
+#endif
 		}
 
+		/// <summary>
+		/// Requests the user keychain async.
+		/// </summary>
+		/// <returns>The user keychain async.</returns>
+		/// <param name="keychainUrl">Keychain URL.</param>
 		protected Task<WebResponse> RequestUserKeychainAsync (Uri keychainUrl)
 		{
 			var req = WebRequest.Create (keychainUrl);

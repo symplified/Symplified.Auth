@@ -9,6 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Symplified.Auth</RootNamespace>
     <AssemblyName>Symplified.Auth</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -19,6 +20,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <LangVersion>5</LangVersion>
+    <GenerateDocumentation>true</GenerateDocumentation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -27,6 +30,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <LangVersion>5</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -36,9 +40,15 @@
     <Reference Include="Mono.Security" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.Net" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="log4net">
+      <HintPath>..\lib\log4net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SAML 1.1\SAML11Authenticator.cs" />
     <Compile Include="SAML 2.0\SAML20Authenticator.cs" />
     <Compile Include="Symplified AuthN\SymplifiedAuthenticator.cs" />
@@ -48,6 +58,664 @@
     <Compile Include="IdentityProvider\SamlToken.cs" />
     <Compile Include="Symplified AuthN\SymplifiedToken.cs" />
     <Compile Include="CookieConverter.cs" />
+    <Compile Include="..\lib\OIOSAML.NET\ISaml20IdpTokenAccessor.cs">
+      <Link>OIOSAML.NET\ISaml20IdpTokenAccessor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Saml20ArtifactResolve.cs">
+      <Link>OIOSAML.NET\Saml20ArtifactResolve.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Saml20ArtifactResponse.cs">
+      <Link>OIOSAML.NET\Saml20ArtifactResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Saml20Assertion.cs">
+      <Link>OIOSAML.NET\Saml20Assertion.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Saml20AttributeQuery.cs">
+      <Link>OIOSAML.NET\Saml20AttributeQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Saml20AuthnRequest.cs">
+      <Link>OIOSAML.NET\Saml20AuthnRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Saml20Constants.cs">
+      <Link>OIOSAML.NET\Saml20Constants.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Saml20EncryptedAssertion.cs">
+      <Link>OIOSAML.NET\Saml20EncryptedAssertion.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Saml20Exception.cs">
+      <Link>OIOSAML.NET\Saml20Exception.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Saml20FormatException.cs">
+      <Link>OIOSAML.NET\Saml20FormatException.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Saml20LogoutRequest.cs">
+      <Link>OIOSAML.NET\Saml20LogoutRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Saml20LogoutResponse.cs">
+      <Link>OIOSAML.NET\Saml20LogoutResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Saml20MetadataDocument.cs">
+      <Link>OIOSAML.NET\Saml20MetadataDocument.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Actions\Actions.cs">
+      <Link>OIOSAML.NET\Actions\Actions.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Actions\CDCRedirectAction.cs">
+      <Link>OIOSAML.NET\Actions\CDCRedirectAction.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Actions\IAction.cs">
+      <Link>OIOSAML.NET\Actions\IAction.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Actions\RedirectAction.cs">
+      <Link>OIOSAML.NET\Actions\RedirectAction.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Actions\SamlPrincipalAction.cs">
+      <Link>OIOSAML.NET\Actions\SamlPrincipalAction.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Bindings\BindingUtility.cs">
+      <Link>OIOSAML.NET\Bindings\BindingUtility.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Bindings\HttpArtifactBindingBuilder.cs">
+      <Link>OIOSAML.NET\Bindings\HttpArtifactBindingBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Bindings\HttpArtifactBindingConstants.cs">
+      <Link>OIOSAML.NET\Bindings\HttpArtifactBindingConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Bindings\HttpArtifactBindingParser.cs">
+      <Link>OIOSAML.NET\Bindings\HttpArtifactBindingParser.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Bindings\HttpPostBindingBuilder.cs">
+      <Link>OIOSAML.NET\Bindings\HttpPostBindingBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Bindings\HttpPostBindingParser.cs">
+      <Link>OIOSAML.NET\Bindings\HttpPostBindingParser.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Bindings\HttpRedirectBindingBuilder.cs">
+      <Link>OIOSAML.NET\Bindings\HttpRedirectBindingBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Bindings\HttpRedirectBindingConstants.cs">
+      <Link>OIOSAML.NET\Bindings\HttpRedirectBindingConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Bindings\HttpRedirectBindingParser.cs">
+      <Link>OIOSAML.NET\Bindings\HttpRedirectBindingParser.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Bindings\HttpSOAPBindingBuilder.cs">
+      <Link>OIOSAML.NET\Bindings\HttpSOAPBindingBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Bindings\HttpSOAPBindingParser.cs">
+      <Link>OIOSAML.NET\Bindings\HttpSOAPBindingParser.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Bindings\SOAPConstants.cs">
+      <Link>OIOSAML.NET\Bindings\SOAPConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Config\AudienceUris.cs">
+      <Link>OIOSAML.NET\Config\AudienceUris.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Config\Certificate.cs">
+      <Link>OIOSAML.NET\Config\Certificate.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Config\ConfigurationConstants.cs">
+      <Link>OIOSAML.NET\Config\ConfigurationConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Config\ConfigurationReader.cs">
+      <Link>OIOSAML.NET\Config\ConfigurationReader.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Config\FederationConfig.cs">
+      <Link>OIOSAML.NET\Config\FederationConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Config\SAML20FederationConfig.cs">
+      <Link>OIOSAML.NET\Config\SAML20FederationConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Identity\IPersistentPseudonymMapper.cs">
+      <Link>OIOSAML.NET\Identity\IPersistentPseudonymMapper.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Identity\ISaml20Identity.cs">
+      <Link>OIOSAML.NET\Identity\ISaml20Identity.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Identity\Saml20Identity.cs">
+      <Link>OIOSAML.NET\Identity\Saml20Identity.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Identity\Saml20PrincipalCache.cs">
+      <Link>OIOSAML.NET\Identity\Saml20PrincipalCache.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Logging\AuditLogging.cs">
+      <Link>OIOSAML.NET\Logging\AuditLogging.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Profiles\DKSaml20\DKSaml20FormatException.cs">
+      <Link>OIOSAML.NET\Profiles\DKSaml20\DKSaml20FormatException.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20AssuranceLevelAttribute.cs">
+      <Link>OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20AssuranceLevelAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20Attribute.cs">
+      <Link>OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20Attribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20CommonNameAttribute.cs">
+      <Link>OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20CommonNameAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20CprNumberAttribute.cs">
+      <Link>OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20CprNumberAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20CvrNumberAttribute.cs">
+      <Link>OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20CvrNumberAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20EmailAttribute.cs">
+      <Link>OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20EmailAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20OCESPseudonymAttribute.cs">
+      <Link>OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20OCESPseudonymAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20OrganizationNameAttribute.cs">
+      <Link>OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20OrganizationNameAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20OrganizationUnitAttribute.cs">
+      <Link>OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20OrganizationUnitAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20PidNumberAttribute.cs">
+      <Link>OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20PidNumberAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20PostalAddressAttribute.cs">
+      <Link>OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20PostalAddressAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20RidNumberAttribute.cs">
+      <Link>OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20RidNumberAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20SerialNumberCertificateAttribute.cs">
+      <Link>OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20SerialNumberCertificateAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20SpecVerAttribute.cs">
+      <Link>OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20SpecVerAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20SurnameAttribute.cs">
+      <Link>OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20SurnameAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20TitleAttribute.cs">
+      <Link>OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20TitleAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20UidAttribute.cs">
+      <Link>OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20UidAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20UniqueAccountKeyAttribute.cs">
+      <Link>OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20UniqueAccountKeyAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20UserCertificateAttribute.cs">
+      <Link>OIOSAML.NET\Profiles\DKSaml20\Attributes\DKSaml20UserCertificateAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Properties\AssemblyInfo.cs">
+      <Link>OIOSAML.NET\Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Properties\Resources.Designer.cs">
+      <Link>OIOSAML.NET\Properties\Resources.Designer.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Properties\Saml20Resources.Designer.cs">
+      <Link>OIOSAML.NET\Properties\Saml20Resources.Designer.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Properties\Tracing.Designer.cs">
+      <Link>OIOSAML.NET\Properties\Tracing.Designer.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Protocol\AbstractEndpointHandler.cs">
+      <Link>OIOSAML.NET\Protocol\AbstractEndpointHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Protocol\CommonDomainCookie.cs">
+      <Link>OIOSAML.NET\Protocol\CommonDomainCookie.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Protocol\Saml20AbstractEndpointHandler.cs">
+      <Link>OIOSAML.NET\Protocol\Saml20AbstractEndpointHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Protocol\Saml20CDCIdPReturnPoint.cs">
+      <Link>OIOSAML.NET\Protocol\Saml20CDCIdPReturnPoint.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Protocol\Saml20CDCReader.cs">
+      <Link>OIOSAML.NET\Protocol\Saml20CDCReader.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Protocol\Saml20LogoutHandler.cs">
+      <Link>OIOSAML.NET\Protocol\Saml20LogoutHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Protocol\Saml20MetadataHandler.cs">
+      <Link>OIOSAML.NET\Protocol\Saml20MetadataHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Protocol\Saml20SignonHandler.cs">
+      <Link>OIOSAML.NET\Protocol\Saml20SignonHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Protocol\Pages\BasePage.cs">
+      <Link>OIOSAML.NET\Protocol\Pages\BasePage.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Protocol\Pages\ErrorPage.cs">
+      <Link>OIOSAML.NET\Protocol\Pages\ErrorPage.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Protocol\Pages\SelectIDP.cs">
+      <Link>OIOSAML.NET\Protocol\Pages\SelectIDP.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\Action.cs">
+      <Link>OIOSAML.NET\Schema\Core\Action.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\Advice.cs">
+      <Link>OIOSAML.NET\Schema\Core\Advice.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\Assertion.cs">
+      <Link>OIOSAML.NET\Schema\Core\Assertion.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\AttributeStatement.cs">
+      <Link>OIOSAML.NET\Schema\Core\AttributeStatement.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\AudienceRestriction.cs">
+      <Link>OIOSAML.NET\Schema\Core\AudienceRestriction.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\AuthnContext.cs">
+      <Link>OIOSAML.NET\Schema\Core\AuthnContext.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\AuthnStatement.cs">
+      <Link>OIOSAML.NET\Schema\Core\AuthnStatement.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\AuthzDecisionStatement.cs">
+      <Link>OIOSAML.NET\Schema\Core\AuthzDecisionStatement.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\BaseIDAbstract.cs">
+      <Link>OIOSAML.NET\Schema\Core\BaseIDAbstract.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\ConditionAbstract.cs">
+      <Link>OIOSAML.NET\Schema\Core\ConditionAbstract.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\Conditions.cs">
+      <Link>OIOSAML.NET\Schema\Core\Conditions.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\Enums.cs">
+      <Link>OIOSAML.NET\Schema\Core\Enums.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\Evidence.cs">
+      <Link>OIOSAML.NET\Schema\Core\Evidence.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\KeyInfoConfirmationData.cs">
+      <Link>OIOSAML.NET\Schema\Core\KeyInfoConfirmationData.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\NameID.cs">
+      <Link>OIOSAML.NET\Schema\Core\NameID.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\OneTimeUse.cs">
+      <Link>OIOSAML.NET\Schema\Core\OneTimeUse.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\ProxyRestriction.cs">
+      <Link>OIOSAML.NET\Schema\Core\ProxyRestriction.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\SamlAttribute.cs">
+      <Link>OIOSAML.NET\Schema\Core\SamlAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\StatementAbstract.cs">
+      <Link>OIOSAML.NET\Schema\Core\StatementAbstract.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\Subject.cs">
+      <Link>OIOSAML.NET\Schema\Core\Subject.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\SubjectConfirmation.cs">
+      <Link>OIOSAML.NET\Schema\Core\SubjectConfirmation.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\SubjectConfirmationData.cs">
+      <Link>OIOSAML.NET\Schema\Core\SubjectConfirmationData.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Core\SubjectLocality.cs">
+      <Link>OIOSAML.NET\Schema\Core\SubjectLocality.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\AdditionalMetadataLocation.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\AdditionalMetadataLocation.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\AffiliationDescriptor.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\AffiliationDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\AttributeAuthorityDescriptor.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\AttributeAuthorityDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\AttributeConsumingService.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\AttributeConsumingService.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\AuthnAuthorityDescriptor.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\AuthnAuthorityDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\Contact.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\Contact.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\Endpoint.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\Endpoint.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\EntitiesDescriptor.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\EntitiesDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\EntityDescriptor.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\EntityDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\Enums.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\Enums.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\Extensions.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\IDPSSODescriptor.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\IDPSSODescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\IndexedEndpoint.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\IndexedEndpoint.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\KeyDescriptor.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\KeyDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\LocalizedName.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\LocalizedName.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\LocalizedURI.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\LocalizedURI.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\Organization.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\Organization.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\PDPDescriptor.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\PDPDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\RequestedAttribute.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\RequestedAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\RoleDescriptor.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\RoleDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\SPSSODescriptor.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\SPSSODescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\SSODescriptor.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\SSODescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\ArtifactResolve.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\ArtifactResolve.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\ArtifactResponse.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\ArtifactResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\AssertionIDRequest.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\AssertionIDRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\AttributeQuery.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\AttributeQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\AuthnQuery.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\AuthnQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\AuthnRequest.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\AuthnRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\AuthzDecisionQuery.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\AuthzDecisionQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\EncryptedAssertion.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\EncryptedAssertion.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\EncryptedElement.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\EncryptedElement.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\Enums.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\Enums.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\Extensions.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\IDPEntry.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\IDPEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\IDPList.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\IDPList.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\LogoutRequest.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\LogoutRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\LogoutResponse.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\LogoutResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\ManageNameIDRequest.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\ManageNameIDRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\NameIDMappingRequest.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\NameIDMappingRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\NameIDMappingResponse.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\NameIDMappingResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\NameIDPolicy.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\NameIDPolicy.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\RequestAbstract.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\RequestAbstract.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\RequestedAuthnContext.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\RequestedAuthnContext.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\Response.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\Response.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\Scoping.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\Scoping.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\Status.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\Status.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\StatusCode.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\StatusCode.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\StatusDetail.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\StatusDetail.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\StatusResponse.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\StatusResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\SubjectQueryAbstract.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\SubjectQueryAbstract.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\Terminate.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\Terminate.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\AgreementMethod.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\AgreementMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\CipherData.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\CipherData.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\CipherReference.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\CipherReference.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\Encrypted.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\Encrypted.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\EncryptedData.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\EncryptedData.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\EncryptedKey.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\EncryptedKey.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\EncryptionMethod.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\EncryptionMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\EncryptionProperties.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\EncryptionProperties.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\EncryptionProperty.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\EncryptionProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\Enums.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\Enums.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\ReferenceList.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\ReferenceList.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\ReferenceType1.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\ReferenceType1.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\TransformsType1.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\TransformsType1.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\CanonicalizationMethod.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\CanonicalizationMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\DSAKeyValue.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\DSAKeyValue.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\DigestMethod.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\DigestMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\Enums.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\Enums.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\KeyInfo.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\KeyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\KeyValue.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\KeyValue.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\Manifest.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\Manifest.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\ObjectType.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\ObjectType.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\PGPData.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\PGPData.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\RSAKeyValue.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\RSAKeyValue.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\Reference.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\Reference.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\RetrievalMethod.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\RetrievalMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\SPKIData.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\SPKIData.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\Signature.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\Signature.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\SignatureMethod.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\SignatureMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\SignatureProperties.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\SignatureProperties.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\SignatureProperty.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\SignatureProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\SignatureValue.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\SignatureValue.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\SignedInfo.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\SignedInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\Transform.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\Transform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\Transforms.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\Transforms.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\X509Data.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\X509Data.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\X509IssuerSerial.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\X509IssuerSerial.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Specification\DefaultCertificateSpecification.cs">
+      <Link>OIOSAML.NET\Specification\DefaultCertificateSpecification.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Specification\ICertificateSpecification.cs">
+      <Link>OIOSAML.NET\Specification\ICertificateSpecification.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Specification\SelfIssuedCertificateSpecification.cs">
+      <Link>OIOSAML.NET\Specification\SelfIssuedCertificateSpecification.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Specification\SpecificationFactory.cs">
+      <Link>OIOSAML.NET\Specification\SpecificationFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Utils\ArtifactUtil.cs">
+      <Link>OIOSAML.NET\Utils\ArtifactUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Utils\IDPSelectionUtil.cs">
+      <Link>OIOSAML.NET\Utils\IDPSelectionUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Utils\Saml20Utils.cs">
+      <Link>OIOSAML.NET\Utils\Saml20Utils.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Utils\Serialization.cs">
+      <Link>OIOSAML.NET\Utils\Serialization.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Utils\TimeRestrictionValidation.cs">
+      <Link>OIOSAML.NET\Utils\TimeRestrictionValidation.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Utils\Trace.cs">
+      <Link>OIOSAML.NET\Utils\Trace.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Utils\XmlSignatureUtils.cs">
+      <Link>OIOSAML.NET\Utils\XmlSignatureUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\DKSaml20AssertionValidator.cs">
+      <Link>OIOSAML.NET\Validation\DKSaml20AssertionValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\DKSaml20AttributeValidator.cs">
+      <Link>OIOSAML.NET\Validation\DKSaml20AttributeValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\DKSaml20StatementValidator.cs">
+      <Link>OIOSAML.NET\Validation\DKSaml20StatementValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\DKSaml20SubjectConfirmationValidator.cs">
+      <Link>OIOSAML.NET\Validation\DKSaml20SubjectConfirmationValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\DKSaml20SubjectValidator.cs">
+      <Link>OIOSAML.NET\Validation\DKSaml20SubjectValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\ISaml20AssertionValidator.cs">
+      <Link>OIOSAML.NET\Validation\ISaml20AssertionValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\ISaml20AttributeValidator.cs">
+      <Link>OIOSAML.NET\Validation\ISaml20AttributeValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\ISaml20NameIDValidator.cs">
+      <Link>OIOSAML.NET\Validation\ISaml20NameIDValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\ISaml20StatementValidator.cs">
+      <Link>OIOSAML.NET\Validation\ISaml20StatementValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\ISaml20SubjectConfirmationDataValidator.cs">
+      <Link>OIOSAML.NET\Validation\ISaml20SubjectConfirmationDataValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\ISaml20SubjectConfirmationValidator.cs">
+      <Link>OIOSAML.NET\Validation\ISaml20SubjectConfirmationValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\ISaml20SubjectValidator.cs">
+      <Link>OIOSAML.NET\Validation\ISaml20SubjectValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\Saml20AssertionValidator.cs">
+      <Link>OIOSAML.NET\Validation\Saml20AssertionValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\Saml20AttributeValidator.cs">
+      <Link>OIOSAML.NET\Validation\Saml20AttributeValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\Saml20EncryptedElementValidator.cs">
+      <Link>OIOSAML.NET\Validation\Saml20EncryptedElementValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\Saml20KeyInfoValidator.cs">
+      <Link>OIOSAML.NET\Validation\Saml20KeyInfoValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\Saml20NameIDValidator.cs">
+      <Link>OIOSAML.NET\Validation\Saml20NameIDValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\Saml20StatementValidator.cs">
+      <Link>OIOSAML.NET\Validation\Saml20StatementValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\Saml20SubjectConfirmationDataValidator.cs">
+      <Link>OIOSAML.NET\Validation\Saml20SubjectConfirmationDataValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\Saml20SubjectConfirmationValidator.cs">
+      <Link>OIOSAML.NET\Validation\Saml20SubjectConfirmationValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\Saml20SubjectValidator.cs">
+      <Link>OIOSAML.NET\Validation\Saml20SubjectValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\Saml20XmlAnyAttributeValidator.cs">
+      <Link>OIOSAML.NET\Validation\Saml20XmlAnyAttributeValidator.cs</Link>
+    </Compile>
+    <Compile Include="SAML 2.0\SamlAccount.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -55,11 +723,35 @@
     <Folder Include="SAML 1.1\" />
     <Folder Include="SAML 2.0\" />
     <Folder Include="Symplified AuthN\" />
+    <Folder Include="OIOSAML.NET\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\lib\Xamarin.Auth\src\Xamarin.Auth\Xamarin.Auth.csproj">
       <Project>{C9FF1919-78DD-4084-976D-BDABC0A7E80B}</Project>
       <Name>Xamarin.Auth</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\lib\OIOSAML.NET\Properties\Resources.resources">
+      <Link>OIOSAML.NET\Properties\Resources.resources</Link>
+    </None>
+    <None Include="..\lib\OIOSAML.NET\Properties\Resources.resx">
+      <Link>OIOSAML.NET\Properties\Resources.resx</Link>
+    </None>
+    <None Include="..\lib\OIOSAML.NET\Properties\Saml20Resources.resources">
+      <Link>OIOSAML.NET\Properties\Saml20Resources.resources</Link>
+    </None>
+    <None Include="..\lib\OIOSAML.NET\Properties\Saml20Resources.resx">
+      <Link>OIOSAML.NET\Properties\Saml20Resources.resx</Link>
+    </None>
+    <None Include="..\lib\OIOSAML.NET\Properties\Tracing.resources">
+      <Link>OIOSAML.NET\Properties\Tracing.resources</Link>
+    </None>
+    <None Include="..\lib\OIOSAML.NET\Properties\Tracing.resx">
+      <Link>OIOSAML.NET\Properties\Tracing.resx</Link>
+    </None>
+    <None Include="..\lib\OIOSAML.NET\Protocol\Resources\DefaultStyle.css">
+      <Link>OIOSAML.NET\Protocol\Resources\DefaultStyle.css</Link>
+    </None>
   </ItemGroup>
 </Project>

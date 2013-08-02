@@ -49,6 +49,13 @@ namespace Symplified.Auth
 			}
 		}
 
+		public static void ParseXmlString (string xml)
+		{
+			XmlDictionaryReader xmlDictionaryReader = (XmlDictionaryReader)XmlDictionaryReader.Create (new System.IO.MemoryStream (UTF8Encoding.Default.GetBytes (xml)));
+			SamlAssertion assertion = new SamlSerializer ().LoadAssertion (xmlDictionaryReader, null, null);
+			Console.WriteLine ("assertion: {0}", xml);
+		}
+
 		public override string GetBearerAssertionHeader ()
 		{
 			string xml = this.ToXmlString ();
