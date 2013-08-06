@@ -83,10 +83,10 @@ namespace Symplified.Auth.iOS.Sample
 		public void LoginToSymplifiedSaml ()
 		{
 			SAML20Authenticator authenticator = new SAML20Authenticator (
-//				new Uri ("https://sympidp-dev-ed.my.salesforce.com"),
-//				new Uri ("https://login.salesforce.com")
-				new Uri ("http://ec2-23-22-199-50.compute-1.amazonaws.com/Shibboleth.sso/Login"),
-				new Uri ("http://ec2-23-22-199-50.compute-1.amazonaws.com/Shibboleth.sso/SAML2/POST")
+				new Uri ("https://sympidp-dev-ed.my.salesforce.com"),
+				new Uri ("https://login.salesforce.com/services/oauth2/token")
+//				new Uri ("http://54.235.215.29/Shibboleth.sso/Login"),
+//				new Uri ("http://54.235.215.29/Shibboleth.sso/SAML2/POST")
 			);
 
 			authenticator.Completed += (s, e) => {
@@ -98,6 +98,8 @@ namespace Symplified.Auth.iOS.Sample
 				else {
 					SamlAccount account = (SamlAccount)e.Account;
 					Saml20Assertion assertion = account.Assertion;
+
+					string urlencode = account.GetBearerAssertionAuthorizationGrantParams ();
 
 					samlLoginStatusStringElement.Caption = String.Format ("Username: {0}", assertion.Subject.Value);
 				}

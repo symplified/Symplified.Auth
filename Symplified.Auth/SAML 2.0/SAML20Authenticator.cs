@@ -71,14 +71,14 @@ namespace Symplified.Auth
 
 			XmlDocument xDoc = new XmlDocument ();
 			xDoc.LoadXml (xmlSamlAssertion);
-
-			XmlElement assertionElement = (XmlElement)xDoc.SelectSingleNode ("//*[local-name()='Response']/*[local-name()='Assertion']");
+		
+			XmlElement responseElement = (XmlElement)xDoc.SelectSingleNode ("//*[local-name()='Response']");
+			XmlElement assertionElement = (XmlElement)xDoc.SelectSingleNode ("//*[local-name()='Assertion']");
 			if (assertionElement != null) {
 				Saml20Assertion samlAssertion = new Saml20Assertion (assertionElement, null, false);
 				Assertion a = samlAssertion.Assertion;
 
-				// TODO: Create SamlAccount class
-				SamlAccount sa = new SamlAccount (samlAssertion);
+				SamlAccount sa = new SamlAccount (samlAssertion, responseElement);
 				OnSucceeded (sa);
 			}
 			else {

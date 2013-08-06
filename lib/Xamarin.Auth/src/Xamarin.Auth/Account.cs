@@ -119,7 +119,7 @@ namespace Xamarin.Auth
 		/// <summary>
 		/// Serialize this account into a string that can be deserialized.
 		/// </summary>
-		public string Serialize ()
+		public virtual string Serialize ()
 		{
 			var sb = new StringBuilder ();
 

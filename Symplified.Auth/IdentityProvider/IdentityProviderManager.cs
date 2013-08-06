@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Xml;
 
 namespace Symplified.Auth
 {
@@ -14,8 +16,13 @@ namespace Symplified.Auth
 			}
 		}
 
-		public void LoadIdentityProviders (string xml) {
+		public void LoadIdentityProviders (XmlElement xml) {
 
+		}
+
+		public void LoadIdentityProviders (string pathname, 
+		                                   out List<IdentityProviderConfiguration> idpConfigurations) {
+			idpConfigurations = null;
 		}
 	}
 }
