@@ -1,6 +1,6 @@
 using System;
 using System.Xml.Serialization;
-//using dk.nita.saml20.Schema.XEnc;
+using dk.nita.saml20.Schema.XEnc;
 
 namespace dk.nita.saml20.Schema.Protocol
 {

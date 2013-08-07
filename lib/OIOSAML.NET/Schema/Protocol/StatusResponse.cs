@@ -2,7 +2,7 @@ using System;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 using dk.nita.saml20.Schema.Core;
-//using dk.nita.saml20.Schema.XmlDSig;
+using dk.nita.saml20.Schema.XmlDSig;
 using dk.nita.saml20.Utils;
 
 namespace dk.nita.saml20.Schema.Protocol

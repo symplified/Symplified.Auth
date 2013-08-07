@@ -73,8 +73,13 @@ namespace Symplified.Auth
 			xDoc.LoadXml (xmlSamlAssertion);
 		
 			XmlElement responseElement = (XmlElement)xDoc.SelectSingleNode ("//*[local-name()='Response']");
+
+			Console.WriteLine ("{0}", responseElement.OuterXml);
+
 			XmlElement assertionElement = (XmlElement)xDoc.SelectSingleNode ("//*[local-name()='Assertion']");
 			if (assertionElement != null) {
+				Console.WriteLine ("{0}", assertionElement.OuterXml);
+
 				Saml20Assertion samlAssertion = new Saml20Assertion (assertionElement, null, false);
 				Assertion a = samlAssertion.Assertion;
 
@@ -82,7 +87,7 @@ namespace Symplified.Auth
 				OnSucceeded (sa);
 			}
 			else {
-				OnError ("No SAML Assertion Found");
+				OnError ("No SAML Assertion Found");                                                                                                                                                                          ;
 			}
 		}
 

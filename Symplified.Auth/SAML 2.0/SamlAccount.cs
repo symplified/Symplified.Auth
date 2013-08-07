@@ -98,7 +98,7 @@ namespace Symplified.Auth
 
 			string base64Assertion = SamlAccount.ToBase64ForUrlString (
 				Encoding.UTF8.GetBytes (_saml20Assertion.XmlAssertion.OuterXml)
-				);;
+				);
 
 			args.AppendFormat ("&client_assertion={0}", base64Assertion);
 

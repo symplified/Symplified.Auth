@@ -100,8 +100,8 @@ namespace Symplified.Auth.iOS.Sample
 					Saml20Assertion assertion = account.Assertion;
 
 					string urlencode = account.GetBearerAssertionAuthorizationGrantParams ();
-
-					samlLoginStatusStringElement.Caption = String.Format ("Username: {0}", assertion.Subject.Value);
+					Console.WriteLine (urlencode);
+					samlLoginStatusStringElement.Caption = String.Format ("Name: {0}", assertion.Subject.Value);
 				}
 
 				loginViewController.ReloadData ();

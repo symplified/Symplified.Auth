@@ -17,7 +17,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;PLATFORM_IOS</DefineConstants>
+    <DefineConstants>DEBUG;PLATFORM_IOS;NET_2_0</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -29,7 +29,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <DefineConstants>PLATFORM_IOS</DefineConstants>
+    <DefineConstants>PLATFORM_IOS;NET_2_0</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -48,6 +48,23 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="OIOSAML.NET\" />
+    <Folder Include="OIOSAML.NET\Config\" />
+    <Folder Include="OIOSAML.NET\Schema\Protocol\" />
+    <Folder Include="OIOSAML.NET\Identity\" />
+    <Folder Include="OIOSAML.NET\Protocol\" />
+    <Folder Include="OIOSAML.NET\Schema\Metadata\" />
+    <Folder Include="OIOSAML.NET\Schema\XmlDSig\" />
+    <Folder Include="OIOSAML.NET\Schema\XEnc\" />
+    <Folder Include="System.Security.Cryptography.Xml\" />
+    <Folder Include="System.Configuration\" />
+    <Folder Include="System.Configuration.Internal\" />
+    <Folder Include="System.Configuration.Provider\" />
+    <Folder Include="System\" />
+    <Folder Include="System.Web\" />
+    <Folder Include="System\System.Diagnostics\" />
+    <Folder Include="System.Security.Permissions\" />
+    <Folder Include="System\System.Security.Permissions\" />
+    <Folder Include="Mono.Xml\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -250,6 +267,1203 @@
     <Compile Include="..\Symplified.Auth\SAML 2.0\SamlAccount.cs">
       <Link>SamlAccount.cs</Link>
     </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Saml20AuthnRequest.cs">
+      <Link>OIOSAML.NET\Saml20AuthnRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Config\AudienceUris.cs">
+      <Link>OIOSAML.NET\Config\AudienceUris.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Config\Certificate.cs">
+      <Link>OIOSAML.NET\Config\Certificate.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Config\ConfigurationConstants.cs">
+      <Link>OIOSAML.NET\Config\ConfigurationConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Config\ConfigurationReader.cs">
+      <Link>OIOSAML.NET\Config\ConfigurationReader.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Config\FederationConfig.cs">
+      <Link>OIOSAML.NET\Config\FederationConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Config\SAML20FederationConfig.cs">
+      <Link>OIOSAML.NET\Config\SAML20FederationConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\ArtifactResolve.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\ArtifactResolve.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\ArtifactResponse.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\ArtifactResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\AssertionIDRequest.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\AssertionIDRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\AttributeQuery.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\AttributeQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\AuthnQuery.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\AuthnQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\AuthnRequest.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\AuthnRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\AuthzDecisionQuery.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\AuthzDecisionQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\EncryptedAssertion.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\EncryptedAssertion.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\EncryptedElement.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\EncryptedElement.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\Enums.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\Enums.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\Extensions.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\IDPEntry.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\IDPEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\IDPList.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\IDPList.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\LogoutRequest.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\LogoutRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\LogoutResponse.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\LogoutResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\ManageNameIDRequest.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\ManageNameIDRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\NameIDMappingRequest.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\NameIDMappingRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\NameIDMappingResponse.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\NameIDMappingResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\NameIDPolicy.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\NameIDPolicy.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\RequestAbstract.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\RequestAbstract.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\RequestedAuthnContext.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\RequestedAuthnContext.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\Response.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\Response.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\Scoping.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\Scoping.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\Status.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\Status.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\StatusCode.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\StatusCode.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\StatusDetail.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\StatusDetail.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\StatusResponse.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\StatusResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\SubjectQueryAbstract.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\SubjectQueryAbstract.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Protocol\Terminate.cs">
+      <Link>OIOSAML.NET\Schema\Protocol\Terminate.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Identity\IPersistentPseudonymMapper.cs">
+      <Link>OIOSAML.NET\Identity\IPersistentPseudonymMapper.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Identity\ISaml20Identity.cs">
+      <Link>OIOSAML.NET\Identity\ISaml20Identity.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Identity\Saml20Identity.cs">
+      <Link>OIOSAML.NET\Identity\Saml20Identity.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\AdditionalMetadataLocation.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\AdditionalMetadataLocation.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\AffiliationDescriptor.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\AffiliationDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\AttributeAuthorityDescriptor.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\AttributeAuthorityDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\AttributeConsumingService.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\AttributeConsumingService.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\AuthnAuthorityDescriptor.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\AuthnAuthorityDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\Contact.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\Contact.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\Endpoint.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\Endpoint.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\EntitiesDescriptor.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\EntitiesDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\EntityDescriptor.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\EntityDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\Enums.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\Enums.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\Extensions.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\IDPSSODescriptor.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\IDPSSODescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\IndexedEndpoint.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\IndexedEndpoint.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\KeyDescriptor.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\KeyDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\LocalizedName.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\LocalizedName.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\LocalizedURI.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\LocalizedURI.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\Organization.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\Organization.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\PDPDescriptor.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\PDPDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\RequestedAttribute.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\RequestedAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\RoleDescriptor.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\RoleDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\SPSSODescriptor.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\SPSSODescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\Metadata\SSODescriptor.cs">
+      <Link>OIOSAML.NET\Schema\Metadata\SSODescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Utils\IDPSelectionUtil.cs">
+      <Link>OIOSAML.NET\Utils\IDPSelectionUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Utils\Trace.cs">
+      <Link>OIOSAML.NET\Utils\Trace.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Utils\XmlSignatureUtils.cs">
+      <Link>OIOSAML.NET\Utils\XmlSignatureUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\CanonicalizationMethod.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\CanonicalizationMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\DSAKeyValue.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\DSAKeyValue.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\DigestMethod.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\DigestMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\Enums.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\Enums.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\KeyInfo.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\KeyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\KeyValue.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\KeyValue.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\Manifest.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\Manifest.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\ObjectType.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\ObjectType.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\PGPData.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\PGPData.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\RSAKeyValue.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\RSAKeyValue.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\Reference.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\Reference.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\RetrievalMethod.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\RetrievalMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\SPKIData.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\SPKIData.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\Signature.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\Signature.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\SignatureMethod.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\SignatureMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\SignatureProperties.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\SignatureProperties.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\SignatureProperty.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\SignatureProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\SignatureValue.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\SignatureValue.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\SignedInfo.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\SignedInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\Transform.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\Transform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\Transforms.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\Transforms.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\X509Data.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\X509Data.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XmlDSig\X509IssuerSerial.cs">
+      <Link>OIOSAML.NET\Schema\XmlDSig\X509IssuerSerial.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Protocol\CommonDomainCookie.cs">
+      <Link>OIOSAML.NET\Protocol\CommonDomainCookie.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\AgreementMethod.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\AgreementMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\CipherData.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\CipherData.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\CipherReference.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\CipherReference.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\Encrypted.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\Encrypted.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\EncryptedData.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\EncryptedData.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\EncryptedKey.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\EncryptedKey.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\EncryptionMethod.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\EncryptionMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\EncryptionProperties.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\EncryptionProperties.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\EncryptionProperty.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\EncryptionProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\Enums.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\Enums.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\ReferenceList.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\ReferenceList.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\ReferenceType1.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\ReferenceType1.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Schema\XEnc\TransformsType1.cs">
+      <Link>OIOSAML.NET\Schema\XEnc\TransformsType1.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\CipherData.cs">
+      <Link>System.Security.Cryptography.Xml\CipherData.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\CipherReference.cs">
+      <Link>System.Security.Cryptography.Xml\CipherReference.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\DSAKeyValue.cs">
+      <Link>System.Security.Cryptography.Xml\DSAKeyValue.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\DataObject.cs">
+      <Link>System.Security.Cryptography.Xml\DataObject.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\DataReference.cs">
+      <Link>System.Security.Cryptography.Xml\DataReference.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\EncryptedData.cs">
+      <Link>System.Security.Cryptography.Xml\EncryptedData.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\EncryptedKey.cs">
+      <Link>System.Security.Cryptography.Xml\EncryptedKey.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\EncryptedReference.cs">
+      <Link>System.Security.Cryptography.Xml\EncryptedReference.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\EncryptedType.cs">
+      <Link>System.Security.Cryptography.Xml\EncryptedType.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\EncryptedXml.cs">
+      <Link>System.Security.Cryptography.Xml\EncryptedXml.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\EncryptionMethod.cs">
+      <Link>System.Security.Cryptography.Xml\EncryptionMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\EncryptionProperties.cs">
+      <Link>System.Security.Cryptography.Xml\EncryptionProperties.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\EncryptionProperty.cs">
+      <Link>System.Security.Cryptography.Xml\EncryptionProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\IRelDecryptor.cs">
+      <Link>System.Security.Cryptography.Xml\IRelDecryptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\KeyInfo.cs">
+      <Link>System.Security.Cryptography.Xml\KeyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\KeyInfoClause.cs">
+      <Link>System.Security.Cryptography.Xml\KeyInfoClause.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\KeyInfoEncryptedKey.cs">
+      <Link>System.Security.Cryptography.Xml\KeyInfoEncryptedKey.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\KeyInfoName.cs">
+      <Link>System.Security.Cryptography.Xml\KeyInfoName.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\KeyInfoNode.cs">
+      <Link>System.Security.Cryptography.Xml\KeyInfoNode.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\KeyInfoRetrievalMethod.cs">
+      <Link>System.Security.Cryptography.Xml\KeyInfoRetrievalMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\KeyInfoX509Data.cs">
+      <Link>System.Security.Cryptography.Xml\KeyInfoX509Data.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\KeyReference.cs">
+      <Link>System.Security.Cryptography.Xml\KeyReference.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\Manifest.cs">
+      <Link>System.Security.Cryptography.Xml\Manifest.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\RSAKeyValue.cs">
+      <Link>System.Security.Cryptography.Xml\RSAKeyValue.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\Reference.cs">
+      <Link>System.Security.Cryptography.Xml\Reference.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\ReferenceList.cs">
+      <Link>System.Security.Cryptography.Xml\ReferenceList.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\Signature.cs">
+      <Link>System.Security.Cryptography.Xml\Signature.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\SignedInfo.cs">
+      <Link>System.Security.Cryptography.Xml\SignedInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\SignedXml.cs">
+      <Link>System.Security.Cryptography.Xml\SignedXml.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\SymmetricKeyWrap.cs">
+      <Link>System.Security.Cryptography.Xml\SymmetricKeyWrap.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\Transform.cs">
+      <Link>System.Security.Cryptography.Xml\Transform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\TransformChain.cs">
+      <Link>System.Security.Cryptography.Xml\TransformChain.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\X509IssuerSerial.cs">
+      <Link>System.Security.Cryptography.Xml\X509IssuerSerial.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlDecryptionTransform.cs">
+      <Link>System.Security.Cryptography.Xml\XmlDecryptionTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlDsigBase64Transform.cs">
+      <Link>System.Security.Cryptography.Xml\XmlDsigBase64Transform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlDsigC14NTransform.cs">
+      <Link>System.Security.Cryptography.Xml\XmlDsigC14NTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlDsigC14NWithCommentsTransform.cs">
+      <Link>System.Security.Cryptography.Xml\XmlDsigC14NWithCommentsTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlDsigEnvelopedSignatureTransform.cs">
+      <Link>System.Security.Cryptography.Xml\XmlDsigEnvelopedSignatureTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlDsigExcC14NTransform.cs">
+      <Link>System.Security.Cryptography.Xml\XmlDsigExcC14NTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlDsigExcC14NWithCommentsTransform.cs">
+      <Link>System.Security.Cryptography.Xml\XmlDsigExcC14NWithCommentsTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlDsigNodeList.cs">
+      <Link>System.Security.Cryptography.Xml\XmlDsigNodeList.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlDsigXPathTransform.cs">
+      <Link>System.Security.Cryptography.Xml\XmlDsigXPathTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlDsigXsltTransform.cs">
+      <Link>System.Security.Cryptography.Xml\XmlDsigXsltTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlEncryption.cs">
+      <Link>System.Security.Cryptography.Xml\XmlEncryption.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlLicenseTransform.cs">
+      <Link>System.Security.Cryptography.Xml\XmlLicenseTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlSignature.cs">
+      <Link>System.Security.Cryptography.Xml\XmlSignature.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlSignatureStreamReader.cs">
+      <Link>System.Security.Cryptography.Xml\XmlSignatureStreamReader.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\AppSettingsSection.cs">
+      <Link>System.Configuration\AppSettingsSection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\CallbackValidator.cs">
+      <Link>System.Configuration\CallbackValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\CallbackValidatorAttribute.cs">
+      <Link>System.Configuration\CallbackValidatorAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ClientConfigurationSystem.cs">
+      <Link>System.Configuration\ClientConfigurationSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\CommaDelimitedStringCollection.cs">
+      <Link>System.Configuration\CommaDelimitedStringCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\CommaDelimitedStringCollectionConverter.cs">
+      <Link>System.Configuration\CommaDelimitedStringCollectionConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigHelper.cs">
+      <Link>System.Configuration\ConfigHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigInfo.cs">
+      <Link>System.Configuration\ConfigInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigXmlTextReader.cs">
+      <Link>System.Configuration\ConfigXmlTextReader.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\Configuration.cs">
+      <Link>System.Configuration\Configuration.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationAllowDefinition.cs">
+      <Link>System.Configuration\ConfigurationAllowDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationAllowExeDefinition.cs">
+      <Link>System.Configuration\ConfigurationAllowExeDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationCollectionAttribute.cs">
+      <Link>System.Configuration\ConfigurationCollectionAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationConverterBase.cs">
+      <Link>System.Configuration\ConfigurationConverterBase.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationElement.cs">
+      <Link>System.Configuration\ConfigurationElement.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationElementCollection.cs">
+      <Link>System.Configuration\ConfigurationElementCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationElementCollectionType.cs">
+      <Link>System.Configuration\ConfigurationElementCollectionType.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationElementProperty.cs">
+      <Link>System.Configuration\ConfigurationElementProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationErrorsException.cs">
+      <Link>System.Configuration\ConfigurationErrorsException.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationFileMap.cs">
+      <Link>System.Configuration\ConfigurationFileMap.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationLocation.cs">
+      <Link>System.Configuration\ConfigurationLocation.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationLocationCollection.cs">
+      <Link>System.Configuration\ConfigurationLocationCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationLockCollection.cs">
+      <Link>System.Configuration\ConfigurationLockCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationManager.cs">
+      <Link>System.Configuration\ConfigurationManager.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationPermission.cs">
+      <Link>System.Configuration\ConfigurationPermission.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationPermissionAttribute.cs">
+      <Link>System.Configuration\ConfigurationPermissionAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationProperty.cs">
+      <Link>System.Configuration\ConfigurationProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationPropertyAttribute.cs">
+      <Link>System.Configuration\ConfigurationPropertyAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationPropertyCollection.cs">
+      <Link>System.Configuration\ConfigurationPropertyCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationPropertyOptions.cs">
+      <Link>System.Configuration\ConfigurationPropertyOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationRemoveElement.cs">
+      <Link>System.Configuration\ConfigurationRemoveElement.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationSaveEventArgs.cs">
+      <Link>System.Configuration\ConfigurationSaveEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationSaveEventHandler.cs">
+      <Link>System.Configuration\ConfigurationSaveEventHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationSaveMode.cs">
+      <Link>System.Configuration\ConfigurationSaveMode.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationSection.cs">
+      <Link>System.Configuration\ConfigurationSection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationSectionCollection.cs">
+      <Link>System.Configuration\ConfigurationSectionCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationSectionGroup.cs">
+      <Link>System.Configuration\ConfigurationSectionGroup.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationSectionGroupCollection.cs">
+      <Link>System.Configuration\ConfigurationSectionGroupCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationUserLevel.cs">
+      <Link>System.Configuration\ConfigurationUserLevel.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationValidatorAttribute.cs">
+      <Link>System.Configuration\ConfigurationValidatorAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConfigurationValidatorBase.cs">
+      <Link>System.Configuration\ConfigurationValidatorBase.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConnectionStringSettings.cs">
+      <Link>System.Configuration\ConnectionStringSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConnectionStringSettingsCollection.cs">
+      <Link>System.Configuration\ConnectionStringSettingsCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ConnectionStringsSection.cs">
+      <Link>System.Configuration\ConnectionStringsSection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ContextInformation.cs">
+      <Link>System.Configuration\ContextInformation.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\DefaultSection.cs">
+      <Link>System.Configuration\DefaultSection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\DefaultValidator.cs">
+      <Link>System.Configuration\DefaultValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\DpapiProtectedConfigurationProvider.cs">
+      <Link>System.Configuration\DpapiProtectedConfigurationProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ElementInformation.cs">
+      <Link>System.Configuration\ElementInformation.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ExeConfigurationFileMap.cs">
+      <Link>System.Configuration\ExeConfigurationFileMap.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ExeContext.cs">
+      <Link>System.Configuration\ExeContext.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\GenericEnumConverter.cs">
+      <Link>System.Configuration\GenericEnumConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\IConfigXmlNode.cs">
+      <Link>System.Configuration\IConfigXmlNode.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\IgnoreSection.cs">
+      <Link>System.Configuration\IgnoreSection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\InfiniteIntConverter.cs">
+      <Link>System.Configuration\InfiniteIntConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\InfiniteTimeSpanConverter.cs">
+      <Link>System.Configuration\InfiniteTimeSpanConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\IntegerConfigurationProperty.cs">
+      <Link>System.Configuration\IntegerConfigurationProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\IntegerValidator.cs">
+      <Link>System.Configuration\IntegerValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\IntegerValidatorAttribute.cs">
+      <Link>System.Configuration\IntegerValidatorAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\InternalConfigurationFactory.cs">
+      <Link>System.Configuration\InternalConfigurationFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\InternalConfigurationHost.cs">
+      <Link>System.Configuration\InternalConfigurationHost.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\InternalConfigurationRoot.cs">
+      <Link>System.Configuration\InternalConfigurationRoot.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\KeyValueConfigurationCollection.cs">
+      <Link>System.Configuration\KeyValueConfigurationCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\KeyValueConfigurationElement.cs">
+      <Link>System.Configuration\KeyValueConfigurationElement.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\KeyValueInternalCollection.cs">
+      <Link>System.Configuration\KeyValueInternalCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\LongValidator.cs">
+      <Link>System.Configuration\LongValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\LongValidatorAttribute.cs">
+      <Link>System.Configuration\LongValidatorAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\NameValueConfigurationCollection.cs">
+      <Link>System.Configuration\NameValueConfigurationCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\NameValueConfigurationElement.cs">
+      <Link>System.Configuration\NameValueConfigurationElement.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\NonEmptyStringConfigurationProperty.cs">
+      <Link>System.Configuration\NonEmptyStringConfigurationProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\NonEmptyStringFlags.cs">
+      <Link>System.Configuration\NonEmptyStringFlags.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\PathLevel.cs">
+      <Link>System.Configuration\PathLevel.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\PositiveTimeSpanValidator.cs">
+      <Link>System.Configuration\PositiveTimeSpanValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\PositiveTimeSpanValidatorAttribute.cs">
+      <Link>System.Configuration\PositiveTimeSpanValidatorAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\PropertyInformation.cs">
+      <Link>System.Configuration\PropertyInformation.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\PropertyInformationCollection.cs">
+      <Link>System.Configuration\PropertyInformationCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\PropertyValueOrigin.cs">
+      <Link>System.Configuration\PropertyValueOrigin.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ProtectedConfiguration.cs">
+      <Link>System.Configuration\ProtectedConfiguration.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ProtectedConfigurationProvider.cs">
+      <Link>System.Configuration\ProtectedConfigurationProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ProtectedConfigurationProviderCollection.cs">
+      <Link>System.Configuration\ProtectedConfigurationProviderCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ProtectedConfigurationSection.cs">
+      <Link>System.Configuration\ProtectedConfigurationSection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ProtectedProviderSettings.cs">
+      <Link>System.Configuration\ProtectedProviderSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ProviderSettings.cs">
+      <Link>System.Configuration\ProviderSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ProviderSettingsCollection.cs">
+      <Link>System.Configuration\ProviderSettingsCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\RegexStringValidator.cs">
+      <Link>System.Configuration\RegexStringValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\RegexStringValidatorAttribute.cs">
+      <Link>System.Configuration\RegexStringValidatorAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\RsaProtectedConfigurationProvider.cs">
+      <Link>System.Configuration\RsaProtectedConfigurationProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\SectionGroupInfo.cs">
+      <Link>System.Configuration\SectionGroupInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\SectionInfo.cs">
+      <Link>System.Configuration\SectionInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\SectionInformation.cs">
+      <Link>System.Configuration\SectionInformation.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\StringValidator.cs">
+      <Link>System.Configuration\StringValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\StringValidatorAttribute.cs">
+      <Link>System.Configuration\StringValidatorAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\SubclassTypeValidator.cs">
+      <Link>System.Configuration\SubclassTypeValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\SubclassTypeValidatorAttribute.cs">
+      <Link>System.Configuration\SubclassTypeValidatorAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\TimeSpanConfigurationProperty.cs">
+      <Link>System.Configuration\TimeSpanConfigurationProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\TimeSpanMinutesConverter.cs">
+      <Link>System.Configuration\TimeSpanMinutesConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\TimeSpanMinutesOrInfiniteConverter.cs">
+      <Link>System.Configuration\TimeSpanMinutesOrInfiniteConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\TimeSpanPropertyFlags.cs">
+      <Link>System.Configuration\TimeSpanPropertyFlags.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\TimeSpanSecondsConverter.cs">
+      <Link>System.Configuration\TimeSpanSecondsConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\TimeSpanSecondsOrInfiniteConverter.cs">
+      <Link>System.Configuration\TimeSpanSecondsOrInfiniteConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\TimeSpanSerializedFormat.cs">
+      <Link>System.Configuration\TimeSpanSerializedFormat.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\TimeSpanValidator.cs">
+      <Link>System.Configuration\TimeSpanValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\TimeSpanValidatorAttribute.cs">
+      <Link>System.Configuration\TimeSpanValidatorAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\TypeNameConverter.cs">
+      <Link>System.Configuration\TypeNameConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\ValidatorCallback.cs">
+      <Link>System.Configuration\ValidatorCallback.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration\WhiteSpaceTrimStringConverter.cs">
+      <Link>System.Configuration\WhiteSpaceTrimStringConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration.Internal\DelegatingConfigHost.cs">
+      <Link>System.Configuration.Internal\DelegatingConfigHost.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration.Internal\IConfigErrorInfo.cs">
+      <Link>System.Configuration.Internal\IConfigErrorInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration.Internal\IConfigSystem.cs">
+      <Link>System.Configuration.Internal\IConfigSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration.Internal\IConfigurationManagerHelper.cs">
+      <Link>System.Configuration.Internal\IConfigurationManagerHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration.Internal\IConfigurationManagerInternal.cs">
+      <Link>System.Configuration.Internal\IConfigurationManagerInternal.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration.Internal\IInternalConfigClientHost.cs">
+      <Link>System.Configuration.Internal\IInternalConfigClientHost.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration.Internal\IInternalConfigConfigurationFactory.cs">
+      <Link>System.Configuration.Internal\IInternalConfigConfigurationFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration.Internal\IInternalConfigHost.cs">
+      <Link>System.Configuration.Internal\IInternalConfigHost.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration.Internal\IInternalConfigRecord.cs">
+      <Link>System.Configuration.Internal\IInternalConfigRecord.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration.Internal\IInternalConfigRoot.cs">
+      <Link>System.Configuration.Internal\IInternalConfigRoot.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration.Internal\IInternalConfigSettingsFactory.cs">
+      <Link>System.Configuration.Internal\IInternalConfigSettingsFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration.Internal\IInternalConfigSystem.cs">
+      <Link>System.Configuration.Internal\IInternalConfigSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration.Internal\InternalConfigEventArgs.cs">
+      <Link>System.Configuration.Internal\InternalConfigEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration.Internal\InternalConfigEventHandler.cs">
+      <Link>System.Configuration.Internal\InternalConfigEventHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration.Internal\StreamChangeCallback.cs">
+      <Link>System.Configuration.Internal\StreamChangeCallback.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration.Provider\ProviderBase.cs">
+      <Link>System.Configuration.Provider\ProviderBase.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration.Provider\ProviderCollection.cs">
+      <Link>System.Configuration.Provider\ProviderCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Configuration\System.Configuration.Provider\ProviderException.cs">
+      <Link>System.Configuration.Provider\ProviderException.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\AppSettingsReader.cs">
+      <Link>System\System.Configuration\AppSettingsReader.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\ApplicationScopedSettingAttribute.cs">
+      <Link>System\System.Configuration\ApplicationScopedSettingAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\ApplicationSettingsBase.cs">
+      <Link>System\System.Configuration\ApplicationSettingsBase.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\ApplicationSettingsGroup.cs">
+      <Link>System\System.Configuration\ApplicationSettingsGroup.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\ClientSettingsSection.cs">
+      <Link>System\System.Configuration\ClientSettingsSection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\ConfigXmlDocument.cs">
+      <Link>System\System.Configuration\ConfigXmlDocument.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\ConfigurationException.cs">
+      <Link>System\System.Configuration\ConfigurationException.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\ConfigurationSettings.cs">
+      <Link>System\System.Configuration\ConfigurationSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\CustomizableFileSettingsProvider.cs">
+      <Link>System\System.Configuration\CustomizableFileSettingsProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\DefaultSettingValueAttribute.cs">
+      <Link>System\System.Configuration\DefaultSettingValueAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\DictionarySectionHandler.cs">
+      <Link>System\System.Configuration\DictionarySectionHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\IApplicationSettingsProvider.cs">
+      <Link>System\System.Configuration\IApplicationSettingsProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\IConfigurationSectionHandler.cs">
+      <Link>System\System.Configuration\IConfigurationSectionHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\IConfigurationSystem.cs">
+      <Link>System\System.Configuration\IConfigurationSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\IPersistComponentSettings.cs">
+      <Link>System\System.Configuration\IPersistComponentSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\ISettingsProviderService.cs">
+      <Link>System\System.Configuration\ISettingsProviderService.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\IdnElement.cs">
+      <Link>System\System.Configuration\IdnElement.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\IgnoreSectionHandler.cs">
+      <Link>System\System.Configuration\IgnoreSectionHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\IriParsingElement.cs">
+      <Link>System\System.Configuration\IriParsingElement.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\LocalFileSettingsProvider.cs">
+      <Link>System\System.Configuration\LocalFileSettingsProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\NameValueFileSectionHandler.cs">
+      <Link>System\System.Configuration\NameValueFileSectionHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\NameValueSectionHandler.cs">
+      <Link>System\System.Configuration\NameValueSectionHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\NoSettingsVersionUpgradeAttribute.cs">
+      <Link>System\System.Configuration\NoSettingsVersionUpgradeAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingAttribute.cs">
+      <Link>System\System.Configuration\SettingAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingChangingEventArgs.cs">
+      <Link>System\System.Configuration\SettingChangingEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingChangingEventHandler.cs">
+      <Link>System\System.Configuration\SettingChangingEventHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingElement.cs">
+      <Link>System\System.Configuration\SettingElement.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingElementCollection.cs">
+      <Link>System\System.Configuration\SettingElementCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingValueElement.cs">
+      <Link>System\System.Configuration\SettingValueElement.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsAttributeDictionary.cs">
+      <Link>System\System.Configuration\SettingsAttributeDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsBase.cs">
+      <Link>System\System.Configuration\SettingsBase.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsContext.cs">
+      <Link>System\System.Configuration\SettingsContext.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsDescriptionAttribute.cs">
+      <Link>System\System.Configuration\SettingsDescriptionAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsGroupDescriptionAttribute.cs">
+      <Link>System\System.Configuration\SettingsGroupDescriptionAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsGroupNameAttribute.cs">
+      <Link>System\System.Configuration\SettingsGroupNameAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsLoadedEventArgs.cs">
+      <Link>System\System.Configuration\SettingsLoadedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsLoadedEventHandler.cs">
+      <Link>System\System.Configuration\SettingsLoadedEventHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsManageability.cs">
+      <Link>System\System.Configuration\SettingsManageability.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsManageabilityAttribute.cs">
+      <Link>System\System.Configuration\SettingsManageabilityAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsProperty.cs">
+      <Link>System\System.Configuration\SettingsProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsPropertyCollection.cs">
+      <Link>System\System.Configuration\SettingsPropertyCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsPropertyIsReadOnlyException.cs">
+      <Link>System\System.Configuration\SettingsPropertyIsReadOnlyException.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsPropertyNotFoundException.cs">
+      <Link>System\System.Configuration\SettingsPropertyNotFoundException.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsPropertyValue.cs">
+      <Link>System\System.Configuration\SettingsPropertyValue.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsPropertyValueCollection.cs">
+      <Link>System\System.Configuration\SettingsPropertyValueCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsPropertyWrongTypeException.cs">
+      <Link>System\System.Configuration\SettingsPropertyWrongTypeException.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsProvider.cs">
+      <Link>System\System.Configuration\SettingsProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsProviderAttribute.cs">
+      <Link>System\System.Configuration\SettingsProviderAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsProviderCollection.cs">
+      <Link>System\System.Configuration\SettingsProviderCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsSavingEventHandler.cs">
+      <Link>System\System.Configuration\SettingsSavingEventHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsSerializeAs.cs">
+      <Link>System\System.Configuration\SettingsSerializeAs.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SettingsSerializeAsAttribute.cs">
+      <Link>System\System.Configuration\SettingsSerializeAsAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SingleTagSectionHandler.cs">
+      <Link>System\System.Configuration\SingleTagSectionHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SpecialSetting.cs">
+      <Link>System\System.Configuration\SpecialSetting.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\SpecialSettingAttribute.cs">
+      <Link>System\System.Configuration\SpecialSettingAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\UriSection.cs">
+      <Link>System\System.Configuration\UriSection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\UserScopedSettingAttribute.cs">
+      <Link>System\System.Configuration\UserScopedSettingAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Configuration\UserSettingsGroup.cs">
+      <Link>System\System.Configuration\UserSettingsGroup.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Saml20MetadataDocument.cs">
+      <Link>Saml20MetadataDocument.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Web\System.Web\HttpCookieCollection.cs">
+      <Link>System.Web\HttpCookieCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\AlphabeticalEnumConverter.cs">
+      <Link>System\System.Diagnostics\AlphabeticalEnumConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\BooleanSwitch.cs">
+      <Link>System\System.Diagnostics\BooleanSwitch.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\ConsoleTraceListener.cs">
+      <Link>System\System.Diagnostics\ConsoleTraceListener.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\CorrelationManager.cs">
+      <Link>System\System.Diagnostics\CorrelationManager.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\DataReceivedEventArgs.cs">
+      <Link>System\System.Diagnostics\DataReceivedEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\DataReceivedEventHandler.cs">
+      <Link>System\System.Diagnostics\DataReceivedEventHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\Debug.cs">
+      <Link>System\System.Diagnostics\Debug.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\Debug_2_1.cs">
+      <Link>System\System.Diagnostics\Debug_2_1.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\Debugger.jvm.cs">
+      <Link>System\System.Diagnostics\Debugger.jvm.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\DefaultTraceListener.cs">
+      <Link>System\System.Diagnostics\DefaultTraceListener.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\DelimitedListTraceListener.cs">
+      <Link>System\System.Diagnostics\DelimitedListTraceListener.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\DiagnosticsConfigurationHandler.cs">
+      <Link>System\System.Diagnostics\DiagnosticsConfigurationHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\EventInstance.cs">
+      <Link>System\System.Diagnostics\EventInstance.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\EventLogEntryType.cs">
+      <Link>System\System.Diagnostics\EventLogEntryType.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\EventLogInstaller.cs">
+      <Link>System\System.Diagnostics\EventLogInstaller.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\EventLogPermission.cs">
+      <Link>System\System.Diagnostics\EventLogPermission.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\EventLogPermissionAccess.cs">
+      <Link>System\System.Diagnostics\EventLogPermissionAccess.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\EventLogPermissionAttribute.cs">
+      <Link>System\System.Diagnostics\EventLogPermissionAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\EventLogPermissionEntry.cs">
+      <Link>System\System.Diagnostics\EventLogPermissionEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\EventLogPermissionEntryCollection.cs">
+      <Link>System\System.Diagnostics\EventLogPermissionEntryCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\EventSourceCreationData.cs">
+      <Link>System\System.Diagnostics\EventSourceCreationData.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\EventTypeFilter.cs">
+      <Link>System\System.Diagnostics\EventTypeFilter.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\FileVersionInfo.cs">
+      <Link>System\System.Diagnostics\FileVersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\MonitoringDescriptionAttribute.cs">
+      <Link>System\System.Diagnostics\MonitoringDescriptionAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\OverflowAction.cs">
+      <Link>System\System.Diagnostics\OverflowAction.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\ProcessModule.cs">
+      <Link>System\System.Diagnostics\ProcessModule.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\ProcessModuleCollection.cs">
+      <Link>System\System.Diagnostics\ProcessModuleCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\ProcessPriorityClass.cs">
+      <Link>System\System.Diagnostics\ProcessPriorityClass.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\ProcessThreadCollection.cs">
+      <Link>System\System.Diagnostics\ProcessThreadCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\ProcessWindowStyle.cs">
+      <Link>System\System.Diagnostics\ProcessWindowStyle.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\SourceFilter.cs">
+      <Link>System\System.Diagnostics\SourceFilter.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\SourceLevels.cs">
+      <Link>System\System.Diagnostics\SourceLevels.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\SourceSwitch.cs">
+      <Link>System\System.Diagnostics\SourceSwitch.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\StackFrame.jvm.cs">
+      <Link>System\System.Diagnostics\StackFrame.jvm.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\StackTrace.jvm.cs">
+      <Link>System\System.Diagnostics\StackTrace.jvm.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\Stopwatch.cs">
+      <Link>System\System.Diagnostics\Stopwatch.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\Switch.cs">
+      <Link>System\System.Diagnostics\Switch.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\SwitchAttribute.cs">
+      <Link>System\System.Diagnostics\SwitchAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\SwitchLevelAttribute.cs">
+      <Link>System\System.Diagnostics\SwitchLevelAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\TextWriterTraceListener.cs">
+      <Link>System\System.Diagnostics\TextWriterTraceListener.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\ThreadPriorityLevel.cs">
+      <Link>System\System.Diagnostics\ThreadPriorityLevel.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\ThreadState.cs">
+      <Link>System\System.Diagnostics\ThreadState.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\ThreadWaitReason.cs">
+      <Link>System\System.Diagnostics\ThreadWaitReason.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\Trace.cs">
+      <Link>System\System.Diagnostics\Trace.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\TraceEventCache.cs">
+      <Link>System\System.Diagnostics\TraceEventCache.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\TraceEventType.cs">
+      <Link>System\System.Diagnostics\TraceEventType.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\TraceFilter.cs">
+      <Link>System\System.Diagnostics\TraceFilter.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\TraceImpl.cs">
+      <Link>System\System.Diagnostics\TraceImpl.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\TraceLevel.cs">
+      <Link>System\System.Diagnostics\TraceLevel.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\TraceListener.cs">
+      <Link>System\System.Diagnostics\TraceListener.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\TraceOptions.cs">
+      <Link>System\System.Diagnostics\TraceOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\TraceSource.cs">
+      <Link>System\System.Diagnostics\TraceSource.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\TraceSourceInfo.cs">
+      <Link>System\System.Diagnostics\TraceSourceInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\TraceSwitch.cs">
+      <Link>System\System.Diagnostics\TraceSwitch.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\XmlWriterTraceListener.cs">
+      <Link>System\System.Diagnostics\XmlWriterTraceListener.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Permissions\DataProtectionPermissionAttribute.cs">
+      <Link>System.Security.Permissions\DataProtectionPermissionAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Permissions\DataProtectionPermissionFlags.cs">
+      <Link>System.Security.Permissions\DataProtectionPermissionFlags.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Permissions\PermissionHelper.cs">
+      <Link>System.Security.Permissions\PermissionHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Security.Permissions\ResourcePermissionBase.cs">
+      <Link>System\System.Security.Permissions\ResourcePermissionBase.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Security.Permissions\ResourcePermissionBaseEntry.cs">
+      <Link>System\System.Security.Permissions\ResourcePermissionBaseEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Security.Permissions\StorePermission.cs">
+      <Link>System\System.Security.Permissions\StorePermission.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Security.Permissions\StorePermissionAttribute.cs">
+      <Link>System\System.Security.Permissions\StorePermissionAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Security.Permissions\StorePermissionFlags.cs">
+      <Link>System\System.Security.Permissions\StorePermissionFlags.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\Mono.Xml\XmlCanonicalizer.cs">
+      <Link>Mono.Xml\XmlCanonicalizer.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Web\System.Web\HttpCookie.cs">
+      <Link>System.Web\HttpCookie.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Data.Linq\src\DbLinq\MonoTODOAttribute.cs">
+      <Link>MonoTODOAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\TraceListenerCollection.cs">
+      <Link>System\System.Diagnostics\TraceListenerCollection.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="SamlWebAuthenticatorController.xib" />
@@ -284,6 +1498,144 @@
     </None>
     <None Include="..\lib\OIOSAML.NET\Specification\SpecificationFactory.cs">
       <Link>OIOSAML.NET\Specification\SpecificationFactory.cs</Link>
+    </None>
+    <None Include="..\lib\OIOSAML.NET\Protocol\AbstractEndpointHandler.cs">
+      <Link>OIOSAML.NET\Protocol\AbstractEndpointHandler.cs</Link>
+    </None>
+    <None Include="..\lib\OIOSAML.NET\Protocol\Saml20AbstractEndpointHandler.cs">
+      <Link>OIOSAML.NET\Protocol\Saml20AbstractEndpointHandler.cs</Link>
+    </None>
+    <None Include="..\lib\OIOSAML.NET\Protocol\Saml20CDCIdPReturnPoint.cs">
+      <Link>OIOSAML.NET\Protocol\Saml20CDCIdPReturnPoint.cs</Link>
+    </None>
+    <None Include="..\lib\OIOSAML.NET\Protocol\Saml20CDCReader.cs">
+      <Link>OIOSAML.NET\Protocol\Saml20CDCReader.cs</Link>
+    </None>
+    <None Include="..\lib\OIOSAML.NET\Protocol\Saml20LogoutHandler.cs">
+      <Link>OIOSAML.NET\Protocol\Saml20LogoutHandler.cs</Link>
+    </None>
+    <None Include="..\lib\OIOSAML.NET\Protocol\Saml20MetadataHandler.cs">
+      <Link>OIOSAML.NET\Protocol\Saml20MetadataHandler.cs</Link>
+    </None>
+    <None Include="..\lib\OIOSAML.NET\Protocol\Saml20SignonHandler.cs">
+      <Link>OIOSAML.NET\Protocol\Saml20SignonHandler.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Configuration\ConfigHelper.cs">
+      <Link>System\System.Configuration\ConfigHelper.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Configuration\IConfigXmlNode.cs">
+      <Link>System\System.Configuration\IConfigXmlNode.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\ChangeLog">
+      <Link>System\System.Diagnostics\ChangeLog</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Security.Permissions\PermissionHelper.cs">
+      <Link>System\System.Security.Permissions\PermissionHelper.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\LocalFileEventLog.cs">
+      <Link>System\System.Diagnostics\LocalFileEventLog.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\ProcessStartInfo.cs">
+      <Link>System\System.Diagnostics\ProcessStartInfo.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\Win32EventLog.cs">
+      <Link>System\System.Diagnostics\Win32EventLog.cs</Link>
+    </None>
+    <None Include="..\lib\OIOSAML.NET\Identity\Saml20PrincipalCache.cs">
+      <Link>OIOSAML.NET\Identity\Saml20PrincipalCache.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\Process.cs">
+      <Link>System\System.Diagnostics\Process.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\EventLogEntry.cs">
+      <Link>System\System.Diagnostics\EventLogEntry.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\EntryWrittenEventArgs.cs">
+      <Link>System\System.Diagnostics\EntryWrittenEventArgs.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\EntryWrittenEventHandler.cs">
+      <Link>System\System.Diagnostics\EntryWrittenEventHandler.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\EventLog.cs">
+      <Link>System\System.Diagnostics\EventLog.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\EventLogEntryCollection.cs">
+      <Link>System\System.Diagnostics\EventLogEntryCollection.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\EventLogImpl.cs">
+      <Link>System\System.Diagnostics\EventLogImpl.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\NullEventLog.cs">
+      <Link>System\System.Diagnostics\NullEventLog.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\EventLogTraceListener.cs">
+      <Link>System\System.Diagnostics\EventLogTraceListener.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\PerformanceCounter.cs">
+      <Link>System\System.Diagnostics\PerformanceCounter.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\PerformanceCounterCategory.cs">
+      <Link>System\System.Diagnostics\PerformanceCounterCategory.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\ICollectData.cs">
+      <Link>System\System.Diagnostics\ICollectData.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\ProcessThread.cs">
+      <Link>System\System.Diagnostics\ProcessThread.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\PerformanceCounterCategoryType.cs">
+      <Link>System\System.Diagnostics\PerformanceCounterCategoryType.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\PerformanceCounterInstaller.cs">
+      <Link>System\System.Diagnostics\PerformanceCounterInstaller.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\PerformanceCounterInstanceLifetime.cs">
+      <Link>System\System.Diagnostics\PerformanceCounterInstanceLifetime.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\PerformanceCounterManager.cs">
+      <Link>System\System.Diagnostics\PerformanceCounterManager.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\PerformanceCounterPermission.cs">
+      <Link>System\System.Diagnostics\PerformanceCounterPermission.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\PerformanceCounterPermissionAccess.cs">
+      <Link>System\System.Diagnostics\PerformanceCounterPermissionAccess.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\PerformanceCounterPermissionAttribute.cs">
+      <Link>System\System.Diagnostics\PerformanceCounterPermissionAttribute.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\PerformanceCounterPermissionEntry.cs">
+      <Link>System\System.Diagnostics\PerformanceCounterPermissionEntry.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\PerformanceCounterPermissionEntryCollection.cs">
+      <Link>System\System.Diagnostics\PerformanceCounterPermissionEntryCollection.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\PerformanceCounterType.cs">
+      <Link>System\System.Diagnostics\PerformanceCounterType.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\CounterCreationData.cs">
+      <Link>System\System.Diagnostics\CounterCreationData.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\CounterCreationDataCollection.cs">
+      <Link>System\System.Diagnostics\CounterCreationDataCollection.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\CounterSample.cs">
+      <Link>System\System.Diagnostics\CounterSample.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\CounterSampleCalculator.cs">
+      <Link>System\System.Diagnostics\CounterSampleCalculator.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\InstanceData.cs">
+      <Link>System\System.Diagnostics\InstanceData.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\InstanceDataCollection.cs">
+      <Link>System\System.Diagnostics\InstanceDataCollection.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\InstanceDataCollectionCollection.cs">
+      <Link>System\System.Diagnostics\InstanceDataCollectionCollection.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System.Security\System.Security.Permissions\DataProtectionPermission.cs">
+      <Link>System.Security.Permissions\DataProtectionPermission.cs</Link>
     </None>
   </ItemGroup>
 </Project>

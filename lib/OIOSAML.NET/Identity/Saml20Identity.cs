@@ -4,10 +4,14 @@ using System.Collections.Generic;
 using System.Security.Principal;
 using System.Threading;
 using System.Web;
-using System.Web.Security;
+
+// FIXME: Security imports
+//using System.Web.Security;
+using Mono.Security;
+
 using dk.nita.saml20.config;
 using dk.nita.saml20.Schema.Core;
-using dk.nita.saml20.Identity;
+//using dk.nita.saml20.Identity;
 
 namespace dk.nita.saml20.identity
 {

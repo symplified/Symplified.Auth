@@ -47,6 +47,7 @@
       <HintPath>..\lib\log4net\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SAML 1.1\SAML11Authenticator.cs" />
@@ -716,6 +717,147 @@
       <Link>OIOSAML.NET\Validation\Saml20XmlAnyAttributeValidator.cs</Link>
     </Compile>
     <Compile Include="SAML 2.0\SamlAccount.cs" />
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\CipherData.cs">
+      <Link>System.Security.Cryptography.Xml\CipherData.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\CipherReference.cs">
+      <Link>System.Security.Cryptography.Xml\CipherReference.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\DSAKeyValue.cs">
+      <Link>System.Security.Cryptography.Xml\DSAKeyValue.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\DataObject.cs">
+      <Link>System.Security.Cryptography.Xml\DataObject.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\DataReference.cs">
+      <Link>System.Security.Cryptography.Xml\DataReference.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\EncryptedData.cs">
+      <Link>System.Security.Cryptography.Xml\EncryptedData.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\EncryptedKey.cs">
+      <Link>System.Security.Cryptography.Xml\EncryptedKey.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\EncryptedReference.cs">
+      <Link>System.Security.Cryptography.Xml\EncryptedReference.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\EncryptedType.cs">
+      <Link>System.Security.Cryptography.Xml\EncryptedType.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\EncryptedXml.cs">
+      <Link>System.Security.Cryptography.Xml\EncryptedXml.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\EncryptionMethod.cs">
+      <Link>System.Security.Cryptography.Xml\EncryptionMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\EncryptionProperties.cs">
+      <Link>System.Security.Cryptography.Xml\EncryptionProperties.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\EncryptionProperty.cs">
+      <Link>System.Security.Cryptography.Xml\EncryptionProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\IRelDecryptor.cs">
+      <Link>System.Security.Cryptography.Xml\IRelDecryptor.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\KeyInfo.cs">
+      <Link>System.Security.Cryptography.Xml\KeyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\KeyInfoClause.cs">
+      <Link>System.Security.Cryptography.Xml\KeyInfoClause.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\KeyInfoEncryptedKey.cs">
+      <Link>System.Security.Cryptography.Xml\KeyInfoEncryptedKey.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\KeyInfoName.cs">
+      <Link>System.Security.Cryptography.Xml\KeyInfoName.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\KeyInfoNode.cs">
+      <Link>System.Security.Cryptography.Xml\KeyInfoNode.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\KeyInfoRetrievalMethod.cs">
+      <Link>System.Security.Cryptography.Xml\KeyInfoRetrievalMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\KeyInfoX509Data.cs">
+      <Link>System.Security.Cryptography.Xml\KeyInfoX509Data.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\KeyReference.cs">
+      <Link>System.Security.Cryptography.Xml\KeyReference.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\Manifest.cs">
+      <Link>System.Security.Cryptography.Xml\Manifest.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\RSAKeyValue.cs">
+      <Link>System.Security.Cryptography.Xml\RSAKeyValue.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\Reference.cs">
+      <Link>System.Security.Cryptography.Xml\Reference.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\ReferenceList.cs">
+      <Link>System.Security.Cryptography.Xml\ReferenceList.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\Signature.cs">
+      <Link>System.Security.Cryptography.Xml\Signature.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\SignedInfo.cs">
+      <Link>System.Security.Cryptography.Xml\SignedInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\SignedXml.cs">
+      <Link>System.Security.Cryptography.Xml\SignedXml.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\SymmetricKeyWrap.cs">
+      <Link>System.Security.Cryptography.Xml\SymmetricKeyWrap.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\Transform.cs">
+      <Link>System.Security.Cryptography.Xml\Transform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\TransformChain.cs">
+      <Link>System.Security.Cryptography.Xml\TransformChain.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\X509IssuerSerial.cs">
+      <Link>System.Security.Cryptography.Xml\X509IssuerSerial.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlDecryptionTransform.cs">
+      <Link>System.Security.Cryptography.Xml\XmlDecryptionTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlDsigBase64Transform.cs">
+      <Link>System.Security.Cryptography.Xml\XmlDsigBase64Transform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlDsigC14NTransform.cs">
+      <Link>System.Security.Cryptography.Xml\XmlDsigC14NTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlDsigC14NWithCommentsTransform.cs">
+      <Link>System.Security.Cryptography.Xml\XmlDsigC14NWithCommentsTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlDsigEnvelopedSignatureTransform.cs">
+      <Link>System.Security.Cryptography.Xml\XmlDsigEnvelopedSignatureTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlDsigExcC14NTransform.cs">
+      <Link>System.Security.Cryptography.Xml\XmlDsigExcC14NTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlDsigExcC14NWithCommentsTransform.cs">
+      <Link>System.Security.Cryptography.Xml\XmlDsigExcC14NWithCommentsTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlDsigNodeList.cs">
+      <Link>System.Security.Cryptography.Xml\XmlDsigNodeList.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlDsigXPathTransform.cs">
+      <Link>System.Security.Cryptography.Xml\XmlDsigXPathTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlDsigXsltTransform.cs">
+      <Link>System.Security.Cryptography.Xml\XmlDsigXsltTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlEncryption.cs">
+      <Link>System.Security.Cryptography.Xml\XmlEncryption.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlLicenseTransform.cs">
+      <Link>System.Security.Cryptography.Xml\XmlLicenseTransform.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlSignature.cs">
+      <Link>System.Security.Cryptography.Xml\XmlSignature.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlSignatureStreamReader.cs">
+      <Link>System.Security.Cryptography.Xml\XmlSignatureStreamReader.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -724,6 +866,7 @@
     <Folder Include="SAML 2.0\" />
     <Folder Include="Symplified AuthN\" />
     <Folder Include="OIOSAML.NET\" />
+    <Folder Include="System.Security.Cryptography.Xml\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\lib\Xamarin.Auth\src\Xamarin.Auth\Xamarin.Auth.csproj">

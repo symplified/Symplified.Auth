@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Xml;
-//using dk.nita.saml20.config;
+using dk.nita.saml20.config;
 using dk.nita.saml20.Schema.Core;
-//using dk.nita.saml20.Schema.Protocol;
+using dk.nita.saml20.Schema.Protocol;
 using dk.nita.saml20.Utils;
 using Saml2.Properties;
 
