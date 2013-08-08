@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Metadata for Symplified IdP: https://idp.symplified.net/IdPServlet?idp_id=1v5uitrsv6u1b
+-->
+
+<EntityDescriptor
+    xmlns="urn:oasis:names:tc:SAML:2.0:metadata"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+    xmlns:shibmd="urn:mace:shibboleth:metadata:1.0"
+    xsi:schemaLocation="urn:oasis:names:tc:SAML:2.0:metadata saml-schema-metadata-2.0.xsd
+                        urn:mace:shibboleth:metadata:1.0 shibboleth-metadata-1.0.xsd
+                        urn:oasis:names:tc:SAML:metadata:ui sstc-saml-metadata-ui-v1.0.xsd
+                        http://www.w3.org/2000/09/xmldsig# xmldsig-core-schema.xsd"
+    validUntil="2020-01-01T00:00:00Z"
+    entityID="1v5uitrsv6u1b">
+    <!--
+    The entityID above looks like a location, but it's actually just a name.
+    Each entity is assigned a URI name. By convention, it will often be a
+    URL, but it should never contain a physical machine hostname that you
+    would not otherwise publish to users of the service. For example, if your
+    installation runs on a machine named "gryphon.example.org", you would
+    generally register that machine in DNS under a second, logical name
+    (such as idp.example.org). This logical name should be used in favor
+    of the real hostname when you assign an entityID. You should use a name
+    like this even if you don't actually register the server in DNS using it.
+    The URL does not have to resolve into anything to use it as a name, although
+    it is useful if it does in fact point to your metadata. The key point is
+    for the name you choose to be stable, which is why using hostnames is
+    generally bad, since they tend to change.
+    -->
+
+    <!-- A Shibboleth 1.x and SAML 2.0 IdP contains this element with protocol support as shown. -->
+    <IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+        <Extensions>
+            <!-- This is a Shibboleth extension to express permissible attribute scope(s). -->
+            <shibmd:Scope>symplified.net</shibmd:Scope>
+
+            <!--
+            This is a recent OASIS-defined extension for user-interface material related to the IdP.
+            See http://wiki.oasis-open.org/security/SAML2MetadataUI for more details.
+            -->
+            <mdui:UIInfo xmlns:mdui="urn:oasis:names:tc:SAML:metadata:ui">
+                <mdui:DisplayName xml:lang="en">Symplified Identity Provider</mdui:DisplayName>
+                <mdui:InformationURL xml:lang="en">https://idp.symplified.net</mdui:InformationURL>
+                <mdui:Logo height="77" width="192" xml:lang="en">http://www.symplified.com/img/layout/logo.png</mdui:Logo>
+                <mdui:Logo height="16" width="16" xml:lang="en">https://home.symplified.net/resources/favicon.ico</mdui:Logo>
+            </mdui:UIInfo>
+        </Extensions>
+
+        <!--
+        One or more KeyDescriptors tell your SP how the IdP will authenticate itself. A single
+        descriptor can be used for both signing and for server-TLS. You can place an X.509
+        certificate directly in this element to specify the public key to use. This only
+        reflects the public half of the keypair used by the IdP.
+        -->
+        <KeyDescriptor>
+            <ds:KeyInfo>
+                <ds:X509Data>
+                    <ds:X509Certificate>
+MIICszCCAZsCBgFANhz5GTANBgkqhkiG9w0BAQsFADAdMRswGQYDVQQDExJpZHAu
+c3ltcGxpZmllZC5uZXQwHhcNMTMwNzMxMTkwMzIzWhcNMTcwNzMxMTkwMzIzWjAd
+MRswGQYDVQQDExJpZHAuc3ltcGxpZmllZC5uZXQwggEiMA0GCSqGSIb3DQEBAQUA
+A4IBDwAwggEKAoIBAQCogo3bmeJ/Qdn/VZtJHFZNttNu02fdu7ViuLTbpzaNL6TL
+HCDFL3L3o/+rMhxbKDSSpMBcpTFTUb++DAAfZXgElb4KjC5IHo33Q/b+CWs9UnH2
+qtAUsP7OsyPz8jTDfNrMGDn2eELtOlZc53mgN4gy5T0YJR/eJu0DDO8jEjngHqZc
+zo8zsWIDmqjFhGgTSWF4oLkKvyMCh67Vww1o3my9YHN3cBgV3wGRUZZk8meL0Vxs
+d1QMSoRMU299k48uFI5RKbf6fqSTjScaipzmDCOq+0m+G0rfETPWGzWQsmdgMQ7z
+sSmADXd7X/Kc10tUcUpx1VV3+Aw5L6wnXwlFtOCbAgMBAAEwDQYJKoZIhvcNAQEL
+BQADggEBAD5zh9A7UkHT6pKS4uSjlqjMoPTfYrg2ewhom38pbgimjqmOudquLQSj
+Shp9rQJLveUFO2pLFPJQsCrSDibtV31am0+U+J+yVp1C97natv7+eoeHue0fZy4y
+G4k8sokB9m0Mdb3SklXOl18+AMa8l0hvOxxVDcX5ebPLe1nONBRuTV4k/JdQfEVj
+vu+nGn+Y69ExHN7HjN66q9fT3DR+BcfFWJRzHaLWK+GzAaS6YPJ/F+6+iCF36rD7
+Bw1VtMhCXMRb8ReVOy7DgeYgM+XxdVL5gndOaBE4Oaxc9PhgKou36PDi+yAd+EGz
+kbIDXEIOF6ILuRCkOuhr+23UY/dVPu4=
+                    </ds:X509Certificate>
+                </ds:X509Data>
+            </ds:KeyInfo>
+        </KeyDescriptor>
+
+        <!-- This tells the SP where/how to resolve SAML 1.x artifacts into SAML assertions. -->
+        <!--<ArtifactResolutionService index="1"
+            Binding="urn:oasis:names:tc:SAML:1.0:bindings:SOAP-binding"
+            Location="https://idp.example.org:8443/shibboleth/profile/saml1/soap/ArtifactResolution"/>-->
+
+        <!-- This tells the SP where/how to resolve SAML 2.0 artifacts into SAML messages. -->
+        <ArtifactResolutionService index="2"
+            Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP"
+            Location="https://idp.symplified.net/IdPServlet?idp_id=1v5uitrsv6u1b"/>
+
+        <!-- This is informational and communicates what kinds of SAML Subjects the IdP supports. -->
+        <NameIDFormat>urn:mace:shibboleth:1.0:nameIdentifier</NameIDFormat>
+        <NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</NameIDFormat>
+
+        <!-- This tells the SP how and where to request authentication. -->
+<!--        <SingleSignOnService Binding="urn:mace:shibboleth:1.0:profiles:AuthnRequest"
+            Location="https://idp.symplified.net/IdPServlet?idp_id=1v5uitrsv6u1b"/>-->
+        <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+            Location="https://idp.symplified.net/IdPServlet?idp_id=1v5uitrsv6u1b"/>
+        <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+            Location="https://idp.symplified.net/IdPServlet?idp_id=1v5uitrsv6u1b"/>
+    </IDPSSODescriptor>
+
+</EntityDescriptor>
+

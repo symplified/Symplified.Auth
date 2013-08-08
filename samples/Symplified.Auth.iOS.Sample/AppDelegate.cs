@@ -12,6 +12,7 @@ using dk.nita.saml20;
 using dk.nita.saml20.Validation;
 using dk.nita.saml20.Schema.Metadata;
 using dk.nita.saml20.Utils;
+using dk.nita.saml20.config;
 
 namespace Symplified.Auth.iOS.Sample
 {
@@ -63,11 +64,15 @@ namespace Symplified.Auth.iOS.Sample
 			try {
 				XmlDocument xDoc = new XmlDocument ();
 				xDoc.PreserveWhitespace = true;
-//				xDoc.Load ("metadata-ADLER.xml");
-				xDoc.Load ("tfobs-demo-idp-metadata.xml");
+				xDoc.Load ("idp.symplified.net.metadata.xml");
 
 
 				Saml20MetadataDocument doc = new Saml20MetadataDocument (xDoc);
+
+				List<IDPEndPointElement> endpoints = doc.SSOEndpoints ();
+				foreach (IDPEndPointElement e in endpoints) {
+
+				}
 
 				Console.WriteLine (doc.ToXml ());
 			}

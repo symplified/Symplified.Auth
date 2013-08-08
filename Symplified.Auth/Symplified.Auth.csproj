@@ -899,5 +899,6 @@
     <None Include="..\lib\OIOSAML.NET\Protocol\Resources\DefaultStyle.css">
       <Link>OIOSAML.NET\Protocol\Resources\DefaultStyle.css</Link>
     </None>
+    <None Include="idp.symplified.net.metadata.xml" />
   </ItemGroup>
 </Project>
