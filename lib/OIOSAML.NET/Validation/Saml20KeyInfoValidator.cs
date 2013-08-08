@@ -1,7 +1,7 @@
 using System;
 using System.Xml;
 using dk.nita.saml20.Schema.Core;
-//using dk.nita.saml20.Schema.XmlDSig;
+using dk.nita.saml20.Schema.XmlDSig;
 
 namespace dk.nita.saml20.Validation
 {

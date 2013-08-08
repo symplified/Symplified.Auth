@@ -76,6 +76,7 @@ namespace dk.nita.saml20.Utils
         {
             CheckDocument(doc);
             SignedXml signedXml = RetrieveSignature(doc);
+
             return signedXml.CheckSignature();
         }
 
@@ -286,6 +287,11 @@ namespace dk.nita.saml20.Utils
             XmlNodeList nodeList = el.GetElementsByTagName(Signature.ELEMENT_NAME, Saml20Constants.XMLDSIG);
             if (nodeList.Count == 0)
                 throw new InvalidOperationException("Document does not contain a signature to verify.");
+
+			Reference reference = new Reference("#" + signedXml.SignedInfo.Id);
+			reference.AddTransform (new XmlDsigEnvelopedSignatureTransform ());
+			reference.AddTransform (new XmlDsigExcC14NTransform ());
+			signedXml.AddReference(reference);
 
             signedXml.LoadXml((XmlElement)nodeList[0]);
             return signedXml;

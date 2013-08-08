@@ -49,10 +49,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SAML 1.1\SAML11Authenticator.cs" />
-    <Compile Include="SAML 2.0\SAML20Authenticator.cs" />
     <Compile Include="Symplified AuthN\SymplifiedAuthenticator.cs" />
     <Compile Include="IdentityProvider\IdentityProviderConfiguration.cs" />
     <Compile Include="IdentityProvider\IdentityProviderManager.cs" />
@@ -859,6 +859,8 @@
     <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlSignatureStreamReader.cs">
       <Link>System.Security.Cryptography.Xml\XmlSignatureStreamReader.cs</Link>
     </Compile>
+    <Compile Include="SAML 2.0\Saml20SpProxyAuthenticator.cs" />
+    <Compile Include="SAML 2.0\Saml20MobileAuthenticator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

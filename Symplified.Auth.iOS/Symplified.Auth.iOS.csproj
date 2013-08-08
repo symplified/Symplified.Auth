@@ -65,6 +65,7 @@
     <Folder Include="System.Security.Permissions\" />
     <Folder Include="System\System.Security.Permissions\" />
     <Folder Include="Mono.Xml\" />
+    <Folder Include="OIOSAML.NET\Validation\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -85,9 +86,6 @@
     </Compile>
     <Compile Include="..\Symplified.Auth\SAML 1.1\SAML11Authenticator.cs">
       <Link>SAML11Authenticator.cs</Link>
-    </Compile>
-    <Compile Include="..\Symplified.Auth\SAML 2.0\SAML20Authenticator.cs">
-      <Link>SAML20Authenticator.cs</Link>
     </Compile>
     <Compile Include="..\Symplified.Auth\Symplified AuthN\SymplifiedAuthenticator.cs">
       <Link>SymplifiedAuthenticator.cs</Link>
@@ -1258,7 +1256,7 @@
       <Link>System\System.Configuration\UserSettingsGroup.cs</Link>
     </Compile>
     <Compile Include="..\lib\OIOSAML.NET\Saml20MetadataDocument.cs">
-      <Link>Saml20MetadataDocument.cs</Link>
+      <Link>OIOSAML.NET\Saml20MetadataDocument.cs</Link>
     </Compile>
     <Compile Include="..\lib\mono\mcs\class\System.Web\System.Web\HttpCookieCollection.cs">
       <Link>System.Web\HttpCookieCollection.cs</Link>
@@ -1448,6 +1446,78 @@
     </Compile>
     <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\TraceSourceInfo.cs">
       <Link>System\System.Diagnostics\TraceSourceInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Symplified.Auth\SAML 2.0\Saml20SpProxyAuthenticator.cs">
+      <Link>Saml20SpProxyAuthenticator.cs</Link>
+    </Compile>
+    <Compile Include="..\Symplified.Auth\SAML 2.0\Saml20MobileAuthenticator.cs">
+      <Link>Saml20MobileAuthenticator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\DKSaml20AssertionValidator.cs">
+      <Link>OIOSAML.NET\Validation\DKSaml20AssertionValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\DKSaml20AttributeValidator.cs">
+      <Link>OIOSAML.NET\Validation\DKSaml20AttributeValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\DKSaml20StatementValidator.cs">
+      <Link>OIOSAML.NET\Validation\DKSaml20StatementValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\DKSaml20SubjectConfirmationValidator.cs">
+      <Link>OIOSAML.NET\Validation\DKSaml20SubjectConfirmationValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\DKSaml20SubjectValidator.cs">
+      <Link>OIOSAML.NET\Validation\DKSaml20SubjectValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\ISaml20AssertionValidator.cs">
+      <Link>OIOSAML.NET\Validation\ISaml20AssertionValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\ISaml20AttributeValidator.cs">
+      <Link>OIOSAML.NET\Validation\ISaml20AttributeValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\ISaml20NameIDValidator.cs">
+      <Link>OIOSAML.NET\Validation\ISaml20NameIDValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\ISaml20StatementValidator.cs">
+      <Link>OIOSAML.NET\Validation\ISaml20StatementValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\ISaml20SubjectConfirmationDataValidator.cs">
+      <Link>OIOSAML.NET\Validation\ISaml20SubjectConfirmationDataValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\ISaml20SubjectConfirmationValidator.cs">
+      <Link>OIOSAML.NET\Validation\ISaml20SubjectConfirmationValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\ISaml20SubjectValidator.cs">
+      <Link>OIOSAML.NET\Validation\ISaml20SubjectValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\Saml20AssertionValidator.cs">
+      <Link>OIOSAML.NET\Validation\Saml20AssertionValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\Saml20AttributeValidator.cs">
+      <Link>OIOSAML.NET\Validation\Saml20AttributeValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\Saml20EncryptedElementValidator.cs">
+      <Link>OIOSAML.NET\Validation\Saml20EncryptedElementValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\Saml20KeyInfoValidator.cs">
+      <Link>OIOSAML.NET\Validation\Saml20KeyInfoValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\Saml20NameIDValidator.cs">
+      <Link>OIOSAML.NET\Validation\Saml20NameIDValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\Saml20StatementValidator.cs">
+      <Link>OIOSAML.NET\Validation\Saml20StatementValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\Saml20SubjectConfirmationDataValidator.cs">
+      <Link>OIOSAML.NET\Validation\Saml20SubjectConfirmationDataValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\Saml20SubjectConfirmationValidator.cs">
+      <Link>OIOSAML.NET\Validation\Saml20SubjectConfirmationValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\Saml20SubjectValidator.cs">
+      <Link>OIOSAML.NET\Validation\Saml20SubjectValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Validation\Saml20XmlAnyAttributeValidator.cs">
+      <Link>OIOSAML.NET\Validation\Saml20XmlAnyAttributeValidator.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>

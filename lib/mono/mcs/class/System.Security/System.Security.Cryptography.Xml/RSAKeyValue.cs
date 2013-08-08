@@ -69,6 +69,35 @@ namespace System.Security.Cryptography.Xml {
 			if ((value.LocalName != XmlSignature.ElementNames.KeyValue) || (value.NamespaceURI != XmlSignature.NamespaceURI))
 				throw new CryptographicException ("value");
 
+
+			// FIXME: Workaround for bug 13214
+			// Summary: RSA.FromXmlString does not work with xml namespaces
+			// https://bugzilla.xamarin.com/show_bug.cgi?id=13214
+			//
+			// The following code simply strips the 'ds:' prefix from the
+			// RSAKeyValue xml elements, thereby allowing the RSA key loading
+			// to proceed as expected.
+			XmlElement xrsa = null;
+			foreach (XmlNode n in value.ChildNodes) {
+				if (n.NodeType != XmlNodeType.Element &&
+					n.NodeType != XmlNodeType.EndElement) {
+					continue;
+				}
+
+				xrsa = (XmlElement)n;
+				xrsa.Prefix = string.Empty;
+				break;
+			}
+
+			foreach (XmlNode n in xrsa.ChildNodes) {
+				if (n.NodeType != XmlNodeType.Element &&
+				    n.NodeType != XmlNodeType.EndElement) {
+					continue;
+				}
+
+				n.Prefix = string.Empty;
+			}
+
 			rsa.FromXmlString (value.InnerXml);
 		}
 	}

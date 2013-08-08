@@ -8,7 +8,7 @@ using Trace=dk.nita.saml20.Utils.Trace;
 
 namespace dk.nita.saml20.Validation
 {
-    internal class Saml20AssertionValidator : ISaml20AssertionValidator
+    public class Saml20AssertionValidator : ISaml20AssertionValidator
     {
         private readonly List<string> _allowedAudienceUris;
         protected bool _quirksMode;
@@ -297,12 +297,12 @@ namespace dk.nita.saml20.Validation
                             break;
                     }
 
-                    if (Trace.ShouldTrace(TraceEventType.Verbose))
-                    {
-                        string intended = "Intended uris: " + Environment.NewLine + String.Join(Environment.NewLine, audienceRestriction.Audience.ToArray());
-                        string allowed = "Allowed uris: " + Environment.NewLine + String.Join(Environment.NewLine, _allowedAudienceUris.ToArray());
-                        Trace.TraceData(TraceEventType.Verbose, Trace.CreateTraceString(GetType(), "ValidateConditions"), intended, allowed);
-                    }
+//                    if (Trace.ShouldTrace(TraceEventType.Verbose))
+//                    {
+//                        string intended = "Intended uris: " + Environment.NewLine + String.Join(Environment.NewLine, audienceRestriction.Audience.ToArray());
+//                        string allowed = "Allowed uris: " + Environment.NewLine + String.Join(Environment.NewLine, _allowedAudienceUris.ToArray());
+//                        Trace.TraceData(TraceEventType.Verbose, Trace.CreateTraceString(GetType(), "ValidateConditions"), intended, allowed);
+//                    }
 
                     if (match == null)
                         throw new Saml20FormatException("The service is not configured to meet the given audience restrictions");

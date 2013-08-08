@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-//using System.Security.Cryptography.Xml;
+using System.Security.Cryptography.Xml;
 using System.Xml;
-//using dk.nita.saml20.config;
+using dk.nita.saml20.config;
 using dk.nita.saml20.Schema.Core;
-//using dk.nita.saml20.Schema.Protocol;
+using dk.nita.saml20.Schema.Protocol;
 using dk.nita.saml20.Utils;
-//using dk.nita.saml20.Validation;
+using dk.nita.saml20.Validation;
 
 namespace dk.nita.saml20
 {
@@ -31,7 +31,7 @@ namespace dk.nita.saml20
         /// </summary>
         private Assertion _assertion;
 
-//        private ISaml20AssertionValidator _assertionValidator;
+        private ISaml20AssertionValidator _assertionValidator;
 
         private AssertionProfile profile;
 
@@ -44,7 +44,7 @@ namespace dk.nita.saml20
         /// </summary>
         private List<SamlAttribute> _assertionAttributes;
 
-//        private List<EncryptedElement> _encryptedAssertionAttributes;
+        private List<EncryptedElement> _encryptedAssertionAttributes;
 
         private string _encryptedId;
 
@@ -57,31 +57,31 @@ namespace dk.nita.saml20
 
         #region Properties
 
-//        private ISaml20AssertionValidator AssertionValidator
-//        {
-//            get
-//            {
-//                if (_assertionValidator == null)
-//                {
-//                    FederationConfig config = FederationConfig.GetConfig();
-//                    if (config == null || config.AllowedAudienceUris == null)
-//                    {
-//                        if (profile == AssertionProfile.DKSaml)
-//                            _assertionValidator = new DKSaml20AssertionValidator(null, _quirksMode);
-//                        else
-//                            _assertionValidator = new Saml20AssertionValidator(null, _quirksMode);
-//                    }
-//                    else
-//                    {
-//                        if (profile == AssertionProfile.DKSaml)
-//                            _assertionValidator = new DKSaml20AssertionValidator(config.AllowedAudienceUris.Audiences, _quirksMode);
-//                        else
-//                            _assertionValidator = new Saml20AssertionValidator(config.AllowedAudienceUris.Audiences, _quirksMode);
-//                    }
-//                }
-//                return _assertionValidator;
-//            }
-//        }
+        private ISaml20AssertionValidator AssertionValidator
+        {
+            get
+            {
+                if (_assertionValidator == null)
+                {
+                    FederationConfig config = FederationConfig.GetConfig();
+                    if (config == null || config.AllowedAudienceUris == null)
+                    {
+                        if (profile == AssertionProfile.DKSaml)
+                            _assertionValidator = new DKSaml20AssertionValidator(null, _quirksMode);
+                        else
+                            _assertionValidator = new Saml20AssertionValidator(null, _quirksMode);
+                    }
+                    else
+                    {
+                        if (profile == AssertionProfile.DKSaml)
+                            _assertionValidator = new DKSaml20AssertionValidator(config.AllowedAudienceUris.Audiences, _quirksMode);
+                        else
+                            _assertionValidator = new Saml20AssertionValidator(config.AllowedAudienceUris.Audiences, _quirksMode);
+                    }
+                }
+                return _assertionValidator;
+            }
+        }
 
         /// <summary>
         /// A strongly-typed version of the Saml Assertion. It is lazily generated based on the contents of the
@@ -232,25 +232,25 @@ namespace dk.nita.saml20
         /// <summary>
         /// The encrypted attributes of the assertion.
         /// </summary>
-//        public List<EncryptedElement> EncryptedAttributes
-//        {
-//            get 
-//            { 
-//                if (_encryptedAssertionAttributes == null)
-//                    ExtractAttributes(); // Lazy initialization of the attributes list.
-//                return _encryptedAssertionAttributes;
-//            }
-//
-//            set
-//            {
-//                // _encryptedAssertionAttributes == null is reserved for signalling that the attribute is not initialized, so 
-//                // convert it to an empty list.
-//                if (value == null)
-//                    value = new List<EncryptedElement>(0);
-//
-//                _encryptedAssertionAttributes = value;
-//            }
-//        }
+        public List<EncryptedElement> EncryptedAttributes
+        {
+            get 
+            { 
+                if (_encryptedAssertionAttributes == null)
+                    ExtractAttributes(); // Lazy initialization of the attributes list.
+                return _encryptedAssertionAttributes;
+            }
+
+            set
+            {
+                // _encryptedAssertionAttributes == null is reserved for signalling that the attribute is not initialized, so 
+                // convert it to an empty list.
+                if (value == null)
+                    value = new List<EncryptedElement>(0);
+
+                _encryptedAssertionAttributes = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the encrypted id.
@@ -375,11 +375,11 @@ namespace dk.nita.saml20
 
         private bool CheckSignature(AsymmetricAlgorithm key)
         {
-//            if (XmlSignatureUtils.CheckSignature(_samlAssertion, key))
-//            {
-//                SigningKey = key;
-//                return true;
-//            }
+            if (XmlSignatureUtils.CheckSignature(_samlAssertion, key))
+            {
+                SigningKey = key;
+                return true;
+            }
             return false;
             
         }
@@ -409,15 +409,13 @@ namespace dk.nita.saml20
         /// Returns the KeyInfo element of the signature of the token.
         /// </summary>
         /// <returns>Null if the token is not signed. The KeyInfo element otherwise.</returns>
-//        public KeyInfo GetSignatureKeys()
-//        {
-//            if (!XmlSignatureUtils.IsSigned(_samlAssertion))
-//                return null;
-//
-//            return XmlSignatureUtils.ExtractSignatureKeys(_samlAssertion);
-//            
-//            
-//        }
+        public KeyInfo GetSignatureKeys()
+        {
+            if (!XmlSignatureUtils.IsSigned(_samlAssertion))
+                return null;
+
+            return XmlSignatureUtils.ExtractSignatureKeys(_samlAssertion);
+        }
 
         /// <summary>
         /// Gets the assertion as an XmlDocument.
@@ -432,32 +430,32 @@ namespace dk.nita.saml20
         /// Signs the assertion with the given certificate.
         /// </summary>
         /// <param name="cert">The certificate to sign the assertion with.</param>        
-//        public void Sign(X509Certificate2 cert)
-//        {
-//            CheckCertificateCanSign(cert);            
-//
-//            // Clear the strongly typed version of the assertion in preparation for a new source.
-//            _assertion = null;
-//
-//            // Merge the modified attributes to the assertion.
-//            InsertAttributes();
-//
-//            // Remove existing signatures when resigning the assertion
-//            XmlElement signatureParentNode = _samlAssertion; //FIX.DocumentElement;
-//            XmlNode sigNode = null;
-//            while( (sigNode = signatureParentNode.GetElementsByTagName(dk.nita.saml20.Schema.XmlDSig.Signature.ELEMENT_NAME,
-//                                                     Saml20Constants.XMLDSIG)[0]) != null )
-//            {
-//                signatureParentNode.RemoveChild(sigNode);
-//            }
-//
-//            XmlDocument assertionDocument = new XmlDocument();
-//            assertionDocument.Load(new StringReader(Serialization.SerializeToXmlString(_samlAssertion)));
-//
-//            AddSignature(assertionDocument, cert);
-//
-//            LoadXml(assertionDocument.DocumentElement, new List<AsymmetricAlgorithm>(new AsymmetricAlgorithm[] { cert.PublicKey.Key }));
-//        }
+        public void Sign(X509Certificate2 cert)
+        {
+            CheckCertificateCanSign(cert);            
+
+            // Clear the strongly typed version of the assertion in preparation for a new source.
+            _assertion = null;
+
+            // Merge the modified attributes to the assertion.
+            InsertAttributes();
+
+            // Remove existing signatures when resigning the assertion
+            XmlElement signatureParentNode = _samlAssertion; //FIX.DocumentElement;
+            XmlNode sigNode = null;
+            while( (sigNode = signatureParentNode.GetElementsByTagName(dk.nita.saml20.Schema.XmlDSig.Signature.ELEMENT_NAME,
+                                                     Saml20Constants.XMLDSIG)[0]) != null )
+            {
+                signatureParentNode.RemoveChild(sigNode);
+            }
+
+            XmlDocument assertionDocument = new XmlDocument();
+            assertionDocument.Load(new StringReader(Serialization.SerializeToXmlString(_samlAssertion)));
+
+            AddSignature(assertionDocument, cert);
+
+            LoadXml(assertionDocument.DocumentElement, new List<AsymmetricAlgorithm>(new AsymmetricAlgorithm[] { cert.PublicKey.Key }));
+        }
 
         private static void CheckCertificateCanSign(X509Certificate2 cert)
         {
@@ -465,33 +463,33 @@ namespace dk.nita.saml20
                 throw new Saml20Exception("The private key must be part of the certificate.");
         }
 
-//        private static void AddSignature(XmlDocument assertionDocument, X509Certificate2 cert)
-//        {
-//            SignedXml signedXml = new SignedXml(assertionDocument);
-//            signedXml.SignedInfo.CanonicalizationMethod = SignedXml.XmlDsigExcC14NTransformUrl;
-//            signedXml.SigningKey = cert.PrivateKey;
-//
-//            // Retrieve the value of the "ID" attribute on the root assertion element.
-//            XmlNodeList list = assertionDocument.GetElementsByTagName(Assertion.ELEMENT_NAME, Saml20Constants.ASSERTION);
-//            XmlElement el = (XmlElement)list[0];            
-//            Reference reference = new Reference("#" + el.GetAttribute("ID"));
-//
-//            reference.AddTransform(new XmlDsigEnvelopedSignatureTransform());            
-//            reference.AddTransform(new XmlDsigExcC14NTransform());            
-//
-//            signedXml.AddReference(reference);
-//
-//            // Include the public key of the certificate in the assertion.
-//            //signedXml.KeyInfo = new KeyInfo();
-//            //signedXml.KeyInfo.AddClause(new KeyInfoX509Data(cert, X509IncludeOption.WholeChain));
-//
-//            signedXml.ComputeSignature();
-//            // Append the computed signature. The signature must be placed as the sibling of the Issuer element.
-//            XmlNodeList nodes = assertionDocument.DocumentElement.GetElementsByTagName("Issuer", Saml20Constants.ASSERTION);            
-//            if (nodes.Count != 1)
-//                throw new Saml20Exception("Assertion MUST contain one <Issuer> element.");            
-//            assertionDocument.DocumentElement.InsertAfter(assertionDocument.ImportNode(signedXml.GetXml(), true), nodes[0]);
-//        }
+        private static void AddSignature(XmlDocument assertionDocument, X509Certificate2 cert)
+        {
+            SignedXml signedXml = new SignedXml(assertionDocument);
+            signedXml.SignedInfo.CanonicalizationMethod = SignedXml.XmlDsigExcC14NTransformUrl;
+            signedXml.SigningKey = cert.PrivateKey;
+
+            // Retrieve the value of the "ID" attribute on the root assertion element.
+            XmlNodeList list = assertionDocument.GetElementsByTagName(Assertion.ELEMENT_NAME, Saml20Constants.ASSERTION);
+            XmlElement el = (XmlElement)list[0];            
+            Reference reference = new Reference("#" + el.GetAttribute("ID"));
+
+            reference.AddTransform(new XmlDsigEnvelopedSignatureTransform());            
+            reference.AddTransform(new XmlDsigExcC14NTransform());            
+
+            signedXml.AddReference(reference);
+
+            // Include the public key of the certificate in the assertion.
+            signedXml.KeyInfo = new KeyInfo();
+            signedXml.KeyInfo.AddClause(new KeyInfoX509Data(cert, X509IncludeOption.WholeChain));
+
+            signedXml.ComputeSignature();
+            // Append the computed signature. The signature must be placed as the sibling of the Issuer element.
+            XmlNodeList nodes = assertionDocument.DocumentElement.GetElementsByTagName("Issuer", Saml20Constants.ASSERTION);            
+            if (nodes.Count != 1)
+                throw new Saml20Exception("Assertion MUST contain one <Issuer> element.");            
+            assertionDocument.DocumentElement.InsertAfter(assertionDocument.ImportNode(signedXml.GetXml(), true), nodes[0]);
+        }
 
 
         /// <summary>
@@ -501,7 +499,7 @@ namespace dk.nita.saml20
         private void ExtractAttributes()
         {            
             _assertionAttributes = new List<SamlAttribute>(0);
-//            _encryptedAssertionAttributes = new List<EncryptedElement>(0);
+            _encryptedAssertionAttributes = new List<EncryptedElement>(0);
 
             XmlNodeList list =
                 _samlAssertion.GetElementsByTagName(AttributeStatement.ELEMENT_NAME, Saml20Constants.ASSERTION);
@@ -523,8 +521,8 @@ namespace dk.nita.saml20
                 if (item is SamlAttribute)
                     _assertionAttributes.Add((SamlAttribute)item);
 
-//                if (item is EncryptedElement)
-//                    _encryptedAssertionAttributes.Add((EncryptedElement) item);
+                if (item is EncryptedElement)
+                    _encryptedAssertionAttributes.Add((EncryptedElement) item);
             }
         }
 
@@ -540,7 +538,7 @@ namespace dk.nita.saml20
             AttributeStatement attributeStatement = new AttributeStatement();
             List<object> statements = new List<object>(/*_encryptedAssertionAttributes.Count + */_assertionAttributes.Count);
             statements.AddRange(_assertionAttributes.ToArray());
-//            statements.AddRange(_encryptedAssertionAttributes.ToArray());
+            statements.AddRange(_encryptedAssertionAttributes.ToArray());
             attributeStatement.Items = statements.ToArray();
 
             XmlNodeList list =
@@ -560,7 +558,7 @@ namespace dk.nita.saml20
                 _samlAssertion.AppendChild(attr);                
             }
 
-//            _encryptedAssertionAttributes = null;
+            _encryptedAssertionAttributes = null;
             _assertionAttributes = null;
         }
 
@@ -577,8 +575,8 @@ namespace dk.nita.saml20
                     throw new Saml20Exception("Assertion signature could not be verified.");
             
             // Validate the saml20Assertion.      
-//            if(_autoValidate)
-//                AssertionValidator.ValidateAssertion(Assertion);
+            if(_autoValidate)
+                AssertionValidator.ValidateAssertion(Assertion);
         }
 
         /// <summary>

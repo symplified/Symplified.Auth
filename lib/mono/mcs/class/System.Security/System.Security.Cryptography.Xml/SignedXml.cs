@@ -365,7 +365,13 @@ namespace System.Security.Cryptography.Xml {
 
 		private Transform GetC14NMethod ()
 		{
-			Transform t = (Transform) CryptoConfig.CreateFromName (m_signature.SignedInfo.CanonicalizationMethod);
+			Transform t = null;
+			if (m_signature.SignedInfo.CanonicalizationMethod.Contains ("http://www.w3.org/2001/10/xml-exc-c14n#")) {
+				t = new XmlDsigExcC14NTransform ();
+			}
+
+			if (t == null)
+				t = (Transform) CryptoConfig.CreateFromName (m_signature.SignedInfo.CanonicalizationMethod);
 			if (t == null)
 				throw new CryptographicException ("Unknown Canonicalization Method {0}", m_signature.SignedInfo.CanonicalizationMethod);
 			return t;

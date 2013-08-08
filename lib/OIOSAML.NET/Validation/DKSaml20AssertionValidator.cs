@@ -4,7 +4,7 @@ using dk.nita.saml20.Schema.Core;
 
 namespace dk.nita.saml20.Validation
 {
-    internal class DKSaml20AssertionValidator : Saml20AssertionValidator
+    public class DKSaml20AssertionValidator : Saml20AssertionValidator
     {
         
         public DKSaml20AssertionValidator(List<string> allowedAudienceUris, bool quirksMode)

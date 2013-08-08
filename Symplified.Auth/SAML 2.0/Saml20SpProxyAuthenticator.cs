@@ -12,14 +12,14 @@ namespace Symplified.Auth
 	/// <summary>
 	/// SAML 2.0 authenticator.
 	/// </summary>
-	public class SAML20Authenticator : WebRedirectAuthenticator
+	public class Saml20SpProxyAuthenticator : WebRedirectAuthenticator
 	{
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Symplified.Auth.SAML20Authenticator"/> class.
+		/// Initializes a new instance of the <see cref="Symplified.Auth.Saml20SpProxyAuthenticator"/> class.
 		/// </summary>
 		/// <param name="initialUrl">Initial URL.</param>
 		/// <param name="redirectUrl">Redirect URL.</param>
-		public SAML20Authenticator (Uri initialUrl, Uri redirectUrl)
+		public Saml20SpProxyAuthenticator (Uri initialUrl, Uri redirectUrl)
 			: base (initialUrl, redirectUrl)
 		{
 

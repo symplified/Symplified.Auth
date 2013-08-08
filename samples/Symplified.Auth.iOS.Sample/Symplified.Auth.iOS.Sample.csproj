@@ -83,6 +83,7 @@
     <Reference Include="MonoTouch.Dialog-1" />
     <Reference Include="System.Net" />
     <Reference Include="System.Web.Services" />
+    <Reference Include="Mono.Security" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -104,5 +105,9 @@
       <Project>{9309BCCC-AA7B-4195-A130-D4572FA9488D}</Project>
       <Name>Xamarin.Auth.iOS</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="metadata-ADLER.xml" />
+    <Content Include="tfobs-demo-idp-metadata.xml" />
   </ItemGroup>
 </Project>
