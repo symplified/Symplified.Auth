@@ -79,7 +79,7 @@ namespace System.Configuration
 		}
 
 		[MonoTODO ("Provide ConfigContext. Likely the culprit of bug #322493")]
-		protected internal virtual object GetRuntimeObject ()
+		public virtual object GetRuntimeObject ()
 		{
 			if (SectionHandler != null) {
 				ConfigurationSection parentSection = sectionInformation != null ? sectionInformation.GetParentSection () : null;
@@ -186,7 +186,7 @@ namespace System.Configuration
 		}
 		
 		[MonoInternalNote ("find the proper location for the decryption stuff")]
-		protected internal virtual void DeserializeSection (XmlReader reader)
+		public virtual void DeserializeSection (XmlReader reader)
 		{
 			try
 			{
@@ -223,7 +223,7 @@ namespace System.Configuration
 			DeserializeElement (new ConfigXmlTextReader (new StringReader (RawXml), path), false);
 		}
 
-		protected internal virtual string SerializeSection (ConfigurationElement parentElement, string name, ConfigurationSaveMode saveMode)
+		public virtual string SerializeSection (ConfigurationElement parentElement, string name, ConfigurationSaveMode saveMode)
 		{
 			externalDataXml = null;
 			ConfigurationElement elem;

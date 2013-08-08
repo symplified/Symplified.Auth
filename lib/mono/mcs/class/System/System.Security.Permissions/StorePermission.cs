@@ -57,7 +57,7 @@ namespace System.Security.Permissions {
 			get { return _flags; }
 			set {
 				if ((value != 0) && (value & StorePermissionFlags.AllFlags) == 0) {
-					string msg = String.Format (Locale.GetText ("Invalid enum {0}"), value);
+					string msg = String.Format ("Invalid enum {0}", value);
 					throw new ArgumentException (msg, "StorePermissionFlags");
 				}
 				_flags = value;

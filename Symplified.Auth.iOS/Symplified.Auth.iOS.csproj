@@ -17,7 +17,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;PLATFORM_IOS;NET_2_0</DefineConstants>
+    <DefineConstants>DEBUG;PLATFORM_IOS;NET_2_0;SECURITY_DEP;MOBILE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -29,7 +29,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <DefineConstants>PLATFORM_IOS;NET_2_0</DefineConstants>
+    <DefineConstants>PLATFORM_IOS;NET_2_0;SECURITY_DEP;MOBILE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -1290,12 +1290,6 @@
     <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\Debugger.jvm.cs">
       <Link>System\System.Diagnostics\Debugger.jvm.cs</Link>
     </Compile>
-    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\DefaultTraceListener.cs">
-      <Link>System\System.Diagnostics\DefaultTraceListener.cs</Link>
-    </Compile>
-    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\DelimitedListTraceListener.cs">
-      <Link>System\System.Diagnostics\DelimitedListTraceListener.cs</Link>
-    </Compile>
     <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\DiagnosticsConfigurationHandler.cs">
       <Link>System\System.Diagnostics\DiagnosticsConfigurationHandler.cs</Link>
     </Compile>
@@ -1337,12 +1331,6 @@
     </Compile>
     <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\OverflowAction.cs">
       <Link>System\System.Diagnostics\OverflowAction.cs</Link>
-    </Compile>
-    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\ProcessModule.cs">
-      <Link>System\System.Diagnostics\ProcessModule.cs</Link>
-    </Compile>
-    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\ProcessModuleCollection.cs">
-      <Link>System\System.Diagnostics\ProcessModuleCollection.cs</Link>
     </Compile>
     <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\ProcessPriorityClass.cs">
       <Link>System\System.Diagnostics\ProcessPriorityClass.cs</Link>
@@ -1416,20 +1404,11 @@
     <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\TraceOptions.cs">
       <Link>System\System.Diagnostics\TraceOptions.cs</Link>
     </Compile>
-    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\TraceSource.cs">
-      <Link>System\System.Diagnostics\TraceSource.cs</Link>
-    </Compile>
-    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\TraceSourceInfo.cs">
-      <Link>System\System.Diagnostics\TraceSourceInfo.cs</Link>
-    </Compile>
     <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\TraceSwitch.cs">
       <Link>System\System.Diagnostics\TraceSwitch.cs</Link>
     </Compile>
     <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\XmlWriterTraceListener.cs">
       <Link>System\System.Diagnostics\XmlWriterTraceListener.cs</Link>
-    </Compile>
-    <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Permissions\DataProtectionPermissionAttribute.cs">
-      <Link>System.Security.Permissions\DataProtectionPermissionAttribute.cs</Link>
     </Compile>
     <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Permissions\DataProtectionPermissionFlags.cs">
       <Link>System.Security.Permissions\DataProtectionPermissionFlags.cs</Link>
@@ -1463,6 +1442,12 @@
     </Compile>
     <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\TraceListenerCollection.cs">
       <Link>System\System.Diagnostics\TraceListenerCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\TraceSource.cs">
+      <Link>System\System.Diagnostics\TraceSource.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\TraceSourceInfo.cs">
+      <Link>System\System.Diagnostics\TraceSourceInfo.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -1636,6 +1621,21 @@
     </None>
     <None Include="..\lib\mono\mcs\class\System.Security\System.Security.Permissions\DataProtectionPermission.cs">
       <Link>System.Security.Permissions\DataProtectionPermission.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\DefaultTraceListener.cs">
+      <Link>System\System.Diagnostics\DefaultTraceListener.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\DelimitedListTraceListener.cs">
+      <Link>System\System.Diagnostics\DelimitedListTraceListener.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\ProcessModule.cs">
+      <Link>System\System.Diagnostics\ProcessModule.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System\System.Diagnostics\ProcessModuleCollection.cs">
+      <Link>System\System.Diagnostics\ProcessModuleCollection.cs</Link>
+    </None>
+    <None Include="..\lib\mono\mcs\class\System.Security\System.Security.Permissions\DataProtectionPermissionAttribute.cs">
+      <Link>System.Security.Permissions\DataProtectionPermissionAttribute.cs</Link>
     </None>
   </ItemGroup>
 </Project>

@@ -47,11 +47,11 @@ namespace System.Security.Cryptography.Xml {
 
 		protected Transform ()
 		{
-			if (SecurityManager.SecurityEnabled) {
-				xmlResolver = new XmlSecureResolver (new XmlUrlResolver (), (Evidence) new Evidence ());
-			} else {
+//			if (SecurityManager.SecurityEnabled) {
+//				xmlResolver = new XmlSecureResolver (new XmlUrlResolver (), (Evidence) new Evidence ());
+//			} else {
 				xmlResolver = new XmlUrlResolver ();
-			}
+//			}
 		}
 
 		#region Properties

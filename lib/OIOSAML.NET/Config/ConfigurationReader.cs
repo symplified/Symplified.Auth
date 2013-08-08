@@ -20,7 +20,7 @@ namespace dk.nita.saml20.config
         /// <param name="reader">The <see cref="T:System.Xml.XmlReader"/> that reads from the configuration file.</param>
         /// <param name="serializeCollectionKey">true to serialize only the collection key properties; otherwise, false.</param>
         /// <exception cref="T:System.Configuration.ConfigurationErrorsException">The element to read is locked.- or -An attribute of the current node is not recognized.- or -The lock status of the current node cannot be determined.  </exception>
-        protected internal override void DeserializeElement(XmlReader reader, bool serializeCollectionKey)
+		public override void DeserializeElement(XmlReader reader, bool serializeCollectionKey)
         {
             XmlSerializer serializer = new XmlSerializer(_currentConfigType);
             _currentConfig = serializer.Deserialize(reader);
@@ -30,7 +30,7 @@ namespace dk.nita.saml20.config
         /// Retrieves the contained object from the section.
         /// </summary>
         /// <returns>The contained data object.</returns>
-        protected internal override object GetRuntimeObject()
+        public override object GetRuntimeObject()
         {
             return _currentConfig;
         }
@@ -106,7 +106,7 @@ namespace dk.nita.saml20.config
         /// <param name="name">The name of the section.</param>
         /// <param name="saveMode">The mode to use when saving.</param>
         /// <returns></returns>
-        protected internal override string SerializeSection(ConfigurationElement parentElement, string name, ConfigurationSaveMode saveMode)
+		public override string SerializeSection(ConfigurationElement parentElement, string name, ConfigurationSaveMode saveMode)
         {
             StringBuilder str = new StringBuilder();
             XmlWriterSettings settings = new XmlWriterSettings();

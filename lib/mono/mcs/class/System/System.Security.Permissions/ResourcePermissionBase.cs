@@ -83,7 +83,7 @@ namespace System.Security.Permissions {
 		{
 			CheckEntry (entry);
 			if (Exists (entry)) {
-				string msg = Locale.GetText ("Entry already exists.");
+				string msg = "Entry already exists.";
 				throw new InvalidOperationException (msg);
 			}
 
@@ -113,7 +113,7 @@ namespace System.Security.Permissions {
 				throw new ArgumentNullException ("securityElement");
 
 #if !BOOTSTRAP_BASIC				
-			CheckSecurityElement (securityElement, "securityElement", version, version);
+//			CheckSecurityElement (securityElement, "securityElement", version, version);
 			// Note: we do not (yet) care about the return value 
 			// as we only accept version 1 (min/max values)
 #endif
@@ -204,7 +204,7 @@ namespace System.Security.Permissions {
 					return;
 				}
 			}
-			string msg = Locale.GetText ("Entry doesn't exists.");
+			string msg = "Entry doesn't exists.";
 			throw new InvalidOperationException (msg);
 		}
 
@@ -287,7 +287,7 @@ namespace System.Security.Permissions {
 			if (entry == null)
 				throw new ArgumentNullException ("entry");
 			if ((entry.PermissionAccessPath == null) || (entry.PermissionAccessPath.Length != _tags.Length)) {
-				string msg = Locale.GetText ("Entry doesn't match TagNames");
+				string msg = "Entry doesn't match TagNames";
 				throw new InvalidOperationException (msg);
 			}
 		}
@@ -324,7 +324,7 @@ namespace System.Security.Permissions {
 		{
 			// FIXME: maybe other checks are required (but not documented)
 			if ((name == null) || (name.Length == 0) || (name.IndexOfAny (invalidChars) != -1)) {
-				string msg = Locale.GetText ("Invalid machine name '{0}'.");
+				string msg = "Invalid machine name '{0}'.";
 				if (name == null)
 					name = "(null)";
 				msg = String.Format (msg, name);

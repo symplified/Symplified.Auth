@@ -50,7 +50,7 @@ namespace System.Security.Permissions {
 			get { return _flags; }
 			set {
 				if ((value & StorePermissionFlags.AllFlags) != value) {
-					string msg = String.Format (Locale.GetText ("Invalid flags {0}"), value);
+					string msg = String.Format ("Invalid flags {0}", value);
 					throw new ArgumentException (msg, "StorePermissionFlags");
 				}
 

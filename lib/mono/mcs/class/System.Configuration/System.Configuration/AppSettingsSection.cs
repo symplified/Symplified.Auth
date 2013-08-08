@@ -64,7 +64,7 @@ namespace System.Configuration {
 		}
 
 		[MonoInternalNote ("file path?  do we use a System.Configuration api for opening it?  do we keep it open?  do we open it writable?")]
-		protected internal override void DeserializeElement (XmlReader reader, bool serializeCollectionKey)
+		public override void DeserializeElement (XmlReader reader, bool serializeCollectionKey)
 		{
 			/* need to do this so we pick up the File attribute */
 			base.DeserializeElement (reader, serializeCollectionKey);
@@ -90,7 +90,7 @@ namespace System.Configuration {
 		}
 
 		[MonoTODO]
-		protected internal override string SerializeSection (
+		public override string SerializeSection (
 			ConfigurationElement parent, string name, ConfigurationSaveMode mode)
 		{
 			if (File == "") {
@@ -118,7 +118,7 @@ namespace System.Configuration {
 			}
 		}
 
-		protected internal override object GetRuntimeObject ()
+		public override object GetRuntimeObject ()
 		{
 			KeyValueInternalCollection col = new KeyValueInternalCollection ();
 				

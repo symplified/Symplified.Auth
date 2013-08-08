@@ -231,7 +231,41 @@ namespace System.Diagnostics {
 			return String.Join (joiner, arr);
 		}
 
-#if !MOBILE
+#if MOBILE
+		public virtual void TraceData (TraceEventCache eventCache, string source,
+		                               TraceEventType eventType, int id, object data)
+		{
+			;
+		}
+
+
+		public virtual void TraceData (TraceEventCache eventCache, string source,
+		                               TraceEventType eventType, int id, params object [] data)
+		{
+			TraceData (eventCache, source, eventType, id, FormatArray (data, " "));
+		}
+
+		public virtual void TraceEvent (TraceEventCache eventCache, string source, TraceEventType eventType, int id)
+		{
+			TraceEvent (eventCache, source, eventType, id, null);
+		}
+
+		public virtual void TraceEvent (TraceEventCache eventCache, string source, TraceEventType eventType,
+		                                int id, string message)
+		{
+			TraceData (eventCache, source, eventType, id, message);
+		}
+
+		public virtual void TraceEvent (TraceEventCache eventCache, string source, TraceEventType eventType, int id, string format, params object [] args)
+		{
+			TraceEvent (eventCache, source, eventType, id, String.Format (format, args));
+		}
+
+		public virtual void TraceTransfer (TraceEventCache eventCache, string source, int id, string message, Guid relatedActivityId)
+		{
+			TraceEvent (eventCache, source, TraceEventType.Transfer, id, String.Format ("{0}, relatedActivityId={1}", message, relatedActivityId));
+		}
+#else
 		[ComVisible (false)]
 		public virtual void TraceData (TraceEventCache eventCache, string source,
 			TraceEventType eventType, int id, object data)

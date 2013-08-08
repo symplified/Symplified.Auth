@@ -64,8 +64,8 @@ namespace dk.nita.saml20.identity
         {
             get
             {
-                if (Saml20PrincipalCache.GetPrincipal() != null)
-                    return Saml20PrincipalCache.GetPrincipal().Identity as Saml20Identity;
+//                if (Saml20PrincipalCache.GetPrincipal() != null)
+//                    return Saml20PrincipalCache.GetPrincipal().Identity as Saml20Identity;
                 return null;
             }
         }
@@ -74,8 +74,8 @@ namespace dk.nita.saml20.identity
         /// Check if the Saml 2 Assertion's attributes have been correctly initialized.
         /// </summary>
         public static bool IsInitialized()
-        {
-            return Saml20PrincipalCache.GetPrincipal() != null && Saml20PrincipalCache.GetPrincipal().Identity is Saml20Identity;
+		{return false;
+//            return Saml20PrincipalCache.GetPrincipal() != null && Saml20PrincipalCache.GetPrincipal().Identity is Saml20Identity;
         }
 
         /// <summary>

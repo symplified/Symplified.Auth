@@ -44,7 +44,7 @@ namespace System.Diagnostics
 			this.levels = levels;
 			this.listeners = new TraceListenerCollection ();
 		}
-
+#if !MOBILE
 		internal TraceSourceInfo (string name, SourceLevels levels, TraceImplSettings settings)
 		{
 			this.name = name;
@@ -52,7 +52,7 @@ namespace System.Diagnostics
 			this.listeners = new TraceListenerCollection (false);
 			this.listeners.Add (new DefaultTraceListener(), settings);
 		}
-
+#endif
 		public string Name {
 			get { return name; }
 		}

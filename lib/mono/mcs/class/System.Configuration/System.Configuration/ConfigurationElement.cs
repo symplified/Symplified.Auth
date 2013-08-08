@@ -287,7 +287,7 @@ namespace System.Configuration
 			return false;
 		}
 		
-		protected internal virtual void DeserializeElement (XmlReader reader, bool serializeCollectionKey)
+		public virtual void DeserializeElement (XmlReader reader, bool serializeCollectionKey)
 		{
 			Hashtable readProps = new Hashtable ();
 			

@@ -26,7 +26,7 @@ namespace dk.nita.saml20.Schema.Metadata
         
         private string[] attributeProfileField;
         
-//        private dk.nita.saml20.config.Attribute[] attributeField;
+        private dk.nita.saml20.config.Attribute[] attributeField;
 
 
         /// <summary>
@@ -36,15 +36,15 @@ namespace dk.nita.saml20.Schema.Metadata
         /// such endpoint, by definition.
         /// </summary>
         /// <value>The attribute service.</value>
-//        [XmlElementAttribute("AttributeService")]
-//        public Endpoint[] AttributeService {
-//            get {
-//                return attributeServiceField;
-//            }
-//            set {
-//                attributeServiceField = value;
-//            }
-//        }
+        [XmlElementAttribute("AttributeService")]
+        public Endpoint[] AttributeService {
+            get {
+                return attributeServiceField;
+            }
+            set {
+                attributeServiceField = value;
+            }
+        }
 
 
         /// <summary>

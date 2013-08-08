@@ -46,7 +46,8 @@ namespace dk.nita.saml20.Utils
         /// <returns>A URL that can be used for logging in at the IDP</returns>
         public static string GetIDPLoginUrl(string idpId)
         {
-            return string.Format("{0}?{1}={2}", SAML20FederationConfig.GetConfig().ServiceProvider.SignOnEndpoint.localPath, Saml20SignonHandler.IDPChoiceParameterName, HttpUtility.UrlEncode(idpId));
+			return string.Empty;
+//            return string.Format("{0}?{1}={2}", SAML20FederationConfig.GetConfig().ServiceProvider.SignOnEndpoint.localPath, Saml20SignonHandler.IDPChoiceParameterName, HttpUtility.UrlEncode(idpId));
         }
     }
 }

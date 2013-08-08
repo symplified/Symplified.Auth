@@ -64,7 +64,7 @@ namespace System.Configuration
                 }
 
             
-                protected internal override object GetRuntimeObject ()
+                public override object GetRuntimeObject ()
                 {
                         return base.GetRuntimeObject ();
                 }

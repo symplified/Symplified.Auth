@@ -49,12 +49,12 @@ namespace System.Security.Permissions {
 				break;
 			case PermissionState.Unrestricted:
 				if (!allowUnrestricted) {
-					msg = Locale.GetText ("Unrestricted isn't not allowed for identity permissions.");
+					msg = "Unrestricted isn't not allowed for identity permissions.";
 					throw new ArgumentException (msg, "state");
 				}
 				break;
 			default:
-				msg = String.Format (Locale.GetText ("Invalid enum {0}"), state);
+				msg = String.Format ("Invalid enum {0}", state);
 				throw new ArgumentException (msg, "state");
 			}
 			return state;
@@ -66,7 +66,7 @@ namespace System.Security.Permissions {
 				throw new ArgumentNullException (parameterName);
 
 			if (se.Attribute ("class") == null) {
-				string msg = Locale.GetText ("Missing 'class' attribute.");
+				string msg = "Missing 'class' attribute.";
 				throw new ArgumentException (msg, parameterName);
 			}
 
@@ -78,14 +78,14 @@ namespace System.Security.Permissions {
 					version = Int32.Parse (v);
 				}
 				catch (Exception e) {
-					string msg = Locale.GetText ("Couldn't parse version from '{0}'.");
+					string msg = "Couldn't parse version from '{0}'.";
 					msg = String.Format (msg, v);
 					throw new ArgumentException (msg, parameterName, e);
 				}
 			}
 
 			if ((version < minimumVersion) || (version > maximumVersion)) {
-				string msg = Locale.GetText ("Unknown version '{0}', expected versions between ['{1}','{2}'].");
+				string msg = "Unknown version '{0}', expected versions between ['{1}','{2}'].";
 				msg = String.Format (msg, version, minimumVersion, maximumVersion);
 				throw new ArgumentException (msg, parameterName);
 			}
@@ -103,7 +103,7 @@ namespace System.Security.Permissions {
 
 		internal static void ThrowInvalidPermission (IPermission target, Type expected) 
 		{
-			string msg = Locale.GetText ("Invalid permission type '{0}', expected type '{1}'.");
+			string msg = "Invalid permission type '{0}', expected type '{1}'.";
 			msg = String.Format (msg, target.GetType (), expected);
 			throw new ArgumentException (msg, "target");
 		}

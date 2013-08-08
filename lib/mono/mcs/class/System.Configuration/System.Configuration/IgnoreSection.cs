@@ -54,7 +54,7 @@ namespace System.Configuration {
 			return false;
 		}
 
-		protected internal override void DeserializeSection (XmlReader reader)
+		public override void DeserializeSection (XmlReader reader)
 		{
 			xml = reader.ReadOuterXml ();
 		}
@@ -71,7 +71,7 @@ namespace System.Configuration {
 			base.ResetModified ();
 		}
 
-		protected internal override string SerializeSection (ConfigurationElement parentElement, string name, ConfigurationSaveMode saveMode)
+		public override string SerializeSection (ConfigurationElement parentElement, string name, ConfigurationSaveMode saveMode)
 		{
 			return xml;
 		}

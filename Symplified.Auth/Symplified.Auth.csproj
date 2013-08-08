@@ -48,6 +48,7 @@
     </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SAML 1.1\SAML11Authenticator.cs" />

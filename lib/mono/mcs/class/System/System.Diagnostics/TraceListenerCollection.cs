@@ -50,8 +50,8 @@ namespace System.Diagnostics {
 
 		internal TraceListenerCollection (bool addDefault)
 		{
-			if (addDefault)
-				Add (new DefaultTraceListener ());
+//			if (addDefault)
+//				Add (new DefaultTraceListener ());
 		}
 
 		public int Count{
@@ -173,8 +173,8 @@ namespace System.Diagnostics {
 		{
 			if (value is TraceListener)
 				return Add ((TraceListener) value);
-			throw new NotSupportedException (Locale.GetText (
-				"You can only add TraceListener objects to the collection"));
+			throw new NotSupportedException (
+				"You can only add TraceListener objects to the collection");
 		}
 
 		bool IList.Contains (object value)
@@ -197,8 +197,8 @@ namespace System.Diagnostics {
 				Insert (index, (TraceListener) value);
 				return;
 			}
-			throw new NotSupportedException (Locale.GetText (
-				"You can only insert TraceListener objects into the collection"));
+			throw new NotSupportedException (
+				"You can only insert TraceListener objects into the collection");
 		}
 
 		void IList.Remove (object value)
@@ -233,8 +233,8 @@ namespace System.Diagnostics {
 				if (found != null)
 					listeners.Remove (found);
 				else
-					throw new ArgumentException (Locale.GetText (
-						"TraceListener " + name + " was not in the collection"));
+					throw new ArgumentException (
+						"TraceListener " + name + " was not in the collection");
 			}
 		}
 

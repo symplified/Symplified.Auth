@@ -40,7 +40,7 @@ namespace System.Configuration {
 			properties = new ConfigurationPropertyCollection ();
 		}
 
-		protected internal override void DeserializeSection (XmlReader xmlReader)
+		public override void DeserializeSection (XmlReader xmlReader)
 		{
 			// not sure if it is the right thing to do,
 			// but DefaultSection does not raise errors on
@@ -73,7 +73,7 @@ namespace System.Configuration {
 		}
 
 		[MonoTODO]
-		protected internal override string SerializeSection (ConfigurationElement parentSection, string name, ConfigurationSaveMode saveMode)
+		public override string SerializeSection (ConfigurationElement parentSection, string name, ConfigurationSaveMode saveMode)
 		{
 			return base.SerializeSection (parentSection, name, saveMode);
 		}

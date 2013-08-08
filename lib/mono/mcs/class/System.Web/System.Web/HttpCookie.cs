@@ -39,9 +39,10 @@ namespace System.Web
 		Secure = 1,
 			HttpOnly = 2
 			}
-	
+#if !MOBILE
 	// CAS - no InheritanceDemand here as the class is sealed
 	[AspNetHostingPermission (SecurityAction.LinkDemand, Level = AspNetHostingPermissionLevel.Minimal)]
+#endif
 #if TARGET_J2EE
 	// Cookies must be serializable to be saved in the session for J2EE portal
 	[Serializable]

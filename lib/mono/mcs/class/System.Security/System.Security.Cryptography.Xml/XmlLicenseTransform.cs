@@ -91,8 +91,8 @@ namespace System.Security.Cryptography.Xml {
 		[MonoTODO]
 		public override void LoadInput (object obj)
 		{
-			if (_decryptor == null)
-				throw new CryptographicException (Locale.GetText ("missing decryptor"));
+//			if (_decryptor == null)
+//				throw new CryptographicException (Locale.GetText ("missing decryptor"));
 			// TODO: check for <issuer> element
 			// TODO: check for <license> element
 		}

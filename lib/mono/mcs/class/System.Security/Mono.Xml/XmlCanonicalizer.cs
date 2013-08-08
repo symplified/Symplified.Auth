@@ -36,7 +36,7 @@ using System.Xml;
 
 namespace Mono.Xml { 
 
-	internal class XmlCanonicalizer {
+	public class XmlCanonicalizer {
 
 		private enum XmlCanonicalizerState
 		{
