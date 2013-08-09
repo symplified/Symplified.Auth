@@ -6,7 +6,8 @@ using System.Net;
 using Symplified.Auth.iOS;
 using PlatformCookie = MonoTouch.Foundation.NSHttpCookie;
 #elif PLATFORM_ANDROID
-
+using Symplified.Auth.Android;
+using PlatformCookie = Org.Apache.Http.Cookies.IClientCookie;
 #endif
 
 namespace Symplified.Auth
@@ -26,7 +27,7 @@ namespace Symplified.Auth
 			CookieCollection clrCookies = new CookieCollection ();
 #if PLATFORM_IOS || PLATFORM_ANDROID
 			foreach (PlatformCookie cookie in platformCookies) {
-				clrCookies.Add (cookie.ConvertToCLRCookie ());
+//				clrCookies.Add (cookie.ConvertToCLRCookie ());
 			}
 #endif
 			return (clrCookies.Count > 0) ? clrCookies : null;

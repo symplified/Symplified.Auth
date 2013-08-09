@@ -50,7 +50,9 @@ namespace Symplified.Auth
 		{
 			HttpWebRequest hreq = new HttpWebRequest (new Uri ("google.com"));
 			hreq.AllowAutoRedirect = true;
+#if PLATFORM_IOS
 			hreq.CachePolicy = new RequestCachePolicy (RequestCacheLevel.NoCacheNoStore);			
+#endif
 			hreq.Method = "POST";
 			hreq.UserAgent = "Symplified Mobile SDK 1.0";
 		}

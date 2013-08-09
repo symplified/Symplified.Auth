@@ -15,8 +15,9 @@ using Symplified.Auth.iOS;
 using MonoTouch.Foundation;
 using PlatformCookie = MonoTouch.Foundation.NSHttpCookie;
 #elif PLATFORM_ANDROID
-
-
+using JSON = System.Json;
+using Symplified.Auth.Android;
+using PlatformCookie = Org.Apache.Http.Cookies.ICookie;
 #endif
 
 

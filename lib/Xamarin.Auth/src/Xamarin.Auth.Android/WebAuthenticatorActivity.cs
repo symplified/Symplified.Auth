@@ -155,7 +155,18 @@ namespace Xamarin.Auth
 			public override void OnPageStarted (WebView view, string url, Android.Graphics.Bitmap favicon)
 			{
 				var uri = new Uri (url);
-				activity.state.Authenticator.OnPageLoading (uri);
+
+				System.Collections.Generic.IDictionary<string,string> formParams = null;
+
+				// TODO: Pull form params
+//				if (request.Body != null) {
+//					byte[] dataBytes = new byte[request.Body.Length];
+//					System.Runtime.InteropServices.Marshal.Copy(request.Body.Bytes, dataBytes, 0, Convert.ToInt32(request.Body.Length));
+//					string s = UTF8Encoding.Default.GetString (dataBytes);
+//					formParams = Xamarin.Utilities.WebEx.FormDecode (s);
+//				}
+
+				activity.state.Authenticator.OnPageLoading (uri, formParams);
 				activity.BeginProgress (uri.Authority);
 			}
 

@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using System.Security.Cryptography;
-//using System.Security.Cryptography.Xml;
+using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Xml;
 using dk.nita.saml20.Schema.Protocol;

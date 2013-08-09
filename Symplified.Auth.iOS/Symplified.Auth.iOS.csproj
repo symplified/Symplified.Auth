@@ -1542,39 +1542,6 @@
     <None Include="..\lib\OIOSAML.NET\Properties\Tracing.resx">
       <Link>OIOSAML.NET\Properties\Tracing.resx</Link>
     </None>
-    <None Include="..\lib\OIOSAML.NET\Specification\DefaultCertificateSpecification.cs">
-      <Link>OIOSAML.NET\Specification\DefaultCertificateSpecification.cs</Link>
-    </None>
-    <None Include="..\lib\OIOSAML.NET\Specification\ICertificateSpecification.cs">
-      <Link>OIOSAML.NET\Specification\ICertificateSpecification.cs</Link>
-    </None>
-    <None Include="..\lib\OIOSAML.NET\Specification\SelfIssuedCertificateSpecification.cs">
-      <Link>OIOSAML.NET\Specification\SelfIssuedCertificateSpecification.cs</Link>
-    </None>
-    <None Include="..\lib\OIOSAML.NET\Specification\SpecificationFactory.cs">
-      <Link>OIOSAML.NET\Specification\SpecificationFactory.cs</Link>
-    </None>
-    <None Include="..\lib\OIOSAML.NET\Protocol\AbstractEndpointHandler.cs">
-      <Link>OIOSAML.NET\Protocol\AbstractEndpointHandler.cs</Link>
-    </None>
-    <None Include="..\lib\OIOSAML.NET\Protocol\Saml20AbstractEndpointHandler.cs">
-      <Link>OIOSAML.NET\Protocol\Saml20AbstractEndpointHandler.cs</Link>
-    </None>
-    <None Include="..\lib\OIOSAML.NET\Protocol\Saml20CDCIdPReturnPoint.cs">
-      <Link>OIOSAML.NET\Protocol\Saml20CDCIdPReturnPoint.cs</Link>
-    </None>
-    <None Include="..\lib\OIOSAML.NET\Protocol\Saml20CDCReader.cs">
-      <Link>OIOSAML.NET\Protocol\Saml20CDCReader.cs</Link>
-    </None>
-    <None Include="..\lib\OIOSAML.NET\Protocol\Saml20LogoutHandler.cs">
-      <Link>OIOSAML.NET\Protocol\Saml20LogoutHandler.cs</Link>
-    </None>
-    <None Include="..\lib\OIOSAML.NET\Protocol\Saml20MetadataHandler.cs">
-      <Link>OIOSAML.NET\Protocol\Saml20MetadataHandler.cs</Link>
-    </None>
-    <None Include="..\lib\OIOSAML.NET\Protocol\Saml20SignonHandler.cs">
-      <Link>OIOSAML.NET\Protocol\Saml20SignonHandler.cs</Link>
-    </None>
     <None Include="..\lib\mono\mcs\class\System\System.Configuration\ConfigHelper.cs">
       <Link>System\System.Configuration\ConfigHelper.cs</Link>
     </None>

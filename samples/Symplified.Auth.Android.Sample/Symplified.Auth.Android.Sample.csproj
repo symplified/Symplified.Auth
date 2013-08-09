@@ -73,4 +73,7 @@
       <Name>Xamarin.Auth.Android</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\idp.symplified.net.metadata.xml" />
+  </ItemGroup>
 </Project>

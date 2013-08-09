@@ -393,7 +393,7 @@ namespace System.Diagnostics
 			}
 		}
 
-		private static void UpdateLogRegistry (RegistryKey logKey)
+		private static void UpdateLogRegistry (egistryKey logKey)
 		{
 			// TODO: write other Log values:
 			// - MaxSize

@@ -2,4 +2,5 @@
 <resources>
 	<string name="hello">Hello World, Click Me!</string>
 	<string name="app_name">Symplified.Auth.Android.Sample</string>
+	<string name="assertion_login_button">Assertion Login</string>
 </resources>
