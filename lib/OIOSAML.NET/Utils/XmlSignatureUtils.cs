@@ -183,9 +183,9 @@ namespace dk.nita.saml20.Utils
             int count = keyInfo.Certificates.Count;
             if (count == 0)
                 return null;
-            
-            X509Certificate2 cert = (X509Certificate2)keyInfo.Certificates[count - 1];
-            return cert;
+			X509Certificate cert1 = (X509Certificate)keyInfo.Certificates [count - 1];
+			X509Certificate2 cert2 = new X509Certificate2 (cert1);
+            return cert2;
         }
 
         /// <summary>
@@ -287,13 +287,13 @@ namespace dk.nita.saml20.Utils
             XmlNodeList nodeList = el.GetElementsByTagName(Signature.ELEMENT_NAME, Saml20Constants.XMLDSIG);
             if (nodeList.Count == 0)
                 throw new InvalidOperationException("Document does not contain a signature to verify.");
-
+		
+            signedXml.LoadXml((XmlElement)nodeList[0]);
 			Reference reference = new Reference("#" + signedXml.SignedInfo.Id);
 			reference.AddTransform (new XmlDsigEnvelopedSignatureTransform ());
 			reference.AddTransform (new XmlDsigExcC14NTransform ());
 			signedXml.AddReference(reference);
 
-            signedXml.LoadXml((XmlElement)nodeList[0]);
             return signedXml;
         }
 

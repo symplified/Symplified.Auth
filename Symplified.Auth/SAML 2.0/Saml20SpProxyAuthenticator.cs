@@ -70,6 +70,7 @@ namespace Symplified.Auth
 			string xmlSamlAssertion = System.Text.UTF8Encoding.Default.GetString (xmlSamlAssertionBytes);
 
 			XmlDocument xDoc = new XmlDocument ();
+			xDoc.PreserveWhitespace = true;
 			xDoc.LoadXml (xmlSamlAssertion);
 		
 			XmlElement responseElement = (XmlElement)xDoc.SelectSingleNode ("//*[local-name()='Response']");
@@ -80,7 +81,7 @@ namespace Symplified.Auth
 			if (assertionElement != null) {
 				Console.WriteLine ("{0}", assertionElement.OuterXml);
 
-				Saml20Assertion samlAssertion = new Saml20Assertion (assertionElement, null, false);
+				Saml20Assertion samlAssertion = new Saml20Assertion (assertionElement, null, AssertionProfile.Core, false, false);
 				Assertion a = samlAssertion.Assertion;
 
 				SamlAccount sa = new SamlAccount (samlAssertion, responseElement);

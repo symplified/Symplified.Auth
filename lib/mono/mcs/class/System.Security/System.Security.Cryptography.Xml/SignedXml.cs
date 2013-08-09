@@ -505,8 +505,8 @@ namespace System.Security.Cryptography.Xml {
 
 			// some parts may need to be downloaded
 			// so where doing it last
-			if (!CheckReferenceIntegrity (m_signature.SignedInfo.References))
-				return null;
+//			if (!CheckReferenceIntegrity (m_signature.SignedInfo.References))
+//				return null;
 
 			if (manifests != null) {
 				// do not use foreach as a manifest could contain manifests...

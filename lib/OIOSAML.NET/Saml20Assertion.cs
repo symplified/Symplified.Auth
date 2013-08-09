@@ -402,7 +402,10 @@ namespace dk.nita.saml20
         /// </summary>        
         public bool IsExpired()
         {
-            return DateTime.Now.ToUniversalTime() > NotOnOrAfter;
+			// FIXME: This code was changed to *not* use UTC
+			// for date comparisons, because UTC date conversion
+			// is non-functional on Xamarin.
+			return (DateTime.Now.CompareTo (NotOnOrAfter) > 0);
         }
 
         /// <summary>

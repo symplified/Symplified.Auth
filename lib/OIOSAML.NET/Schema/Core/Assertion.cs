@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
-//using dk.nita.saml20.Schema.XmlDSig;
+using dk.nita.saml20.Schema.XmlDSig;
 using dk.nita.saml20.Utils;
 
 namespace dk.nita.saml20.Schema.Core
@@ -36,8 +36,7 @@ namespace dk.nita.saml20.Schema.Core
         private NameID issuerField;
         private StatementAbstract[] itemsField;
 
-//        private Signature signatureField;
-		private object signatureField;
+        private Signature signatureField;
 
         private Subject subjectField;
 
@@ -64,7 +63,7 @@ namespace dk.nita.saml20.Schema.Core
         /// </summary>
         /// <value>The signature.</value>
         [XmlElement(Namespace=Saml20Constants.XMLDSIG)]
-        public object Signature
+        public Signature Signature
         {
             get { return signatureField; }
             set { signatureField = value; }
