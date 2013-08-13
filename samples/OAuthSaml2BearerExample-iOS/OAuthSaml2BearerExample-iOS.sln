@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuthSaml2BearerExample-iOS", "OAuthSaml2BearerExample-iOS\OAuthSaml2BearerExample-iOS.csproj", "{17046A41-74B4-41CD-9318-1BF8FC3AB01D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		AppStore|iPhone = AppStore|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17046A41-74B4-41CD-9318-1BF8FC3AB01D}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{17046A41-74B4-41CD-9318-1BF8FC3AB01D}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{17046A41-74B4-41CD-9318-1BF8FC3AB01D}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{17046A41-74B4-41CD-9318-1BF8FC3AB01D}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{17046A41-74B4-41CD-9318-1BF8FC3AB01D}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{17046A41-74B4-41CD-9318-1BF8FC3AB01D}.Debug|iPhone.Build.0 = Debug|iPhone
+		{17046A41-74B4-41CD-9318-1BF8FC3AB01D}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{17046A41-74B4-41CD-9318-1BF8FC3AB01D}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{17046A41-74B4-41CD-9318-1BF8FC3AB01D}.Release|iPhone.ActiveCfg = Release|iPhone
+		{17046A41-74B4-41CD-9318-1BF8FC3AB01D}.Release|iPhone.Build.0 = Release|iPhone
+		{17046A41-74B4-41CD-9318-1BF8FC3AB01D}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{17046A41-74B4-41CD-9318-1BF8FC3AB01D}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = OAuthSaml2BearerExample-iOS\OAuthSaml2BearerExample-iOS.csproj
+	EndGlobalSection
+EndGlobal

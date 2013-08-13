@@ -214,7 +214,9 @@ namespace Xamarin.Auth
 
 				webView.UserInteractionEnabled = true;
 
-				controller.authenticator.OnError (error.LocalizedDescription);
+				if (error.Code != (int)NSUrlError.Cancelled) {
+					controller.authenticator.OnError (error.LocalizedDescription);
+				}
 			}
 
 			public override void LoadingFinished (UIWebView webView)
