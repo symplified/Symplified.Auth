@@ -9,6 +9,8 @@ using Xamarin.Auth;
 using Xamarin.Utilities;
 using dk.nita.saml20;
 
+using JSON = System.Json;
+
 namespace Symplified.Auth
 {
 	/// <summary>
@@ -114,7 +116,7 @@ namespace Symplified.Auth
 		/// </summary>
 		/// <returns>The bearer assertion authorization grant.</returns>
 		/// <param name="tokenEndpoint">Token endpoint.</param>
-		public Task<string> GetBearerAssertionAuthorizationGrant (Uri tokenEndpoint)
+		public Task<IDictionary<string,string>> GetBearerAssertionAuthorizationGrant (Uri tokenEndpoint)
 		{
 			WebRequest request = WebRequest.Create (tokenEndpoint);
 			request.Method = "POST";
@@ -130,9 +132,20 @@ namespace Symplified.Auth
 			request.GetRequestStream ().Write (paramBytes, 0, paramBytes.Length);
 
 			return request.GetResponseAsync ().ContinueWith (t => {
-				Console.WriteLine (t.Result.GetResponseText ());
-				// TODO: parse json
-				return t.Result.GetResponseText ();
+				JSON.JsonObject jsonObject = (JSON.JsonObject)JSON.JsonObject.Parse (t.Result.GetResponseText ());
+
+				IDictionary<string,string> oAuthValues = new Dictionary<string, string> ();
+				JSON.JsonValue accessToken = null;
+				if (jsonObject.TryGetValue ("access_token", out accessToken)) {
+					oAuthValues.Add ("access_token", accessToken);
+				}
+
+				JSON.JsonValue scope = null;
+				if (jsonObject.TryGetValue ("scope", out scope)) {
+					oAuthValues.Add ("scope", scope);
+				}
+
+				return oAuthValues;
 			});
 		}
 

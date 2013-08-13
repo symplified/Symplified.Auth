@@ -84,6 +84,7 @@
     <Reference Include="System.Net" />
     <Reference Include="System.Web.Services" />
     <Reference Include="Mono.Security" />
+    <Reference Include="System.Json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -108,5 +109,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="idp.symplified.net.metadata.xml" />
+    <Content Include="salesforce-oauthsaml2-idp-metadata.xml" />
   </ItemGroup>
 </Project>

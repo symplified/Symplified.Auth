@@ -95,7 +95,9 @@ namespace Symplified.Auth.iOS.Sample
 		{
 			XmlDocument xDoc = new XmlDocument ();
 			xDoc.PreserveWhitespace = true;
-			xDoc.Load ("idp.symplified.net.metadata.xml");
+//			xDoc.Load ("idp.symplified.net.metadata.xml");
+			xDoc.Load ("salesforce-oauthsaml2-idp-metadata.xml");
+
 
 			Saml20MetadataDocument idpMetadata = new Saml20MetadataDocument (xDoc);
 
@@ -116,18 +118,6 @@ namespace Symplified.Auth.iOS.Sample
 
 					samlLoginStatusStringElement.Caption = String.Format ("Name: {0}", authenticatedAccount.Assertion.Subject.Value);
 					samlLoginStatusStringElement.GetActiveCell ().BackgroundColor = UIColor.Green;
-
-					authenticatedAccount.GetBearerAssertionAuthorizationGrant (
-						new Uri ("https://login.salesforce.com/services/oauth2/token")
-					).ContinueWith (t => {
-						if (!t.IsFaulted) {
-							string sdata = t.Result;
-							Console.WriteLine (sdata);
-						}
-						else {
-							Console.WriteLine ("error");
-						}
-					});
 				}
 
 				loginViewController.ReloadData ();
