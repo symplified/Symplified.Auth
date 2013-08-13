@@ -859,8 +859,8 @@
     <Compile Include="..\lib\mono\mcs\class\System.Security\System.Security.Cryptography.Xml\XmlSignatureStreamReader.cs">
       <Link>System.Security.Cryptography.Xml\XmlSignatureStreamReader.cs</Link>
     </Compile>
-    <Compile Include="SAML 2.0\Saml20SpProxyAuthenticator.cs" />
     <Compile Include="SAML 2.0\Saml20MobileAuthenticator.cs" />
+    <Compile Include="SAML 2.0\Saml20Authenticator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

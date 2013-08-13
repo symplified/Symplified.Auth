@@ -20,6 +20,9 @@ using Android.OS;
 using System.Threading.Tasks;
 using Xamarin.Utilities.Android;
 using System.Timers;
+using System.Collections.Generic;
+
+using Java.Interop;
 
 namespace Xamarin.Auth
 {
@@ -39,6 +42,23 @@ namespace Xamarin.Auth
 		internal static readonly ActivityStateRepository<State> StateRepo = new ActivityStateRepository<State> ();
 
 		State state;
+
+		public class JavascriptInterceptor : Java.Lang.Object
+		{
+			private WebAuthenticatorActivity _activity;
+
+			public JavascriptInterceptor (WebAuthenticatorActivity activity)
+			{
+				_activity = activity;
+			}
+
+			[Export]
+			public void OnReceivedSamlResponse (string base64SamlResponse)
+			{
+				Console.WriteLine ("SAMLResponse={0}", base64SamlResponse);
+				_activity.OnSamlResponseReceived2 (base64SamlResponse);
+			}
+		}
 
 		protected override void OnCreate (Bundle savedInstanceState)
 		{
@@ -82,8 +102,14 @@ namespace Xamarin.Auth
 			webView = new WebView (this) {
 				Id = 42,
 			};
+
+			JavascriptInterceptor jsInterceptor = new JavascriptInterceptor (this);
+			webView.AddJavascriptInterface (jsInterceptor, "jsInterceptor");
+
 			webView.Settings.JavaScriptEnabled = true;
 			webView.SetWebViewClient (new Client (this));
+			webView.SetWebChromeClient (new ChromeClient ());
+
 			SetContentView (webView);
 
 			//
@@ -128,6 +154,18 @@ namespace Xamarin.Auth
 			webView.SaveState (outState);
 		}
 
+		public void OnSamlResponseReceived2 (string samlResponse)
+		{
+			this.RunOnUiThread (delegate {
+				Dictionary<string,string> formParams = new Dictionary<string,string> ();
+				formParams.Add ("SAMLResponse", samlResponse);
+
+				this.state.Authenticator.OnPageLoading (new Uri (webView.Url), formParams);
+				this.EndProgress ();
+				this.webView.StopLoading ();
+			});			
+		}
+
 		void BeginProgress (string message)
 		{
 			webView.Enabled = false;
@@ -136,6 +174,20 @@ namespace Xamarin.Auth
 		void EndProgress ()
 		{
 			webView.Enabled = true;
+		}
+
+		class ChromeClient : WebChromeClient
+		{
+			public override bool OnJsAlert (WebView view, string url, string message, JsResult result)
+			{
+				return base.OnJsAlert (view, url, message, result);
+			}
+
+			public override bool OnConsoleMessage (ConsoleMessage consoleMessage)
+			{
+				Console.WriteLine (consoleMessage.Message ());
+				return base.OnConsoleMessage (consoleMessage);
+			}
 		}
 
 		class Client : WebViewClient
@@ -155,25 +207,18 @@ namespace Xamarin.Auth
 			public override void OnPageStarted (WebView view, string url, Android.Graphics.Bitmap favicon)
 			{
 				var uri = new Uri (url);
+				view.LoadUrl ("javascript:var resp=document.getElementsByName('SAMLResponse'); if(resp[0] && resp[0].value) { window.jsInterceptor.OnReceivedSamlResponse(resp[0].value); }");
+//				view.LoadUrl ("javascript:var resp=document.getElementsByTagName('input'); if(resp[0]){alert(resp[0].value);} if(resp[0] && resp[0].value) { window.jsInterceptor.OnReceivedSamlResponse(resp[0].value); }");
+//				view.LoadUrl ("javascript:alert(document.forms[0].value);");
 
-				System.Collections.Generic.IDictionary<string,string> formParams = null;
-
-				// TODO: Pull form params
-//				if (request.Body != null) {
-//					byte[] dataBytes = new byte[request.Body.Length];
-//					System.Runtime.InteropServices.Marshal.Copy(request.Body.Bytes, dataBytes, 0, Convert.ToInt32(request.Body.Length));
-//					string s = UTF8Encoding.Default.GetString (dataBytes);
-//					formParams = Xamarin.Utilities.WebEx.FormDecode (s);
-//				}
-
-				activity.state.Authenticator.OnPageLoading (uri, formParams);
+//				activity.state.Authenticator.OnPageLoading (uri, formParams);
 				activity.BeginProgress (uri.Authority);
 			}
 
 			public override void OnPageFinished (WebView view, string url)
 			{
 				var uri = new Uri (url);
-				activity.state.Authenticator.OnPageLoaded (uri);
+//				activity.state.Authenticator.OnPageLoaded (uri);
 				activity.EndProgress ();
 			}
 		}

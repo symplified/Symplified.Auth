@@ -54,6 +54,7 @@ namespace dk.nita.saml20.Schema.Protocol
         private Scoping scopingField;
         private Subject subjectField;
 
+		public AuthnRequest () {}
 
         /// <summary>
         /// Gets or sets the subject.

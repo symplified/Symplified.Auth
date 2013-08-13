@@ -1,28 +1,53 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Security.Cryptography.Xml;
 using System.Xml.Serialization;
+using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using Xamarin.Auth;
+
 using dk.nita.saml20;
 using dk.nita.saml20.Schema.Core;
+using dk.nita.saml20.Validation;
+using dk.nita.saml20.Schema.Metadata;
+using dk.nita.saml20.Utils;
+using dk.nita.saml20.config;
+using dk.nita.saml20.Schema.XmlDSig;
 
 namespace Symplified.Auth
 {
 	/// <summary>
 	/// SAML 2.0 authenticator.
 	/// </summary>
-	public class Saml20SpProxyAuthenticator : WebRedirectAuthenticator
+	public class Saml20Authenticator : WebRedirectAuthenticator
 	{
-		/// <summary>
-		/// Initializes a new instance of the <see cref="Symplified.Auth.Saml20SpProxyAuthenticator"/> class.
-		/// </summary>
-		/// <param name="initialUrl">Initial URL.</param>
-		/// <param name="redirectUrl">Redirect URL.</param>
-		public Saml20SpProxyAuthenticator (Uri initialUrl, Uri redirectUrl)
-			: base (initialUrl, redirectUrl)
-		{
+		private Saml20MetadataDocument _idpMetadata;
+		private string _spName;
 
+		private static readonly Uri PLACEHOLDER_URI = new Uri ("http://google.com" + new Guid ());
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Symplified.Auth.Saml20Authenticator"/> class.
+		/// </summary>
+		/// <param name="spName">Sp name.</param>
+		/// <param name="idpMetadata">Idp metadata.</param>
+		public Saml20Authenticator (string spName, Saml20MetadataDocument idpMetadata) :
+			base (PLACEHOLDER_URI, PLACEHOLDER_URI)
+		{
+			_spName = (string.IsNullOrEmpty (spName)) ? "symplified-mobile-sp" : spName;
+			_idpMetadata = idpMetadata;
+
+			Saml20AuthnRequest authnRequest = Saml20AuthnRequest.GetDefault (_spName);
+			byte[] xmlBytes = UTF8Encoding.Default.GetBytes (authnRequest.GetXml ().OuterXml);
+			string base64XmlString = SamlAccount.ToBase64ForUrlString (xmlBytes);
+
+			initialUrl = new Uri (
+				String.Format (
+					"{0}&SAMLRequest={1}", _idpMetadata.SSOEndpoint (SAMLBinding.POST).Url, base64XmlString
+				)
+			);
 		}
 
 		/// <summary>
@@ -41,7 +66,11 @@ namespace Symplified.Auth
 		/// <param name="formParams">Form parameters.</param>
 		public override void OnPageLoading (Uri url, IDictionary<string,string> formParams)
 		{
-			base.OnPageLoading (url, formParams);
+			if (formParams != null && formParams.ContainsKey ("SAMLResponse")) {
+				OnRedirectPageLoaded (url, null, null, formParams);
+			} else {
+				base.OnPageLoading (url, formParams);
+			}
 		}
 
 		/// <summary>
@@ -74,18 +103,42 @@ namespace Symplified.Auth
 			xDoc.LoadXml (xmlSamlAssertion);
 		
 			XmlElement responseElement = (XmlElement)xDoc.SelectSingleNode ("//*[local-name()='Response']");
-
+#if DEBUG
 			Console.WriteLine ("{0}", responseElement.OuterXml);
+#endif
 
 			XmlElement assertionElement = (XmlElement)xDoc.SelectSingleNode ("//*[local-name()='Assertion']");
 			if (assertionElement != null) {
+#if DEBUG
 				Console.WriteLine ("{0}", assertionElement.OuterXml);
-
+#endif
 				Saml20Assertion samlAssertion = new Saml20Assertion (assertionElement, null, AssertionProfile.Core, false, false);
-				Assertion a = samlAssertion.Assertion;
+				List<AsymmetricAlgorithm> trustedIssuers = new List<AsymmetricAlgorithm>(1);
 
-				SamlAccount sa = new SamlAccount (samlAssertion, responseElement);
-				OnSucceeded (sa);
+				foreach (KeyDescriptor key in _idpMetadata.Keys)
+				{
+					System.Security.Cryptography.Xml.KeyInfo ki = 
+						(System.Security.Cryptography.Xml.KeyInfo) key.KeyInfo;
+					foreach (KeyInfoClause clause in ki)
+					{
+						AsymmetricAlgorithm aa = XmlSignatureUtils.ExtractKey(clause);
+						trustedIssuers.Add(aa);
+					}
+				}
+
+				try {
+					samlAssertion.CheckValid (trustedIssuers);
+					SamlAccount sa = new SamlAccount (samlAssertion, responseElement);
+					OnSucceeded (sa);
+				}
+				catch (Saml20Exception samlEx) {
+					Console.WriteLine (samlEx);
+					OnError (samlEx.Message);
+				}
+				catch (Exception ex) {
+					Console.WriteLine (ex);
+					OnError (ex.Message);
+				}
 			}
 			else {
 				OnError ("No SAML Assertion Found");                                                                                                                                                                          ;

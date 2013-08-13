@@ -24,22 +24,25 @@ namespace dk.nita.saml20.Schema.Protocol
         private ItemsChoiceType7[] itemsElementNameField;
         private string[] itemsField;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="dk.nita.saml20.Schema.Protocol.RequestedAuthnContext"/> class.
+		/// </summary>
+		public RequestedAuthnContext () {}
+
 
         /// <summary>
         /// Gets or sets the items.
         /// Specifies one or more URI references identifying authentication context classes or declarations.
         /// </summary>
         /// <value>The items.</value>
-        [XmlElement("AuthnContextClassRef", typeof (string), Namespace=Saml20Constants.ASSERTION,
-            DataType="anyURI")]
-        [XmlElement("AuthnContextDeclRef", typeof (string), Namespace=Saml20Constants.ASSERTION,
-            DataType="anyURI")]
-        [XmlChoiceIdentifier("ItemsElementName")]
-        public string[] Items
-        {
-            get { return itemsField; }
-            set { itemsField = value; }
-        }
+//        [XmlElement("AuthnContextClassRef", typeof (string), Namespace=Saml20Constants.ASSERTION, DataType="anyURI")]
+//        [XmlElement("AuthnContextDeclRef", typeof (string), Namespace=Saml20Constants.ASSERTION, DataType="anyURI")]
+//        [XmlChoiceIdentifier("ItemsElementName")]
+//        public string[] Items
+//        {
+//            get { return itemsField; }
+//            set { itemsField = value; }
+//        }
 
 
         /// <summary>

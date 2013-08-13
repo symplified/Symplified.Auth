@@ -8,7 +8,7 @@
     <ProjectGuid>{AE33DF0A-7811-43BD-B60E-817CF4BB226A}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{F278D4AB-4730-4720-B08E-FE5E31564D9E};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>Symplified.Auth.Android</RootNamespace>
+    <RootNamespace>Symplified.Auth</RootNamespace>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
@@ -55,12 +55,6 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="..\Symplified.Auth\CookieConverter.cs">
       <Link>CookieConverter.cs</Link>
-    </Compile>
-    <Compile Include="..\Symplified.Auth\SAML 2.0\Saml20MobileAuthenticator.cs">
-      <Link>Saml20MobileAuthenticator.cs</Link>
-    </Compile>
-    <Compile Include="..\Symplified.Auth\SAML 2.0\Saml20SpProxyAuthenticator.cs">
-      <Link>Saml20SpProxyAuthenticator.cs</Link>
     </Compile>
     <Compile Include="..\Symplified.Auth\SAML 2.0\SamlAccount.cs">
       <Link>SamlAccount.cs</Link>
@@ -1456,6 +1450,9 @@
     </Compile>
     <Compile Include="..\Symplified.Auth\IdentityProvider\IdentityToken.cs">
       <Link>IdentityToken.cs</Link>
+    </Compile>
+    <Compile Include="..\Symplified.Auth\SAML 2.0\Saml20Authenticator.cs">
+      <Link>Saml20Authenticator.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>

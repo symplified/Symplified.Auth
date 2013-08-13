@@ -6,7 +6,7 @@ using System.Net;
 using Symplified.Auth.iOS;
 using PlatformCookie = MonoTouch.Foundation.NSHttpCookie;
 #elif PLATFORM_ANDROID
-using Symplified.Auth.Android;
+//using Symplified.Auth.Android;
 using PlatformCookie = Org.Apache.Http.Cookies.IClientCookie;
 #endif
 

@@ -1447,12 +1447,6 @@
     <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\TraceSourceInfo.cs">
       <Link>System\System.Diagnostics\TraceSourceInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Symplified.Auth\SAML 2.0\Saml20SpProxyAuthenticator.cs">
-      <Link>Saml20SpProxyAuthenticator.cs</Link>
-    </Compile>
-    <Compile Include="..\Symplified.Auth\SAML 2.0\Saml20MobileAuthenticator.cs">
-      <Link>Saml20MobileAuthenticator.cs</Link>
-    </Compile>
     <Compile Include="..\lib\OIOSAML.NET\Validation\DKSaml20AssertionValidator.cs">
       <Link>OIOSAML.NET\Validation\DKSaml20AssertionValidator.cs</Link>
     </Compile>
@@ -1518,6 +1512,9 @@
     </Compile>
     <Compile Include="..\lib\OIOSAML.NET\Validation\Saml20XmlAnyAttributeValidator.cs">
       <Link>OIOSAML.NET\Validation\Saml20XmlAnyAttributeValidator.cs</Link>
+    </Compile>
+    <Compile Include="..\Symplified.Auth\SAML 2.0\Saml20Authenticator.cs">
+      <Link>Saml20Authenticator.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>

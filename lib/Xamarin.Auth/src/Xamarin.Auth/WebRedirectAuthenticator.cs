@@ -30,8 +30,8 @@ namespace Xamarin.Auth
 	public class WebRedirectAuthenticator : WebAuthenticator
 #endif
 	{
-		Uri initialUrl;
-		Uri redirectUrl;
+		protected Uri initialUrl;
+		protected Uri redirectUrl;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Xamarin.Auth.WebRedirectAuthenticator"/> class.

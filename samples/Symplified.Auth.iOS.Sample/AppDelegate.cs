@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Cryptography.Xml;
+using System.Text;
 using System.Xml;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
@@ -52,7 +53,7 @@ namespace Symplified.Auth.iOS.Sample
 			symplifiedTokenSection.Add (tokenLoginStatusStringElement = new StringElement (String.Empty));
 
 			symplifiedSamlSection = new Section ("SAML 2.0 Service Provider Proxy");
-			symplifiedSamlSection.Add (new StyledStringElement ("Assertion Login", LoginToSymplifiedSamlSpProxy));
+			symplifiedSamlSection.Add (new StyledStringElement ("Assertion Login", LoginWithIdentityProvider));
 			symplifiedSamlSection.Add (samlLoginStatusStringElement = new StringElement (String.Empty));
 
 			loginViewController = new DialogViewController (UITableViewStyle.Grouped, new RootElement ("Symplified.Auth.Token") { 
@@ -88,62 +89,31 @@ namespace Symplified.Auth.iOS.Sample
 			loginViewController.PresentViewController (vc, true, null);
 		}
 
-		public void LoginToSymplifiedSamlSpProxy ()
+		public void LoginWithIdentityProvider ()
 		{
-			Saml20SpProxyAuthenticator authenticator = new Saml20SpProxyAuthenticator (
-//				new Uri ("https://sympidp-dev-ed.my.salesforce.com"),
-//				new Uri ("https://login.salesforce.com/services/oauth2/token")
-				new Uri ("http://54.235.215.29/Shibboleth.sso/Login"),
-				new Uri ("http://54.235.215.29/Shibboleth.sso/SAML2/POST")
-			);
+			XmlDocument xDoc = new XmlDocument ();
+			xDoc.PreserveWhitespace = true;
+			xDoc.Load ("idp.symplified.net.metadata.xml");
+
+			Saml20MetadataDocument idpMetadata = new Saml20MetadataDocument (xDoc);
+
+			Saml20Authenticator authenticator = new Saml20Authenticator (
+				"Symplified.Auth.iOS.Sample",
+				idpMetadata
+				);
 
 			authenticator.Completed += (s, e) => {
 				loginViewController.DismissViewController (true, null);
 
 				if (!e.IsAuthenticated) {
 					samlLoginStatusStringElement.Caption = "Not authorized";
+					samlLoginStatusStringElement.GetActiveCell ().BackgroundColor = UIColor.Red;
 				}
 				else {
-					SamlAccount account = (SamlAccount)e.Account;
-					Saml20Assertion assertion = account.Assertion;
+					SamlAccount authenticatedAccount = (SamlAccount)e.Account;
 
-					XmlDocument xDoc = new XmlDocument ();
-					xDoc.PreserveWhitespace = true;
-					xDoc.Load ("idp.symplified.net.metadata.xml");
-
-					Saml20MetadataDocument metadata = new Saml20MetadataDocument (xDoc);
-					List<AsymmetricAlgorithm> trustedIssuers = new List<AsymmetricAlgorithm>(1);
-
-					foreach (KeyDescriptor key in metadata.Keys)
-					{
-						System.Security.Cryptography.Xml.KeyInfo ki = 
-							(System.Security.Cryptography.Xml.KeyInfo) key.KeyInfo;
-						foreach (KeyInfoClause clause in ki)
-						{
-							AsymmetricAlgorithm aa = XmlSignatureUtils.ExtractKey(clause);
-							trustedIssuers.Add(aa);
-						}
-					}
-
-					try {
-						assertion.CheckValid (trustedIssuers);
-
-						samlLoginStatusStringElement.Caption = String.Format ("Name: {0}", assertion.Subject.Value);
-						samlLoginStatusStringElement.GetActiveCell ().BackgroundColor = UIColor.Green;
-
-						string urlencode = account.GetBearerAssertionAuthorizationGrantParams ();
-						Console.WriteLine (urlencode);
-					}
-					catch (Saml20Exception samlEx) {
-						Console.WriteLine (samlEx);
-						samlLoginStatusStringElement.Caption = String.Format ("Name: {0}", assertion.Subject.Value);
-						samlLoginStatusStringElement.GetActiveCell ().BackgroundColor = UIColor.Red;
-					}
-					catch (Exception ex) {
-						Console.WriteLine (ex);
-						samlLoginStatusStringElement.Caption = String.Format ("Name: {0}", assertion.Subject.Value);
-						samlLoginStatusStringElement.GetActiveCell ().BackgroundColor = UIColor.Red;
-					}
+					samlLoginStatusStringElement.Caption = String.Format ("Name: {0}", authenticatedAccount.Assertion.Subject.Value);
+					samlLoginStatusStringElement.GetActiveCell ().BackgroundColor = UIColor.Green;
 				}
 
 				loginViewController.ReloadData ();

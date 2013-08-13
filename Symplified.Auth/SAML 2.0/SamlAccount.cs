@@ -113,6 +113,11 @@ namespace Symplified.Auth
 			return base.Serialize ();
 		}
 
+		/// <summary>
+		/// Tos the base64 for URL string.
+		/// </summary>
+		/// <returns>The base64 for URL string.</returns>
+		/// <param name="input">Input.</param>
 		public static string ToBase64ForUrlString(byte[] input)
 		{
 			StringBuilder result = new StringBuilder(Convert.ToBase64String(input).TrimEnd('='));
