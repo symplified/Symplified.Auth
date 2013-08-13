@@ -75,23 +75,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Symplified.Auth\IdentityProvider\IdentityProviderConfiguration.cs">
-      <Link>IdentityProviderConfiguration.cs</Link>
-    </Compile>
-    <Compile Include="..\Symplified.Auth\IdentityProvider\IdentityProviderManager.cs">
-      <Link>IdentityProviderManager.cs</Link>
-    </Compile>
-    <Compile Include="..\Symplified.Auth\IdentityProvider\IdentityToken.cs">
-      <Link>IdentityToken.cs</Link>
-    </Compile>
     <Compile Include="..\Symplified.Auth\SAML 1.1\SAML11Authenticator.cs">
       <Link>SAML11Authenticator.cs</Link>
     </Compile>
     <Compile Include="..\Symplified.Auth\Symplified AuthN\SymplifiedAuthenticator.cs">
       <Link>SymplifiedAuthenticator.cs</Link>
-    </Compile>
-    <Compile Include="..\Symplified.Auth\Symplified AuthN\SymplifiedToken.cs">
-      <Link>SymplifiedToken.cs</Link>
     </Compile>
     <Compile Include="NSHttpCookieExtensions.cs" />
     <Compile Include="..\Symplified.Auth\CookieConverter.cs">

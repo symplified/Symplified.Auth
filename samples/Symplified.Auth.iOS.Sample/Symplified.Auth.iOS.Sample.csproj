@@ -107,8 +107,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="metadata-ADLER.xml" />
-    <Content Include="tfobs-demo-idp-metadata.xml" />
     <Content Include="idp.symplified.net.metadata.xml" />
   </ItemGroup>
 </Project>

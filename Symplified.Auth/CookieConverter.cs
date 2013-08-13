@@ -25,10 +25,12 @@ namespace Symplified.Auth
 		public static CookieCollection ConvertToCLRCookies (object [] platformCookies)
 		{
 			CookieCollection clrCookies = new CookieCollection ();
-#if PLATFORM_IOS || PLATFORM_ANDROID
+#if PLATFORM_IOS
 			foreach (PlatformCookie cookie in platformCookies) {
-//				clrCookies.Add (cookie.ConvertToCLRCookie ());
+				clrCookies.Add (cookie.ConvertToCLRCookie ());
 			}
+#elif PLATFORM_ANDROID
+			throw new NotImplementedException ();
 #endif
 			return (clrCookies.Count > 0) ? clrCookies : null;
 		}

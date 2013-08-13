@@ -1,8 +1,12 @@
 using System;
+using System.Collections.Generic;
+using System.Net;
 using System.Web;
 using System.Text;
+using System.Threading.Tasks;
 using System.Xml;
 using Xamarin.Auth;
+using Xamarin.Utilities;
 using dk.nita.saml20;
 
 namespace Symplified.Auth
@@ -103,6 +107,33 @@ namespace Symplified.Auth
 			args.AppendFormat ("&client_assertion={0}", base64Assertion);
 
 			return args.ToString ();	
+		}
+
+		/// <summary>
+		/// Gets the bearer assertion authorization grant.
+		/// </summary>
+		/// <returns>The bearer assertion authorization grant.</returns>
+		/// <param name="tokenEndpoint">Token endpoint.</param>
+		public Task<string> GetBearerAssertionAuthorizationGrant (Uri tokenEndpoint)
+		{
+			WebRequest request = WebRequest.Create (tokenEndpoint);
+			request.Method = "POST";
+			request.ContentType = "application/x-www-form-urlencoded";
+
+			string htmlParams = GetBearerAssertionAuthorizationGrantParams ();
+#if DEBUG
+			Console.WriteLine (htmlParams);
+#endif
+			byte[] paramBytes = UTF8Encoding.Default.GetBytes (htmlParams);
+
+			request.ContentLength = paramBytes.Length;
+			request.GetRequestStream ().Write (paramBytes, 0, paramBytes.Length);
+
+			return request.GetResponseAsync ().ContinueWith (t => {
+				Console.WriteLine (t.Result.GetResponseText ());
+				// TODO: parse json
+				return t.Result.GetResponseText ();
+			});
 		}
 
 		/// <summary>

@@ -28,10 +28,16 @@ namespace Symplified.Auth
 	/// </summary>
 	public class SymplifiedAuthenticator : WebRedirectAuthenticator
 	{
+		private const string COOKIE_NAME = "singlepoint";
+
+		private const string KEYCHAIN_ENDPOINT = "/KeychainRetrievalServlet";
+
 		public SymplifiedAuthenticator (Uri initialUrl, Uri redirectUrl)
 			:base (initialUrl, redirectUrl)
 		{
-			;
+#if PLATFORM_ANDROID
+			throw new NotSupportedException ("Android does not currently support Symplified cookie-based login");
+#endif
 		}
 
 		/// <summary>
@@ -90,7 +96,7 @@ namespace Symplified.Auth
 						.Cast<Cookie> ()
 						.FirstOrDefault (x => x.Name == "singlepoint-auth-error");
 
-			if (!string.Equals (c, string.Empty)) {
+			if (c != null && !string.Equals (c, string.Empty)) {
 
 				/* TODO: Check the URI for:
 				 * singlepoint-portal-event=auth-failed&singlepoint-auth-error=NOT_AUTHENTICATED
@@ -99,7 +105,9 @@ namespace Symplified.Auth
 				OnError (new AuthException ("NOT_AUTHENTICATED"));
 			}
 
-			RequestUserKeychainAsync (url).ContinueWith (task => {
+			Uri keychainUri = new Uri (url.GetLeftPart (UriPartial.Authority) + KEYCHAIN_ENDPOINT);
+
+			RequestUserKeychainAsync (keychainUri).ContinueWith (task => {
 				if (task.IsFaulted) {
 					OnError (task.Exception);
 				} else {
@@ -128,7 +136,7 @@ namespace Symplified.Auth
 		protected Task<WebResponse> RequestUserKeychainAsync (Uri keychainUrl)
 		{
 			var req = WebRequest.Create (keychainUrl);
-			req.Method = "POST";
+			req.Method = "GET";
 
 			return Task
 				.Factory

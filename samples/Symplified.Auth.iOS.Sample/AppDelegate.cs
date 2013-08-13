@@ -18,6 +18,8 @@ using dk.nita.saml20.Utils;
 using dk.nita.saml20.config;
 using dk.nita.saml20.Schema.XmlDSig;
 
+using Xamarin.Utilities;
+
 namespace Symplified.Auth.iOS.Sample
 {
 	// The UIApplicationDelegate for the application. This class is responsible for launching the 
@@ -114,6 +116,18 @@ namespace Symplified.Auth.iOS.Sample
 
 					samlLoginStatusStringElement.Caption = String.Format ("Name: {0}", authenticatedAccount.Assertion.Subject.Value);
 					samlLoginStatusStringElement.GetActiveCell ().BackgroundColor = UIColor.Green;
+
+					authenticatedAccount.GetBearerAssertionAuthorizationGrant (
+						new Uri ("https://login.salesforce.com/services/oauth2/token")
+					).ContinueWith (t => {
+						if (!t.IsFaulted) {
+							string sdata = t.Result;
+							Console.WriteLine (sdata);
+						}
+						else {
+							Console.WriteLine ("error");
+						}
+					});
 				}
 
 				loginViewController.ReloadData ();
