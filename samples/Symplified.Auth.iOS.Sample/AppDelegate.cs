@@ -54,7 +54,7 @@ namespace Symplified.Auth.iOS.Sample
 			symplifiedTokenSection.Add (new StyledStringElement ("Token Login", LoginToSymplifiedToken));
 			symplifiedTokenSection.Add (tokenLoginStatusStringElement = new StringElement (String.Empty));
 
-			symplifiedSamlSection = new Section ("SAML 2.0 Service Provider Proxy");
+			symplifiedSamlSection = new Section ("SAML 2.0 Mobile Service Provider");
 			symplifiedSamlSection.Add (new StyledStringElement ("Assertion Login", LoginWithIdentityProvider));
 			symplifiedSamlSection.Add (samlLoginStatusStringElement = new StringElement (String.Empty));
 
@@ -95,9 +95,7 @@ namespace Symplified.Auth.iOS.Sample
 		{
 			XmlDocument xDoc = new XmlDocument ();
 			xDoc.PreserveWhitespace = true;
-//			xDoc.Load ("idp.symplified.net.metadata.xml");
-			xDoc.Load ("salesforce-oauthsaml2-idp-metadata.xml");
-
+			xDoc.Load ("idp.symplified.net.metadata.xml");
 
 			Saml20MetadataDocument idpMetadata = new Saml20MetadataDocument (xDoc);
 
@@ -118,12 +116,6 @@ namespace Symplified.Auth.iOS.Sample
 
 					samlLoginStatusStringElement.Caption = String.Format ("Name: {0}", authenticatedAccount.Assertion.Subject.Value);
 					samlLoginStatusStringElement.GetActiveCell ().BackgroundColor = UIColor.Green;
-
-					authenticatedAccount.GetBearerAssertionAuthorizationGrant (
-						new Uri ("https://login.salesforce.com/services/oauth2/token")).ContinueWith (t => {
-
-						Console.WriteLine (t.Result);
-					});
 				}
 
 				loginViewController.ReloadData ();
