@@ -4,19 +4,19 @@ using Xamarin.Auth;
 namespace Symplified.Auth
 {
 	/// <summary>
-	/// SAML 1.1 authenticator.
+	/// SAML 1.1 authenticator. (Not Implemented)
 	/// </summary>
 	public class SAML11Authenticator : WebRedirectAuthenticator
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Symplified.Auth.SAML11Authenticator"/> class.
+		/// </summary>
+		/// <param name="initialUrl">Initial URL.</param>
+		/// <param name="redirectUrl">Redirect URL.</param>
 		public SAML11Authenticator (Uri initialUrl, Uri redirectUrl)
 			: base (initialUrl, redirectUrl)
 		{
-			;
-		}
-
-		protected override void OnRedirectPageLoaded (Uri url, System.Collections.Generic.IDictionary<string, string> query, System.Collections.Generic.IDictionary<string, string> fragment, System.Collections.Generic.IDictionary<string,string> formParams)
-		{
-			base.OnRedirectPageLoaded (url, query, fragment, formParams);
+			throw new NotImplementedException ();
 		}
 	}
 }

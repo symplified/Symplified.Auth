@@ -14,6 +14,7 @@
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <AssemblyName>Symplified.Auth.Android</AssemblyName>
+    <ReleaseVersion>1.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,6 +51,9 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="Mono.CSharp" />
     <Reference Include="System.Json" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\lib\Json.NET\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -61,9 +65,6 @@
     </Compile>
     <Compile Include="..\Symplified.Auth\Symplified AuthN\SymplifiedAuthenticator.cs">
       <Link>SymplifiedAuthenticator.cs</Link>
-    </Compile>
-    <Compile Include="..\Symplified.Auth\Symplified AuthN\SymplifiedToken.cs">
-      <Link>SymplifiedToken.cs</Link>
     </Compile>
     <Compile Include="..\lib\mono\mcs\class\System.Security\Mono.Xml\XmlCanonicalizer.cs">
       <Link>Mono.Xml\XmlCanonicalizer.cs</Link>
@@ -1447,9 +1448,6 @@
     </Compile>
     <Compile Include="..\lib\OIOSAML.NET\Validation\Saml20XmlAnyAttributeValidator.cs">
       <Link>OIOSAML.NET\Validation\Saml20XmlAnyAttributeValidator.cs</Link>
-    </Compile>
-    <Compile Include="..\Symplified.Auth\IdentityProvider\IdentityToken.cs">
-      <Link>IdentityToken.cs</Link>
     </Compile>
     <Compile Include="..\Symplified.Auth\SAML 2.0\Saml20Authenticator.cs">
       <Link>Saml20Authenticator.cs</Link>

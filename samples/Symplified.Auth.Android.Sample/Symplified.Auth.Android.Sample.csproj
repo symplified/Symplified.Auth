@@ -16,6 +16,7 @@
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AssemblyName>Symplified.Auth.Android.Sample</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <ReleaseVersion>1.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,6 +49,15 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Mono.Android.Export" />
+    <Reference Include="Symplified.Auth.Android">
+      <HintPath>lib\Symplified.Auth.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Auth.Android">
+      <HintPath>lib\Xamarin.Auth.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -65,16 +75,6 @@
     <AndroidResource Include="Resources\drawable\Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
-  <ItemGroup>
-    <ProjectReference Include="..\..\Symplified.Auth.Android\Symplified.Auth.Android.csproj">
-      <Project>{AE33DF0A-7811-43BD-B60E-817CF4BB226A}</Project>
-      <Name>Symplified.Auth.Android</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\lib\Xamarin.Auth\src\Xamarin.Auth.Android\Xamarin.Auth.Android.csproj">
-      <Project>{FCF02C8C-6DD3-4C59-A8A2-58BC01A4BB21}</Project>
-      <Name>Xamarin.Auth.Android</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\xml\" />
   </ItemGroup>

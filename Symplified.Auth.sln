@@ -196,5 +196,6 @@ Global
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = samples\Symplified.Auth.iOS.Sample\Symplified.Auth.iOS.Sample.csproj
+		version = 1.0
 	EndGlobalSection
 EndGlobal

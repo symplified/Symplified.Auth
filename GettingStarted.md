@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## 0. Acquire SAML 2.0 metadata
 
 SAML metadata provides information about the identity provider (IdP) used for the authentication and single sign-on service. It is an XML document containing data such as server URIs, protocols, certificates, and so on.
@@ -107,3 +108,6 @@ Xamarin.Auth includes OAuth 1.0 and OAuth 2.0 authenticators, providing support 
 
 If you want to authenticate against an ostensibly unsupported service, fear not – Xamarin.Auth is extensible! It's very easy to create your own authenticators – just derive from any of the existing authenticators and start overriding methods.
 
+=======
+Getting Started...
+>>>>>>> 5cb10b56ea38c1324e9662178b9d2b8ca5774264

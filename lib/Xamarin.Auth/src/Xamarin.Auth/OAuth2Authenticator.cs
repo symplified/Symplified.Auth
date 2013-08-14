@@ -36,7 +36,6 @@ namespace Xamarin.Auth
 		string clientSecret;
 		string scope;
 		Uri authorizeUrl;
-		Uri redirectUrl;
 		Uri accessTokenUrl;
 		GetUsernameAsyncFunc getUsernameAsync;
 
@@ -206,6 +205,9 @@ namespace Xamarin.Auth
 		/// <param name='fragment'>
 		/// The parsed fragment of the URL.
 		/// </param>
+		/// <param name="formParams">
+		/// The parsed form parameters from the HTTP message body.
+		/// </param> 
 		protected override void OnPageEncountered (Uri url, IDictionary<string, string> query, IDictionary<string, string> fragment, IDictionary<string,string> formParams)
 		{
 			var all = new Dictionary<string, string> (query);
@@ -240,6 +242,9 @@ namespace Xamarin.Auth
 		/// </param>
 		/// <param name='fragment'>
 		/// The parsed fragment of the URL.
+		/// </param>
+		/// <param name="formParams">
+		/// The parsed form parameters from the HTTP message body.
 		/// </param>
 		protected override void OnRedirectPageLoaded (Uri url, IDictionary<string, string> query, IDictionary<string, string> fragment, IDictionary<string,string> formParams)
 		{
@@ -298,6 +303,11 @@ namespace Xamarin.Auth
 			return RequestAccessTokenAsync (queryValues);
 		}
 
+		/// <summary>
+		/// Requests the access token async.
+		/// </summary>
+		/// <returns>The access token async.</returns>
+		/// <param name="queryValues">Query values.</param>
 		protected Task<IDictionary<string,string>> RequestAccessTokenAsync (IDictionary<string, string> queryValues)
 		{
 			var query = queryValues.FormEncode ();

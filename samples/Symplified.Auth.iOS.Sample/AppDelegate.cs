@@ -18,6 +18,8 @@ using dk.nita.saml20.Utils;
 using dk.nita.saml20.config;
 using dk.nita.saml20.Schema.XmlDSig;
 
+using Xamarin.Utilities;
+
 namespace Symplified.Auth.iOS.Sample
 {
 	// The UIApplicationDelegate for the application. This class is responsible for launching the 
@@ -52,7 +54,7 @@ namespace Symplified.Auth.iOS.Sample
 			symplifiedTokenSection.Add (new StyledStringElement ("Token Login", LoginToSymplifiedToken));
 			symplifiedTokenSection.Add (tokenLoginStatusStringElement = new StringElement (String.Empty));
 
-			symplifiedSamlSection = new Section ("SAML 2.0 Service Provider Proxy");
+			symplifiedSamlSection = new Section ("SAML 2.0 Mobile Service Provider");
 			symplifiedSamlSection.Add (new StyledStringElement ("Assertion Login", LoginWithIdentityProvider));
 			symplifiedSamlSection.Add (samlLoginStatusStringElement = new StringElement (String.Empty));
 
