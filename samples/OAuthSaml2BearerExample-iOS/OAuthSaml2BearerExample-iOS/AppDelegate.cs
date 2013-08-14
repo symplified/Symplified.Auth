@@ -16,6 +16,8 @@ using Xamarin.Auth;
 using Xamarin.Utilities;
 using dk.nita.saml20;
 
+using Salesforce;
+
 namespace OAuthSaml2BearerExampleiOS
 {
 	// The UIApplicationDelegate for the application. This class is responsible for launching the 
@@ -142,11 +144,6 @@ namespace OAuthSaml2BearerExampleiOS
 			request.Method = "GET";
 			request.Accept = "*/*";
 
-			Console.WriteLine (accessToken);
-			Console.WriteLine (request.Headers);
-
-//			jsonResponseElement.Caption = request.GetResponse ().GetResponseText ();
-//			Console.WriteLine (jsonResponseElement.Caption);
 			request.GetResponseAsync ().ContinueWith (t => {
 
 				jsonResponseElement.Caption = t.Result.GetResponseText ();
@@ -155,23 +152,6 @@ namespace OAuthSaml2BearerExampleiOS
 					loginViewController.ReloadData ();
 				});
 			});
-
-
-			// TODO: Add access token information to Account
-//			var request = new OAuth2Request ("GET", new Uri ("https://na1.salesforce.com/services/data/v26.0/"), null, e.Account);
-//			request.GetResponseAsync().ContinueWith (t => {
-//				if (t.IsFaulted)
-//					facebookStatus.Caption = "Error: " + t.Exception.InnerException.Message;
-//				else if (t.IsCanceled)
-//					facebookStatus.Caption = "Canceled";
-//				else
-//				{
-//					var obj = JsonValue.Parse (t.Result.GetResponseText());
-//					facebookStatus.Caption = "Logged in as " + obj["name"];
-//				}
-//
-//				dialog.ReloadData();
-//			}, TaskScheduler.FromCurrentSynchronizationContext());
 		}
 	}
 }

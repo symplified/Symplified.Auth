@@ -90,9 +90,6 @@
       <HintPath>lib\log4net.dll</HintPath>
     </Reference>
     <Reference Include="MonoTouch.Dialog-1" />
-    <Reference Include="Salesforce">
-      <HintPath>..\Components\SalesforceSDK-1.0\lib\ios\Salesforce.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -107,12 +104,5 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <BundleResource Include="Resources\salesforce-oauthsaml2-idp-metadata.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <XamarinComponentReference Include="SalesforceSDK">
-      <InstallationInProgress>True</InstallationInProgress>
-      <Version>1.0</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
   </ItemGroup>
 </Project>
