@@ -14,7 +14,7 @@ using JSON = Newtonsoft.Json;
 namespace Symplified.Auth
 {
 	/// <summary>
-	/// Saml account.
+	/// A representation of a user account created and authenticated via SAML 2.0.
 	/// </summary>
 	public class SamlAccount : Account
 	{
@@ -22,16 +22,20 @@ namespace Symplified.Auth
 
 		private XmlElement _samlResponse;
 
+
 		/// <summary>
-		/// 
+		/// urn:ietf:params:oauth:grant-type:saml2-bearer
 		/// </summary>
 		public static string AUTHORIZATION_GRANT_TYPE = "urn:ietf:params:oauth:grant-type:saml2-bearer";
 
 		/// <summary>
-		/// 
+		/// urn:ietf:params:oauth:client-assertion-type:saml2-bearer
 		/// </summary>
 		public static string CLIENT_ASSERTION_TYPE = "urn:ietf:params:oauth:client-assertion-type:saml2-bearer";
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Symplified.Auth.SamlAccount"/> class.
+		/// </summary>
 		public SamlAccount () : base () {}
 
 		/// <summary>
@@ -61,7 +65,7 @@ namespace Symplified.Auth
 		}
 
 		/// <summary>
-		/// Gets or sets the saml response.
+		/// Gets or sets the SAML XML response.
 		/// </summary>
 		/// <value>The saml response.</value>
 		public XmlElement SamlResponse {
@@ -115,7 +119,8 @@ namespace Symplified.Auth
 		/// Gets the bearer assertion authorization grant.
 		/// </summary>
 		/// <returns>The bearer assertion authorization grant.</returns>
-		/// <param name="tokenEndpoint">Token endpoint.</param>
+		/// <param name="tokenEndpoint">The <see cref="System.Uri"/> that describes the endpoint that is capable of handling 
+		/// OAuth bearer assertion authorization grants.</param>
 		public Task<IDictionary<string,string>> GetBearerAssertionAuthorizationGrant (Uri tokenEndpoint)
 		{
 			WebRequest request = WebRequest.Create (tokenEndpoint);

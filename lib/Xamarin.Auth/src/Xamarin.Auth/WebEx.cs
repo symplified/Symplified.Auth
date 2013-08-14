@@ -24,8 +24,18 @@ using System.Globalization;
 
 namespace Xamarin.Utilities
 {
+	/// <summary>
+	/// Web Helper Functions
+	/// </summary>
 	public static class WebEx
 	{
+		/// <summary>
+		/// Gets the cookie.
+		/// </summary>
+		/// <returns>The cookie.</returns>
+		/// <param name="containers">Containers.</param>
+		/// <param name="domain">Domain.</param>
+		/// <param name="name">Name.</param>
 		public static string GetCookie (this CookieContainer containers, Uri domain, string name)
 		{
 			var c = containers
@@ -35,6 +45,11 @@ namespace Xamarin.Utilities
 			return c != null ? c.Value : "";
 		}
 
+		/// <summary>
+		/// Gets the type of the encoding from content.
+		/// </summary>
+		/// <returns>The encoding from content type.</returns>
+		/// <param name="contentType">Content type.</param>
 		public static Encoding GetEncodingFromContentType (string contentType)
 		{
 			//
@@ -43,6 +58,11 @@ namespace Xamarin.Utilities
 			return Encoding.UTF8;
 		}
 
+		/// <summary>
+		/// Gets the response text.
+		/// </summary>
+		/// <returns>The response text.</returns>
+		/// <param name="response">Response.</param>
 		public static string GetResponseText (this WebResponse response)
 		{
 			var httpResponse = response as HttpWebResponse;
@@ -60,6 +80,11 @@ namespace Xamarin.Utilities
 			}
 		}
 
+		/// <summary>
+		/// Gets the response async.
+		/// </summary>
+		/// <returns>The response async.</returns>
+		/// <param name="request">Request.</param>
 		public static Task<WebResponse> GetResponseAsync (this WebRequest request)
 		{
 			return Task
@@ -70,6 +95,11 @@ namespace Xamarin.Utilities
 		static char[] AmpersandChars = new char[] { '&' };
 		static char[] EqualsChars = new char[] { '=' };
 
+		/// <summary>
+		/// Forms the decode.
+		/// </summary>
+		/// <returns>The decode.</returns>
+		/// <param name="encodedString">Encoded string.</param>
 		public static IDictionary<string, string> FormDecode (string encodedString)
 		{
 			var inputs = new Dictionary<string, string> ();
@@ -89,6 +119,11 @@ namespace Xamarin.Utilities
 			return inputs;
 		}
 
+		/// <summary>
+		/// Htmls the encode.
+		/// </summary>
+		/// <returns>The encode.</returns>
+		/// <param name="text">Text.</param>
 		public static string HtmlEncode (string text)
 		{
 			if (string.IsNullOrEmpty (text)) {
@@ -128,6 +163,12 @@ namespace Xamarin.Utilities
 			return sb.ToString();
 		}
 
+		/// <summary>
+		/// Gets the value from json.
+		/// </summary>
+		/// <returns>The value from json.</returns>
+		/// <param name="json">Json.</param>
+		/// <param name="key">Key.</param>
 		public static string GetValueFromJson (string json, string key)
 		{
 		    var p = json.IndexOf ("\"" + key + "\"");

@@ -1657,4 +1657,10 @@
       <Link>System.Security.Permissions\DataProtectionPermissionAttribute.cs</Link>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\lib\Xamarin.Auth\src\Xamarin.Auth.iOS\Xamarin.Auth.iOS.csproj">
+      <Project>{9309BCCC-AA7B-4195-A130-D4572FA9488D}</Project>
+      <Name>Xamarin.Auth.iOS</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

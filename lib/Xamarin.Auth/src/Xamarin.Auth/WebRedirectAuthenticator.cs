@@ -30,7 +30,14 @@ namespace Xamarin.Auth
 	public class WebRedirectAuthenticator : WebAuthenticator
 #endif
 	{
+		/// <summary>
+		/// The initial URL.
+		/// </summary>
 		protected Uri initialUrl;
+
+		/// <summary>
+		/// The redirect URL.
+		/// </summary>
 		protected Uri redirectUrl;
 
 		/// <summary>
@@ -81,6 +88,9 @@ namespace Xamarin.Auth
 		/// <param name='url'>
 		/// The URL of the page.
 		/// </param>
+		/// <param name="formParams">
+		/// The parsed form parameters from the HTTP message body.
+		/// </param>
 		public override void OnPageLoading (Uri url, IDictionary<string,string> formParams)
 		{
 			var query = WebEx.FormDecode (url.Query);
@@ -100,6 +110,9 @@ namespace Xamarin.Auth
 		/// </param>
 		/// <param name='fragment'>
 		/// The parsed fragment of the URL.
+		/// </param>
+		/// <param name="formParams">
+		/// The parsed form parameters from the HTTP message body.
 		/// </param>
 		protected virtual void OnPageEncountered (Uri url, IDictionary<string, string> query, IDictionary<string, string> fragment, IDictionary<string,string> formParams)
 		{
@@ -143,6 +156,9 @@ namespace Xamarin.Auth
 		/// </param>
 		/// <param name='fragment'>
 		/// The parsed fragment of the URL.
+		/// </param>
+		/// <param name="formParams">
+		/// The parsed form parameters from the HTTP message body.
 		/// </param>
 		protected virtual void OnRedirectPageLoaded (Uri url, IDictionary<string, string> query, IDictionary<string, string> fragment, IDictionary<string,string> formParams)
 		{

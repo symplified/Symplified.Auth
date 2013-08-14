@@ -19,20 +19,21 @@ using dk.nita.saml20.Schema.XmlDSig;
 namespace Symplified.Auth
 {
 	/// <summary>
-	/// SAML 2.0 authenticator.
+	/// SAML 2.0 Authenticator.
 	/// </summary>
 	public class Saml20Authenticator : WebRedirectAuthenticator
 	{
 		private Saml20MetadataDocument _idpMetadata;
+
 		private string _spName;
 
-		private static readonly Uri PLACEHOLDER_URI = new Uri ("http://google.com" + new Guid ());
+		private static readonly Uri PLACEHOLDER_URI = new Uri ("http://example.com" + new Guid ());
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Symplified.Auth.Saml20Authenticator"/> class.
 		/// </summary>
-		/// <param name="spName">Sp name.</param>
-		/// <param name="idpMetadata">Idp metadata.</param>
+		/// <param name="spName">Service Provider name.</param>
+		/// <param name="idpMetadata">Identity Provider metadata.</param>
 		public Saml20Authenticator (string spName, Saml20MetadataDocument idpMetadata) :
 			base (PLACEHOLDER_URI, PLACEHOLDER_URI)
 		{
@@ -51,15 +52,6 @@ namespace Symplified.Auth
 		}
 
 		/// <summary>
-		/// Method that returns the initial URL to be displayed in the web browser.
-		/// </summary>
-		/// <returns>A task that will return the initial URL.</returns>
-		public override Task<Uri> GetInitialUrlAsync ()
-		{
-			return base.GetInitialUrlAsync ();
-		}
-
-		/// <summary>
 		/// Event handler called when a new page is being loaded in the web browser.
 		/// </summary>
 		/// <param name="url">The URL of the page.</param>
@@ -74,24 +66,12 @@ namespace Symplified.Auth
 		}
 
 		/// <summary>
-		/// Raised when a new page has been loaded.
+		/// Raised when the SAML 2.0 response parameter has been detected.
 		/// </summary>
 		/// <param name="url">URL of the page.</param>
 		/// <param name="query">The parsed query of the URL.</param>
 		/// <param name="fragment">The parsed fragment of the URL.</param>
-		/// <param name="formParams">Form parameters.</param>
-		protected override void OnPageEncountered (Uri url, IDictionary<string, string> query, IDictionary<string, string> fragment, IDictionary<string, string> formParams)
-		{
-			base.OnPageEncountered (url, query, fragment, formParams);
-		}
-
-		/// <summary>
-		/// Raised when the redirect page has been loaded.
-		/// </summary>
-		/// <param name="url">URL of the page.</param>
-		/// <param name="query">The parsed query of the URL.</param>
-		/// <param name="fragment">The parsed fragment of the URL.</param>
-		/// <param name="formParams">Form parameters.</param>
+		/// <param name="formParams">Form parameters, including the 'SAMLResponse'.</param>
 		protected override void OnRedirectPageLoaded (Uri url, System.Collections.Generic.IDictionary<string, string> query, System.Collections.Generic.IDictionary<string, string> fragment, IDictionary<string, string> formParams)
 		{
 			string base64SamlAssertion = formParams.ContainsKey ("SAMLResponse") ? formParams ["SAMLResponse"] : string.Empty;
@@ -143,22 +123,6 @@ namespace Symplified.Auth
 			else {
 				OnError ("No SAML Assertion Found");                                                                                                                                                                          ;
 			}
-		}
-
-		/// <summary>
-		/// Raises the browsing completed event.
-		/// </summary>
-		protected override void OnBrowsingCompleted ()
-		{
-			base.OnBrowsingCompleted ();
-		}
-
-		/// <summary>
-		/// Requests the assertion async.
-		/// </summary>
-		/// <returns>The assertion async.</returns>
-		protected virtual Task<Dictionary<string,string>> RequestAssertionAsync () {
-			return null;
 		}
 	}
 }

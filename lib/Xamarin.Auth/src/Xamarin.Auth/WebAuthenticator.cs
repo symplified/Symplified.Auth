@@ -62,6 +62,9 @@ namespace Xamarin.Auth
 		/// <param name='url'>
 		/// The URL of the page.
 		/// </param>
+		/// <param name="formParams">
+		/// The parsed form parameters from the HTTP message body.
+		/// </param>
 		public virtual void OnPageLoading (Uri url, IDictionary<string,string> formParams)
 		{
 		}
