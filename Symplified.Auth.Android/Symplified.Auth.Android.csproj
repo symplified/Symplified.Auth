@@ -50,6 +50,9 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="Mono.CSharp" />
     <Reference Include="System.Json" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\lib\Json.NET\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />

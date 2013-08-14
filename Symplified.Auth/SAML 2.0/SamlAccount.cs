@@ -1,4 +1,4 @@
-	using System;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Web;
@@ -9,7 +9,7 @@ using Xamarin.Auth;
 using Xamarin.Utilities;
 using dk.nita.saml20;
 
-using JSON = System.Json;
+using JSON = Newtonsoft.Json;
 
 namespace Symplified.Auth
 {
@@ -132,20 +132,11 @@ namespace Symplified.Auth
 			request.GetRequestStream ().Write (paramBytes, 0, paramBytes.Length);
 
 			return request.GetResponseAsync ().ContinueWith (t => {
-				JSON.JsonObject jsonObject = (JSON.JsonObject)JSON.JsonObject.Parse (t.Result.GetResponseText ());
 
-				IDictionary<string,string> oAuthValues = new Dictionary<string, string> ();
-				JSON.JsonValue accessToken = null;
-				if (jsonObject.TryGetValue ("access_token", out accessToken)) {
-					oAuthValues.Add ("access_token", accessToken);
-				}
+				IDictionary<string,string> jsonResponseValues = 
+					JSON.JsonConvert.DeserializeObject<Dictionary<string,string>> (t.Result.GetResponseText ());
 
-				JSON.JsonValue scope = null;
-				if (jsonObject.TryGetValue ("scope", out scope)) {
-					oAuthValues.Add ("scope", scope);
-				}
-
-				return oAuthValues;
+				return jsonResponseValues;
 			});
 		}
 

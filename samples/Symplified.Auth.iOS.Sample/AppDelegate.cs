@@ -118,6 +118,12 @@ namespace Symplified.Auth.iOS.Sample
 
 					samlLoginStatusStringElement.Caption = String.Format ("Name: {0}", authenticatedAccount.Assertion.Subject.Value);
 					samlLoginStatusStringElement.GetActiveCell ().BackgroundColor = UIColor.Green;
+
+					authenticatedAccount.GetBearerAssertionAuthorizationGrant (
+						new Uri ("https://login.salesforce.com/services/oauth2/token")).ContinueWith (t => {
+
+						Console.WriteLine (t.Result);
+					});
 				}
 
 				loginViewController.ReloadData ();

@@ -115,7 +115,7 @@ namespace OAuthSaml2BearerExampleiOS
 
 							BeginInvokeOnMainThread (delegate {
 								loginViewController.ReloadData ();
-								ListSalesforceResources (t.Result ["access_token"]);
+								ListSalesforceResources (t.Result ["instance_url"], t.Result ["access_token"]);
 							});
 						}
 						else {
@@ -131,23 +131,30 @@ namespace OAuthSaml2BearerExampleiOS
 			loginViewController.PresentViewController (vc, true, null);
 		}
 
-		public void ListSalesforceResources (string accessToken)
+		public void ListSalesforceResources (string instanceUrl, string accessToken)
 		{
-			WebRequest request = WebRequest.Create ("https://na1.salesforce.com/services/data/v26.0/");
-			request.Headers.Add ("Authorization", String.Format ("Bearer {0}", WebEx.HtmlEncode (accessToken)));
+			string endpointUrl = instanceUrl + "/services/data/v26.0/sobjects";
 
+			HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create (endpointUrl);
+			request.Headers.Add ("Authorization", String.Format ("Bearer {0}", accessToken));
+			request.Headers.Add ("X-PrettyPrint", "1");
+			request.ContentType = "application/json";
+			request.Method = "GET";
+			request.Accept = "*/*";
 
+			Console.WriteLine (accessToken);
+			Console.WriteLine (request.Headers);
 
-			jsonResponseElement.Caption = request.GetResponse ().GetResponseText ();
-			Console.WriteLine (jsonResponseElement.Caption);
-//			request.GetResponseAsync ().ContinueWith (t => {
-//
-//				jsonResponseElement.Caption = t.Result.GetResponseText ();
-//
-//				BeginInvokeOnMainThread (delegate {
-//					loginViewController.ReloadData ();
-//				});
-//			});
+//			jsonResponseElement.Caption = request.GetResponse ().GetResponseText ();
+//			Console.WriteLine (jsonResponseElement.Caption);
+			request.GetResponseAsync ().ContinueWith (t => {
+
+				jsonResponseElement.Caption = t.Result.GetResponseText ();
+
+				BeginInvokeOnMainThread (delegate {
+					loginViewController.ReloadData ();
+				});
+			});
 
 
 			// TODO: Add access token information to Account
