@@ -16,8 +16,6 @@ using Xamarin.Auth;
 using Xamarin.Utilities;
 using dk.nita.saml20;
 
-using Salesforce;
-
 namespace OAuthSaml2BearerExampleiOS
 {
 	// The UIApplicationDelegate for the application. This class is responsible for launching the 
@@ -31,12 +29,38 @@ namespace OAuthSaml2BearerExampleiOS
 
 		Section symplifiedSamlSection;
 
-		StringElement samlLoginStatusStringElement;
+		StyledStringElement samlLoginStatusStringElement;
 		StyledStringElement accessTokenStringElement;
 		StyledStringElement scopeStringElement;
-		StyledStringElement jsonResponseElement;
+		JsonStringElement jsonResponseElement;
 
 		DialogViewController loginViewController;
+
+		class JsonStringElement : StyledMultilineElement
+		{
+			public JsonStringElement (string title)
+				: base (title)
+			{
+
+			}
+
+			public override float GetHeight (UITableView tableView, NSIndexPath indexPath)
+			{
+				if (string.IsNullOrEmpty (Caption)) {
+					return 44.0f;
+				} else {
+					NSString s = new NSString (this.Caption);
+
+					float height = s.StringSize (
+						UIFont.SystemFontOfSize (12.0f), 
+						new System.Drawing.SizeF (280.0f, 5000.0f), 
+						UILineBreakMode.WordWrap
+						).Height;
+
+					return height;
+				}
+			}
+		}
 
 		//
 		// This method is invoked when the application has loaded and is ready to run. In this 
@@ -51,7 +75,13 @@ namespace OAuthSaml2BearerExampleiOS
 
 			symplifiedSamlSection = new Section ("Salesforce OAuth/SAML2 Grant");
 			symplifiedSamlSection.Add (new StyledStringElement ("Exchange Assertion", PerformSalesforceOAuthSaml2Grant));
-			symplifiedSamlSection.Add (samlLoginStatusStringElement = new StringElement (String.Empty));
+
+			samlLoginStatusStringElement = new StyledStringElement (String.Empty, "SAML 2.0 Assertion Subject", UITableViewCellStyle.Subtitle);
+			samlLoginStatusStringElement.Lines = 1;
+			samlLoginStatusStringElement.LineBreakMode = UILineBreakMode.TailTruncation;
+			samlLoginStatusStringElement.Font = UIFont.SystemFontOfSize (12.0f);
+			samlLoginStatusStringElement.SubtitleFont = UIFont.SystemFontOfSize (10.0f);
+			symplifiedSamlSection.Add (samlLoginStatusStringElement);
 
 			accessTokenStringElement = new StyledStringElement ("", "OAuth 2 Access Token", UITableViewCellStyle.Subtitle);
 			accessTokenStringElement.Lines = 1;
@@ -67,15 +97,16 @@ namespace OAuthSaml2BearerExampleiOS
 			scopeStringElement.SubtitleFont = UIFont.SystemFontOfSize (10.0f);
 			symplifiedSamlSection.Add (scopeStringElement);
 
-			jsonResponseElement = new StyledStringElement ("");
-			jsonResponseElement.Lines = 20;
+			jsonResponseElement = new JsonStringElement ("");
 			jsonResponseElement.LineBreakMode = UILineBreakMode.WordWrap;
 			jsonResponseElement.Font = UIFont.SystemFontOfSize (12.0f);
 			symplifiedSamlSection.Add (jsonResponseElement);
 
-			loginViewController = new DialogViewController (UITableViewStyle.Grouped, new RootElement ("OAuthSaml2BearerExampleiOS") { 
-				symplifiedSamlSection,
-			});
+			RootElement menuRoot = new RootElement ("OAuthSaml2BearerExampleiOS");
+			menuRoot.Add (symplifiedSamlSection);
+			menuRoot.UnevenRows = true;
+
+			loginViewController = new DialogViewController (UITableViewStyle.Grouped, menuRoot);
 
 			window.RootViewController = loginViewController;
 			window.MakeKeyAndVisible ();
@@ -105,7 +136,7 @@ namespace OAuthSaml2BearerExampleiOS
 				}
 				else {
 					SamlAccount authenticatedAccount = (SamlAccount)e.Account;
-					samlLoginStatusStringElement.Caption = String.Format ("Subject: {0}", authenticatedAccount.Assertion.Subject.Value);
+					samlLoginStatusStringElement.Caption = authenticatedAccount.Assertion.Subject.Value;
 					samlLoginStatusStringElement.GetActiveCell ().BackgroundColor = UIColor.Green;
 
 					authenticatedAccount.GetBearerAssertionAuthorizationGrant (
@@ -135,7 +166,7 @@ namespace OAuthSaml2BearerExampleiOS
 
 		public void ListSalesforceResources (string instanceUrl, string accessToken)
 		{
-			string endpointUrl = instanceUrl + "/services/data/v26.0/sobjects";
+			string endpointUrl = instanceUrl + "/services/data/v26.0";
 
 			HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create (endpointUrl);
 			request.Headers.Add ("Authorization", String.Format ("Bearer {0}", accessToken));
