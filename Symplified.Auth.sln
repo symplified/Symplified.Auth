@@ -195,6 +195,6 @@ Global
 		{FCF02C8C-6DD3-4C59-A8A2-58BC01A4BB21}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Symplified.Auth.iOS\Symplified.Auth.iOS.csproj
+		StartupItem = samples\Symplified.Auth.Android.Sample\Symplified.Auth.Android.Sample.csproj
 	EndGlobalSection
 EndGlobal
