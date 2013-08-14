@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Symplified.Auth.iOS.Sample", "Symplified.Auth.iOS.Sample.csproj", "{9FC99112-BA74-4A89-8285-A31D612925CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		AppStore|iPhone = AppStore|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9FC99112-BA74-4A89-8285-A31D612925CA}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{9FC99112-BA74-4A89-8285-A31D612925CA}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{9FC99112-BA74-4A89-8285-A31D612925CA}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{9FC99112-BA74-4A89-8285-A31D612925CA}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{9FC99112-BA74-4A89-8285-A31D612925CA}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{9FC99112-BA74-4A89-8285-A31D612925CA}.Debug|iPhone.Build.0 = Debug|iPhone
+		{9FC99112-BA74-4A89-8285-A31D612925CA}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{9FC99112-BA74-4A89-8285-A31D612925CA}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{9FC99112-BA74-4A89-8285-A31D612925CA}.Release|iPhone.ActiveCfg = Release|iPhone
+		{9FC99112-BA74-4A89-8285-A31D612925CA}.Release|iPhone.Build.0 = Release|iPhone
+		{9FC99112-BA74-4A89-8285-A31D612925CA}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{9FC99112-BA74-4A89-8285-A31D612925CA}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Symplified.Auth.iOS.Sample.csproj
+	EndGlobalSection
+EndGlobal

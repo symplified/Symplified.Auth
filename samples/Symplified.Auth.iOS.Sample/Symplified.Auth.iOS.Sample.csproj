@@ -85,6 +85,12 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="Mono.Security" />
     <Reference Include="System.Json" />
+    <Reference Include="Xamarin.Auth.iOS">
+      <HintPath>lib\Xamarin.Auth.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Symplified.Auth.iOS">
+      <HintPath>lib\Symplified.Auth.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -97,16 +103,6 @@
     <Compile Include="AppDelegate.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <ProjectReference Include="..\..\Symplified.Auth.iOS\Symplified.Auth.iOS.csproj">
-      <Project>{842950CE-E49A-4F6D-AC90-FCD5D908175B}</Project>
-      <Name>Symplified.Auth.iOS</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\lib\Xamarin.Auth\src\Xamarin.Auth.iOS\Xamarin.Auth.iOS.csproj">
-      <Project>{9309BCCC-AA7B-4195-A130-D4572FA9488D}</Project>
-      <Name>Xamarin.Auth.iOS</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup>
     <Content Include="idp.symplified.net.metadata.xml" />
     <Content Include="salesforce-oauthsaml2-idp-metadata.xml" />
