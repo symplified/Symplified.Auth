@@ -162,11 +162,11 @@ namespace System.Configuration
 			throw new NotImplementedException ();
 		}
 #if !TARGET_JVM
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		extern private static string get_bundled_machine_config ();
-
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		extern private static string get_bundled_app_config ();
+//		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+//		extern private static string get_bundled_machine_config ();
+//
+//		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+//		extern private static string get_bundled_app_config ();
 #endif
 		
 		public virtual Stream OpenStreamForRead (string streamName)
@@ -175,7 +175,7 @@ namespace System.Configuration
 #if TARGET_JVM
 				return (Stream) vmw.common.IOUtils.getStreamForGHConfigs (streamName);
 #else
-				string bundle = get_bundled_machine_config ();
+				string bundle = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name + ".exe.config";
 				if (bundle != null)
 					return new MemoryStream (System.Text.Encoding.UTF8.GetBytes (bundle));
 #endif
@@ -185,7 +185,7 @@ namespace System.Configuration
 #if TARGET_JVM
 				throw new NotImplementedException();
 #else
-				string bundle = get_bundled_app_config ();
+				string bundle = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name + ".exe.config";
 				if (bundle != null)
 					return new MemoryStream (System.Text.Encoding.UTF8.GetBytes (bundle));
 #endif

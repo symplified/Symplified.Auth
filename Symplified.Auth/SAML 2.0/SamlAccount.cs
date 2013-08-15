@@ -42,10 +42,11 @@ namespace Symplified.Auth
 		/// Initializes a new instance of the <see cref="Symplified.Auth.SamlAccount"/> class.
 		/// </summary>
 		/// <param name="assertion">Assertion.</param>
+		/// <param name="samlResponse">Saml response.</param>
 		public SamlAccount (Saml20Assertion assertion, XmlElement samlResponse)
 		{
 			this._saml20Assertion = assertion;
-			this.Username = assertion.Subject.Value;
+			this.Username = (assertion.Subject != null) ? assertion.Subject.Value : string.Empty;
 			this._samlResponse = samlResponse;
 		}
 

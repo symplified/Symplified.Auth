@@ -195,17 +195,19 @@ namespace System.Configuration
 			return System.Runtime.InteropServices.RuntimeEnvironment.SystemConfigurationFile;
 		}
 #else
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		extern private static string get_bundled_machine_config ();
+//		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+//		extern private static string get_bundled_machine_config ();
 		internal static string GetBundledMachineConfig ()
 		{
-			return get_bundled_machine_config ();
+			return System.Reflection.Assembly.GetExecutingAssembly().GetName().Name + ".exe.config";
+//			return get_bundled_machine_config ();
 		}
-		[MethodImplAttribute(MethodImplOptions.InternalCall)]
-		extern private static string get_machine_config_path ();
+//		[MethodImplAttribute(MethodImplOptions.InternalCall)]
+//		extern private static string get_machine_config_path ();
 		internal static string GetMachineConfigPath ()
 		{
-			return get_machine_config_path ();
+			return System.Reflection.Assembly.GetExecutingAssembly().GetName().Name + ".exe.config";
+//			return get_machine_config_path ();
 		}
 #endif
 		private static string GetAppConfigPath ()

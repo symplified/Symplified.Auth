@@ -39,6 +39,8 @@ namespace Symplified.Auth.iOS.Sample
 
 		DialogViewController loginViewController;
 
+		UIViewController vc;
+
 		//
 		// This method is invoked when the application has loaded and is ready to run. In this 
 		// method you should instantiate the window, load the UI into it and then make the window
@@ -87,7 +89,7 @@ namespace Symplified.Auth.iOS.Sample
 				}
 			};
 
-			UIViewController vc = authenticator.GetUI ();
+			vc = authenticator.GetUI ();
 			loginViewController.PresentViewController (vc, true, null);
 		}
 
@@ -121,7 +123,7 @@ namespace Symplified.Auth.iOS.Sample
 				loginViewController.ReloadData ();
 			};
 
-			UIViewController vc = authenticator.GetUI ();
+			vc = authenticator.GetUI ();
 			loginViewController.PresentViewController (vc, true, null);
 		}
 	}
