@@ -1452,6 +1452,9 @@
     <Compile Include="..\Symplified.Auth\SAML 2.0\Saml20Authenticator.cs">
       <Link>Saml20Authenticator.cs</Link>
     </Compile>
+    <Compile Include="..\Symplified.Auth\Properties\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

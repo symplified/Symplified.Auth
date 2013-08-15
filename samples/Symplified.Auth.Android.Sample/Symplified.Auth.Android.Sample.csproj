@@ -48,8 +48,11 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Mono.Android.Export" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>lib\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Symplified.Auth.Android">
+      <HintPath>lib\Symplified.Auth.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Auth.Android">
+      <HintPath>lib\Xamarin.Auth.Android.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -73,15 +76,5 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\idp.symplified.net.metadata.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Symplified.Auth.Android\Symplified.Auth.Android.csproj">
-      <Project>{AE33DF0A-7811-43BD-B60E-817CF4BB226A}</Project>
-      <Name>Symplified.Auth.Android</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\lib\Xamarin.Auth\src\Xamarin.Auth.Android\Xamarin.Auth.Android.csproj">
-      <Project>{FCF02C8C-6DD3-4C59-A8A2-58BC01A4BB21}</Project>
-      <Name>Xamarin.Auth.Android</Name>
-    </ProjectReference>
   </ItemGroup>
 </Project>

@@ -3,28 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Symplified.Auth.Android.Sample", "Symplified.Auth.Android.Sample.csproj", "{CFE86511-190A-461C-82C4-053064F6E555}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xamarin.Auth.Android", "..\..\lib\Xamarin.Auth\src\Xamarin.Auth.Android\Xamarin.Auth.Android.csproj", "{FCF02C8C-6DD3-4C59-A8A2-58BC01A4BB21}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Symplified.Auth.Android", "..\..\Symplified.Auth.Android\Symplified.Auth.Android.csproj", "{AE33DF0A-7811-43BD-B60E-817CF4BB226A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AE33DF0A-7811-43BD-B60E-817CF4BB226A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AE33DF0A-7811-43BD-B60E-817CF4BB226A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AE33DF0A-7811-43BD-B60E-817CF4BB226A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AE33DF0A-7811-43BD-B60E-817CF4BB226A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CFE86511-190A-461C-82C4-053064F6E555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CFE86511-190A-461C-82C4-053064F6E555}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFE86511-190A-461C-82C4-053064F6E555}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFE86511-190A-461C-82C4-053064F6E555}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FCF02C8C-6DD3-4C59-A8A2-58BC01A4BB21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FCF02C8C-6DD3-4C59-A8A2-58BC01A4BB21}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FCF02C8C-6DD3-4C59-A8A2-58BC01A4BB21}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FCF02C8C-6DD3-4C59-A8A2-58BC01A4BB21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Symplified.Auth.Android.Sample.csproj
