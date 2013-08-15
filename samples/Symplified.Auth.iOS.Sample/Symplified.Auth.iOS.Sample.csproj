@@ -11,6 +11,7 @@
     <RootNamespace>Symplified.Auth.iOS.Sample</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>SymplifiedAuthiOSSample</AssemblyName>
+    <ReleaseVersion>1.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -104,6 +105,9 @@
     </Reference>
     <Reference Include="Xamarin.Auth.iOS">
       <HintPath>lib\Xamarin.Auth.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

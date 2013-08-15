@@ -17,6 +17,7 @@
     <AssemblyName>Symplified.Auth.Android.Sample</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidLinkMode>None</AndroidLinkMode>
+    <ReleaseVersion>1.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -53,6 +54,9 @@
     </Reference>
     <Reference Include="Xamarin.Auth.Android">
       <HintPath>lib\Xamarin.Auth.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
