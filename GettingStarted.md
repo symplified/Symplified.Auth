@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 ## The Symplified Identity Provider (IdP) Sandbox
 
 Use our SAML 2.0 environment with a hosted IdP and test account to quickly build a functional app. Swap in your production IdP when you're ready to deploy.
@@ -11,12 +9,12 @@ Here is the protocol flow between your app and the IdP:
 > Need help understanding single sign-on terminology, like IdP and SP? The folks at Salesforce.com have provided a good overview:  [About Identity Providers and Service Providers](http://login.salesforce.com/help/doc/en/identity_provider_about.htm).
 
 
-		
+
 ## 0. Acquire SAML 2.0 metadata
 
 SAML metadata provides information about the identity provider (IdP) used for the authentication and single sign-on service. It is an XML document containing data such as server URIs, protocols, certificates, and so on.
 
-We've provided an example to get you up and running. 
+We've provided an example to get you up and running.
 
 ```csharp
 Mike, please insert code here.
@@ -33,21 +31,21 @@ Mike, please insert code (4 lines) here.
 
 ## 2. Create and configure a SAML 2.0 authenticator
 
-To verify an assertion that returns from the IdP, we'll configure an authenticator using the IdP metadata: 
+To verify an assertion that returns from the IdP, we'll configure an authenticator using the IdP metadata:
 
 ```csharp
 Mike, please insert code here.
 ```
 
-The authenticator will: 
+The authenticator will:
 
 * Create a SAML assertion
 * Send it to the IdP
-* Get an assertion back 
-  The assertion is issued depending on conditions such as the user's log in state 
+* Get an assertion back
+  The assertion is issued depending on conditions such as the user's log in state
 * Verify the signature on the assertion
 * Request resource
- 
+
 
 ## 3. Authenticate the user via the IdP
 
@@ -105,13 +103,8 @@ Mike, please insert code here.
 
 ### Exchange SAML 2.0 assertion for OAuth 2.0
 
-You can bridge SAML 2.0 to REST APIs using the Symplified Mobile Developer SDK. For example, you can enable a third-party IdP such as [Salesforce](http://login.salesforce.com/help/doc/en/identity_provider_about.htm), then  federate authentication.  
+You can bridge SAML 2.0 to REST APIs using the Symplified Mobile Developer SDK. For example, you can enable a third-party IdP such as [Salesforce](http://login.salesforce.com/help/doc/en/identity_provider_about.htm), then  federate authentication.
 
 ```csharp
 Mike, please insert code here.
 ```
-
-
-=======
-Getting Started...
->>>>>>> 5cb10b56ea38c1324e9662178b9d2b8ca5774264
