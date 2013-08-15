@@ -1,4 +1,17 @@
 <<<<<<< HEAD
+
+## The Symplified Identity Provider (IdP) Sandbox
+
+Use our SAML 2.0 environment with a hosted IdP and test account to quickly build a functional app. Swap in your production IdP when you're ready to deploy.
+
+Here is the protocol flow between your app and the IdP:
+
+![Symplified Mobile Developer SDK Protocol Flow](./resources/01.png)
+
+> Need help understanding single sign-on terminology, like IdP and SP? The folks at Salesforce.com have provided a good overview:  [About Identity Providers and Service Providers](http://login.salesforce.com/help/doc/en/identity_provider_about.htm).
+
+
+		
 ## 0. Acquire SAML 2.0 metadata
 
 SAML metadata provides information about the identity provider (IdP) used for the authentication and single sign-on service. It is an XML document containing data such as server URIs, protocols, certificates, and so on.
@@ -8,8 +21,6 @@ We've provided an example to get you up and running.
 ```csharp
 Mike, please insert code here.
 ```
-
-> Need help understanding single sign-on terminology, like SAML, IdP, and SP? Please see <[About Identity Providers and Service Providers](http://login.salesforce.com/help/doc/en/identity_provider_about.htm) on the Salesforce.com web site for more information.
 
 
 ## 1. Create and configure an IdP
@@ -40,73 +51,66 @@ The authenticator will:
 
 ## 3. Authenticate the user via the IdP
 
-_Here, we log the user into the IdP._
 
-_Logging into the IdP. Similar language. get to complete? info about the session. Auth or not._
+Although third-party authenticators control their own UI, you decide how to show the authenticator's UI on the screen. You can manage how the authentication UI is presented–modally, in navigation controllers, in popovers, and so on.
 
-While authenticators manage their own UI, it's up to you to initially present the authenticator's UI on the screen. This lets you control how the authentication UI is displayed–modally, in navigation controllers, in popovers, etc.
+Prior to displaying the UI, we must first listen for the `Completed` event which triggers when user successfully authenticates or cancels. Find out whether the authentication succeeded by examining the `IsAuthenticated` property of `eventArgs`:
 
-Before we present the UI, we need to start listening to the `Completed` event which fires when the user successfully authenticates or cancels. You can find out if the authentication succeeded by testing the `IsAuthenticated` property of `eventArgs`:
 
 ```csharp
-auth.Completed += (sender, eventArgs) => {
-	// We presented the UI, so it's up to us to dimiss it on iOS.
-	DismissViewController (true, null);
-
-	if (eventArgs.IsAuthenticated) {
-		// Use eventArgs.Account to do wonderful things
-	} else {
-		// The user cancelled
-	}
-};
+Mike, please insert code here
 ```
 
-All the information gathered from a successful authentication is available in `eventArgs.Account`.
+All the information collected from a successful authentication is accessible in `eventArgs.Account`.
 
-Now we're ready to present the login UI from `ViewDidAppear` on iOS:
+We are now ready to display the login UI from `ViewDidAppear` on iOS:
 
 ```csharp
-PresentViewController (auth.GetUI (), true, null);
+Mike, please insert code here
 ```
 
-The `GetUI` method returns `UINavigationControllers` on iOS, and `Intents` on Android. On Android, we would write the following code to present the UI from `OnCreate`:
+The `GetUI` method returns `UINavigationControllers` on iOS, and `Intents` on Android. Here is how we would write the code to display the UI from `OnCreate`:
 
 ```csharp
-StartActivity (auth.GetUI (this));
+Mike, please insert code here
+``
 
 
 
 ## 4. Store the account
 
-You can fetch all `Account` objects stored for a given service:
+
+The Symplified Mobile Developer SDK securely stores `Account` objects so you don't always have to reauthenticate the user. The `AccountStore` class is in charge of storing `Account` information, supported by the [Keychain](https://developer.apple.com/library/ios/#documentation/security/Reference/keychainservices/Reference/reference.html) on iOS and a [KeyStore](http://developer.android.com/reference/java/security/KeyStore.html) on Android:
+
+```csharp
+Mike please insert code here.
+```
+
+Saved Accounts are uniquely identified wiht a key composed of the account's `Username` property and a "Service ID". The "Service ID" is any string that is used when retrieving accounts from the store.
+
+If an `Account` was saved earlier, calling `Save` again will overwrite it. This is helpful for services that expire the credentials stored in the account object.
+
+
+## 5. Retrieve stored accounts
+
+
+You can get all `Account` objects stored for a given service:
 
 ```csharp
 Mike, please insert code here.
 ```
 
-It's that easy.
 
+## Next Steps
 
+### Exchange SAML 2.0 assertion for OAuth 2.0
 
+You can bridge SAML 2.0 to REST APIs using the Symplified Mobile Developer SDK. For example, you can enable a third-party IdP such as [Salesforce](http://login.salesforce.com/help/doc/en/identity_provider_about.htm), then  federate authentication.  
 
-## 5. Retrieve stored accounts
+```csharp
+Mike, please insert code here.
+```
 
-Xamarin.Auth includes OAuth 1.0 and OAuth 2.0 authenticators, providing support for thousands of popular services. For services that use traditional username/password authentication, you can roll your own authenticator by deriving from `FormAuthenticator`.
-
-If you want to authenticate against an ostensibly unsupported service, fear not – Xamarin.Auth is extensible! It's very easy to create your own authenticators – just derive from any of the existing authenticators and start overriding methods.
-
-
-
-
-## 6. Exchange SAML 2.0 assertion for OAuth 2.0
-
-_Provide pointers to salesforce. Functionality is provided. Bridging SAML to REST APIs._
-
-_Provide link to sample app._
-
-Xamarin.Auth includes OAuth 1.0 and OAuth 2.0 authenticators, providing support for thousands of popular services. For services that use traditional username/password authentication, you can roll your own authenticator by deriving from `FormAuthenticator`.
-
-If you want to authenticate against an ostensibly unsupported service, fear not – Xamarin.Auth is extensible! It's very easy to create your own authenticators – just derive from any of the existing authenticators and start overriding methods.
 
 =======
 Getting Started...
