@@ -6,7 +6,7 @@ Use our SAML 2.0 environment with a hosted IdP and test account to quickly build
 
 Here is the protocol flow between your app and the IdP:
 
-![Symplified Mobile Developer SDK Protocol Flow](./resources/01.png)
+![Symplified Mobile Developer SDK Protocol Flow](./icons/01.png)
 
 > Need help understanding single sign-on terminology, like IdP and SP? The folks at Salesforce.com have provided a good overview:  [About Identity Providers and Service Providers](http://login.salesforce.com/help/doc/en/identity_provider_about.htm).
 
