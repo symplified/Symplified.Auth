@@ -10,7 +10,7 @@ using Xamarin.Auth;
 using Xamarin.Utilities;
 
 #if PLATFORM_IOS
-using JSON = System.Json;
+using JSON = Newtonsoft.Json;
 using Symplified.Auth.iOS;
 using MonoTouch.Foundation;
 using PlatformCookie = MonoTouch.Foundation.NSHttpCookie;
@@ -29,6 +29,8 @@ namespace Symplified.Auth
 	public class SymplifiedAuthenticator : WebRedirectAuthenticator
 	{
 		private const string COOKIE_NAME = "singlepoint";
+
+		private bool _redirected = false;
 
 		private const string KEYCHAIN_ENDPOINT = "/KeychainRetrievalServlet";
 
@@ -79,6 +81,14 @@ namespace Symplified.Auth
 		/// <param name="formParams">Form parameters.</param>
 		protected override void OnRedirectPageLoaded (Uri url, System.Collections.Generic.IDictionary<string, string> query, System.Collections.Generic.IDictionary<string, string> fragment, System.Collections.Generic.IDictionary<string, string> formParams)
 		{
+			lock (this) {
+				if (_redirected) {
+					return;
+				} else {
+					_redirected = true;
+				}
+			}
+
 			object[] platformCookies = null;
 
 #if PLATFORM_IOS
@@ -107,22 +117,11 @@ namespace Symplified.Auth
 
 			Uri keychainUri = new Uri (url.GetLeftPart (UriPartial.Authority) + KEYCHAIN_ENDPOINT);
 
-			RequestUserKeychainAsync (keychainUri).ContinueWith (task => {
+			RequestUserKeychainAsync (keychainUri, cc).ContinueWith (task => {
 				if (task.IsFaulted) {
 					OnError (task.Exception);
 				} else {
-
-					var httpResponse = task.Result as HttpWebResponse;
-					JSON.JsonObject jsonObject = null;
-
-					using (var s = httpResponse.GetResponseStream ()) {
-						using (var r = new StreamReader (s, Encoding.UTF8)) {
-							// FIXME: This needs error handling
-							jsonObject = (JSON.JsonObject)JSON.JsonObject.Parse (r.ReadToEnd ());
-						}
-					}
-
-					OnSucceeded (new Account (jsonObject["username"], cc));
+					OnSucceeded (new Account ("sdkuser", cc));
 				}
 			}, TaskScheduler.FromCurrentSynchronizationContext ());
 #endif
@@ -133,10 +132,11 @@ namespace Symplified.Auth
 		/// </summary>
 		/// <returns>The user keychain async.</returns>
 		/// <param name="keychainUrl">Keychain URL.</param>
-		protected Task<WebResponse> RequestUserKeychainAsync (Uri keychainUrl)
+		protected Task<WebResponse> RequestUserKeychainAsync (Uri keychainUrl, CookieContainer cc)
 		{
-			var req = WebRequest.Create (keychainUrl);
+			var req = (HttpWebRequest)WebRequest.Create (keychainUrl);
 			req.Method = "GET";
+			req.CookieContainer = cc;
 
 			return Task
 				.Factory

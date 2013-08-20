@@ -84,9 +84,13 @@ namespace Symplified.Auth.iOS.Sample
 
 				if (!e.IsAuthenticated) {
 					tokenLoginStatusStringElement.Caption = "Not authorized";
-					loginViewController.ReloadData();
-					return;
 				}
+				else {
+					tokenLoginStatusStringElement.Caption = "Authorized";
+					tokenLoginStatusStringElement.GetActiveCell ().BackgroundColor = UIColor.Green;
+				}
+
+				loginViewController.ReloadData();
 			};
 
 			vc = authenticator.GetUI ();
