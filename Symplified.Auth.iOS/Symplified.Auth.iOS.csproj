@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{842950CE-E49A-4F6D-AC90-FCD5D908175B}</ProjectGuid>
     <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -22,7 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <GenerateDocumentation>true</GenerateDocumentation>
+    <GenerateDocumentation>True</GenerateDocumentation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
@@ -70,6 +70,7 @@
     <Folder Include="System\System.Security.Permissions\" />
     <Folder Include="Mono.Xml\" />
     <Folder Include="OIOSAML.NET\Validation\" />
+    <Folder Include="OIOSAML.NET\Bindings\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -253,21 +254,6 @@
     </Compile>
     <Compile Include="..\lib\OIOSAML.NET\Saml20AuthnRequest.cs">
       <Link>OIOSAML.NET\Saml20AuthnRequest.cs</Link>
-    </Compile>
-    <Compile Include="..\lib\OIOSAML.NET\Config\AudienceUris.cs">
-      <Link>OIOSAML.NET\Config\AudienceUris.cs</Link>
-    </Compile>
-    <Compile Include="..\lib\OIOSAML.NET\Config\Certificate.cs">
-      <Link>OIOSAML.NET\Config\Certificate.cs</Link>
-    </Compile>
-    <Compile Include="..\lib\OIOSAML.NET\Config\ConfigurationConstants.cs">
-      <Link>OIOSAML.NET\Config\ConfigurationConstants.cs</Link>
-    </Compile>
-    <Compile Include="..\lib\OIOSAML.NET\Config\ConfigurationReader.cs">
-      <Link>OIOSAML.NET\Config\ConfigurationReader.cs</Link>
-    </Compile>
-    <Compile Include="..\lib\OIOSAML.NET\Config\FederationConfig.cs">
-      <Link>OIOSAML.NET\Config\FederationConfig.cs</Link>
     </Compile>
     <Compile Include="..\lib\OIOSAML.NET\Config\SAML20FederationConfig.cs">
       <Link>OIOSAML.NET\Config\SAML20FederationConfig.cs</Link>
@@ -1319,9 +1305,6 @@
     <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\ProcessPriorityClass.cs">
       <Link>System\System.Diagnostics\ProcessPriorityClass.cs</Link>
     </Compile>
-    <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\ProcessThreadCollection.cs">
-      <Link>System\System.Diagnostics\ProcessThreadCollection.cs</Link>
-    </Compile>
     <Compile Include="..\lib\mono\mcs\class\System\System.Diagnostics\ProcessWindowStyle.cs">
       <Link>System\System.Diagnostics\ProcessWindowStyle.cs</Link>
     </Compile>
@@ -1504,6 +1487,27 @@
     </Compile>
     <Compile Include="..\Symplified.Auth\Properties\AssemblyInfo.cs">
       <Link>AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Bindings\HttpRedirectBindingBuilder.cs">
+      <Link>OIOSAML.NET\Bindings\HttpRedirectBindingBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Bindings\HttpRedirectBindingConstants.cs">
+      <Link>OIOSAML.NET\Bindings\HttpRedirectBindingConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Config\ConfigurationConstants.cs">
+      <Link>OIOSAML.NET\Config\ConfigurationConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Config\ConfigurationReader.cs">
+      <Link>OIOSAML.NET\Config\ConfigurationReader.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Config\FederationConfig.cs">
+      <Link>OIOSAML.NET\Config\FederationConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Config\Certificate.cs">
+      <Link>OIOSAML.NET\Config\Certificate.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Config\AudienceUris.cs">
+      <Link>OIOSAML.NET\Config\AudienceUris.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>

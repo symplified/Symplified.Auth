@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{CFE86511-190A-461C-82C4-053064F6E555}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{F278D4AB-4730-4720-B08E-FE5E31564D9E};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -50,9 +50,6 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Mono.Android.Export" />
-    <Reference Include="Symplified.Auth.Android">
-      <HintPath>lib\Symplified.Auth.Android.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Auth.Android">
       <HintPath>lib\Xamarin.Auth.Android.dll</HintPath>
     </Reference>
@@ -81,5 +78,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\idp.symplified.net.metadata.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Symplified.Auth.Android\Symplified.Auth.Android.csproj">
+      <Project>{AE33DF0A-7811-43BD-B60E-817CF4BB226A}</Project>
+      <Name>Symplified.Auth.Android</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

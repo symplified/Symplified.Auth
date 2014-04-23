@@ -405,7 +405,7 @@ namespace dk.nita.saml20
 			// FIXME: This code was changed to *not* use UTC
 			// for date comparisons, because UTC date conversion
 			// is non-functional on Xamarin.
-			return (DateTime.Now.CompareTo (NotOnOrAfter) > 0);
+			return (DateTime.UtcNow.CompareTo (NotOnOrAfter) > 0);
         }
 
         /// <summary>
