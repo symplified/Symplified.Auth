@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{AE33DF0A-7811-43BD-B60E-817CF4BB226A}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{F278D4AB-4730-4720-B08E-FE5E31564D9E};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,7 +35,7 @@
     <ConsolePause>false</ConsolePause>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <DefineConstants>PLATFORM_ANDROID;NET_2_0;SECURITY_DEP;MOBILE</DefineConstants>
-    <GenerateDocumentation>true</GenerateDocumentation>
+    <GenerateDocumentation>True</GenerateDocumentation>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -1455,6 +1455,12 @@
     <Compile Include="..\Symplified.Auth\Properties\AssemblyInfo.cs">
       <Link>AssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Bindings\HttpRedirectBindingBuilder.cs">
+      <Link>OIOSAML.NET\Bindings\HttpRedirectBindingBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\lib\OIOSAML.NET\Bindings\HttpRedirectBindingConstants.cs">
+      <Link>OIOSAML.NET\Bindings\HttpRedirectBindingConstants.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -1512,5 +1518,6 @@
     <Folder Include="System.Security.Permissions\" />
     <Folder Include="System.Web\" />
     <Folder Include="OIOSAML.NET\" />
+    <Folder Include="OIOSAML.NET\Bindings\" />
   </ItemGroup>
 </Project>

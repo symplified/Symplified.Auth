@@ -200,7 +200,7 @@ namespace dk.nita.saml20.protocol
                 return;
             }
 
-            Saml20AuthnRequest authnRequest = Saml20AuthnRequest.GetDefault();
+			var authnRequest = Saml20AuthnRequest.GetDefault (idpEndpoint.Name);
             TransferClient(idpEndpoint, authnRequest, context);            
         }
 

@@ -15,6 +15,7 @@ using dk.nita.saml20.Schema.Metadata;
 using dk.nita.saml20.Utils;
 using dk.nita.saml20.config;
 using dk.nita.saml20.Schema.XmlDSig;
+using dk.nita.saml20.Bindings;
 
 namespace Symplified.Auth
 {
@@ -40,13 +41,17 @@ namespace Symplified.Auth
 			_spName = (string.IsNullOrEmpty (spName)) ? "symplified-mobile-sp" : spName;
 			_idpMetadata = idpMetadata;
 
-			Saml20AuthnRequest authnRequest = Saml20AuthnRequest.GetDefault (_spName);
-			byte[] xmlBytes = UTF8Encoding.Default.GetBytes (authnRequest.GetXml ().OuterXml);
-			string base64XmlString = SamlAccount.ToBase64ForUrlString (xmlBytes);
+			var url = _idpMetadata.SSOEndpoint (SAMLBinding.POST).Url;
+			var separator = url.Contains ("?") ? "&" : "?";
+
+			var authnRequest = Saml20AuthnRequest.GetDefault (_spName);
+
+			var builder = new HttpRedirectBindingBuilder ();
+			builder.Request = authnRequest.GetXml ().OuterXml;
 
 			initialUrl = new Uri (
 				String.Format (
-					"{0}&SAMLRequest={1}", _idpMetadata.SSOEndpoint (SAMLBinding.POST).Url, base64XmlString
+					"{0}{1}{2}", url, separator, builder.ToQuery()
 				)
 			);
 		}

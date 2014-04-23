@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-//using System.Web;
+using System.Web;
 using System.Xml;
-//using dk.nita.saml20.identity;
+using dk.nita.saml20.identity;
 using dk.nita.saml20.Schema.Metadata;
 using log4net;
 using log4net.Repository.Hierarchy;
